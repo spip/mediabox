@@ -56,6 +56,7 @@
 	
 	// Abstracting the HTML and event identifiers for easy rebranding
 	colorbox = 'colorbox',
+	colorbox_class = 'mediabox modalbox',
 	prefix = 'cbox',
 	
 	// Events	
@@ -332,7 +333,7 @@
 	publicMethod.init = function () {
 		// Create & Append jQuery Objects
 		$window = $(window);
-		$box = $div().attr({id: colorbox, 'class': isIE ? prefix + 'IE' : ''});
+		$box = $div().attr({id: colorbox, 'class': (isIE ? prefix + 'IE ' : '')+colorbox_class});
 		$overlay = $div("Overlay", isIE6 ? 'position:absolute' : '').hide();
 		
 		$wrap = $div("Wrapper");

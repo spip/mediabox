@@ -6,6 +6,7 @@ function mediabox_config($public=null){
 	if (!is_array($config))
 		$config = array();
 	$config = array_merge(array(
+		'active' => 'oui',
 		'traiter_toutes_images' => 'oui',
 		'selecteur_galerie' => '#documents_portfolio a[type=\'image/jpeg\'],#documents_portfolio a[type=\'image/png\'],#documents_portfolio a[type=\'image/gif\']',
 		'selecteur_commun' => '.mediabox',
@@ -23,6 +24,7 @@ function mediabox_config($public=null){
 
 	if ((is_null($public) AND test_espace_prive()) OR $public===false) {
 		$config = array_merge($config,array(
+		'active' => 'oui',
 		'selecteur_galerie' => '#portfolios a[type^=\'image/\']',
 		'selecteur_commun' => '.mediabox, .iconifier a[href$=jpg],.iconifier a[href$=png],.iconifier a[href$=gif]',
 		'splash_url' => '',
@@ -45,13 +47,10 @@ function mediabox_config($public=null){
 }
 
 function mediabox_insert_head_css($flux){
-	static $done = false;
-	if (!$done) {
-		$done = true;
-		$config = mediabox_config();
-		if ($f = find_in_path((test_espace_prive()?"prive/":"")."colorbox/".$config['skin'].'/colorbox.css'))
-			$flux .= '<link rel="stylesheet" href="'.direction_css($f).'" type="text/css" media="all" />';
-	}
+	$config = mediabox_config();
+	if ($config['active']=='oui' AND $f = find_in_path((test_espace_prive()?"prive/":"")."colorbox/".$config['skin'].'/colorbox.css'))
+		$flux .= '<link rel="stylesheet" href="'.direction_css($f).'" type="text/css" media="all" />';
+
 	return $flux;
 }
 
@@ -64,41 +63,41 @@ function mediabox_timestamp($fichier){
 
 function mediabox_insert_head($flux){
 	$config = mediabox_config();
+	if ($config['active']=='oui') {
 
-	$flux = mediabox_insert_head_css($flux); // au cas ou il n'est pas implemente
+		$flux .='
+	<script src="'.mediabox_timestamp(find_in_path('javascript/jquery.colorbox.js')).'" type="text/javascript"></script>
+	<script src="'.mediabox_timestamp(find_in_path('javascript/spip.mediabox.js')).'" type="text/javascript"></script>';
 
-	$flux .='
-<script src="'.mediabox_timestamp(find_in_path('javascript/jquery.colorbox.js')).'" type="text/javascript"></script>
-<script src="'.mediabox_timestamp(find_in_path('javascript/spip.mediabox.js')).'" type="text/javascript"></script>';
+		/**
+		 * Initialiser la mediabox si jQuery est deja charge, ie on arrive apres
+		 */
+		$flux .='<script type="text/javascript">/* <![CDATA[ */
+	var box_settings = {tt_img:'.($config['traiter_toutes_images'] == 'oui'?'true':'false')
+	.',sel_g:"'.$config['selecteur_galerie']
+	.'",sel_c:"'.$config['selecteur_commun']
+	.'",trans:"'.$config['transition']
+	.'",speed:"'.$config['speed']
+	.'",ssSpeed:"'.$config['slideshow_speed']
+	.'",maxW:"'.$config['maxWidth']
+	.'",maxH:"'.$config['maxHeight']
+	.'",minW:"'.$config['minWidth']
+	.'",minH:"'.$config['minHeight']
+	.'",opa:"'.$config['opacite']
+	.'",str_ssStart:"'.unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart')))
+	.'",str_ssStop:"'.unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop')))
+	.'",str_cur:"'._T('mediabox:boxstr_current')
+	.'",str_prev:"'._T('mediabox:boxstr_previous')
+	.'",str_next:"'._T('mediabox:boxstr_next')
+	.'",str_close:"'._T('mediabox:boxstr_close')
+	.'",splash_url:"'.$config['splash_url']
+	.'"};
+	if (window.jQuery) (jQuery(function(){ if(typeof onAjaxLoad == "function") onAjaxLoad(mediaboxInit); jQuery(mediaboxInit); }));
+	/* ]]> */</script>'."\n";
 
-	/**
-	 * Initialiser la mediabox si jQuery est deja charge, ie on arrive apres
-	 */
-	$flux .='<script type="text/javascript">/* <![CDATA[ */
-var box_settings = {tt_img:'.($config['traiter_toutes_images'] == 'oui'?'true':'false')
-.',sel_g:"'.$config['selecteur_galerie']
-.'",sel_c:"'.$config['selecteur_commun']
-.'",trans:"'.$config['transition']
-.'",speed:"'.$config['speed']
-.'",ssSpeed:"'.$config['slideshow_speed']
-.'",maxW:"'.$config['maxWidth']
-.'",maxH:"'.$config['maxHeight']
-.'",minW:"'.$config['minWidth']
-.'",minH:"'.$config['minHeight']
-.'",opa:"'.$config['opacite']
-.'",str_ssStart:"'.unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart')))
-.'",str_ssStop:"'.unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop')))
-.'",str_cur:"'._T('mediabox:boxstr_current')
-.'",str_prev:"'._T('mediabox:boxstr_previous')
-.'",str_next:"'._T('mediabox:boxstr_next')
-.'",str_close:"'._T('mediabox:boxstr_close')
-.'",splash_url:"'.$config['splash_url']
-.'"};
-if (window.jQuery) (jQuery(function(){ if(typeof onAjaxLoad == "function") onAjaxLoad(mediaboxInit); jQuery(mediaboxInit); }));
-/* ]]> */</script>'."\n";
-	
-	if ($config['splash_url'])
-		$flux .='<script src="'.mediabox_timestamp(find_in_path('javascript/splash.mediabox.js')).'" type="text/javascript"></script>';
+		if ($config['splash_url'])
+			$flux .='<script src="'.mediabox_timestamp(find_in_path('javascript/splash.mediabox.js')).'" type="text/javascript"></script>';
+	}
 
 	return $flux;
 }

@@ -75,6 +75,9 @@ function formulaires_configurer_mediabox_traiter_dist(){
 		effacer_meta('mediabox');
 	}
 	else {
+		// cas particulier de la checkbox :
+		if (!_request('active'))
+			set_request('active','non');
 		foreach ($config as $k=>$v){
 			if (!is_null(_request($k)))
 				$config[$k] = _request($k);

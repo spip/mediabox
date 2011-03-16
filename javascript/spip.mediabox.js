@@ -21,7 +21,7 @@ var mediaboxInit = function() {
 
 	// passer le portfolio de la dist en mode galerie
 	if (box_settings.sel_g){
-		jQuery(box_settings.sel_g, this)
+		jQuery(box_settings.sel_g, this).not('#colorbox')
 		.attr("onclick","") // se debarrasser du onclick de SPIP
 		.colorbox(jQuery.extend({}, options, {rel:'galerieauto',slideshow:true,slideshowAuto:false}))
 		.addClass("hasbox");

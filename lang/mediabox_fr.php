@@ -14,6 +14,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_splash_url' => 'Indiquez l\'url du m&eacute;dia &agrave; afficher automatiquement dans une bo&icirc;te lors de la premi&egrave;re visite sur le site public.',
 	'explication_traiter_toutes_images' => 'Ins&eacute;rer une bo&icirc;te sur toutes les images ?',
 
+	'label_active' => 'Activer la mediabox dans le site public',
 	'label_apparence' => 'Apparence',
 	'label_selecteur_commun' => 'En g&eacute;n&eacute;ral',
 	'label_selecteur_galerie' => 'En galerie',
