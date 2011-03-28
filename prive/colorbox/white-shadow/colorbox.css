@@ -20,7 +20,7 @@
 */
 #cboxOverlay{background:#fff;}
 
-#colorbox{font-size: 0.76em;}
+#colorbox{}
 #colorbox .hover {background-color:transparent;}
 
     #cboxTopLeft{width:25px; height:25px; background:url(images/border1.png) 0 0 no-repeat;}
