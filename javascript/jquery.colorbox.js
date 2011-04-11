@@ -56,7 +56,7 @@
 	
 	// Abstracting the HTML and event identifiers for easy rebranding
 	colorbox = 'colorbox',
-	colorbox_class = 'mediabox modalbox',
+	colorbox_class = 'box_mediabox box_modalbox',
 	prefix = 'cbox',
 	
 	// Events	
