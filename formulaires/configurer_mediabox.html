@@ -61,19 +61,19 @@
 						<input type="text" name="speed" class="text" id="speed" size="10" value="#ENV*{speed}" />
 					</li>
 					<li class="minWidth[ (#ENV**{erreurs}|table_valeur{minWidth}|oui)erreur]">
-						<label for='minWidth'><:mediabox:label_minWidth:></label>
+						<label for='minWidth'><:mediabox:label_minwidth:></label>
 						<input type="text" name="minWidth" class="text" id="minWidth" size="10" value="#ENV*{minWidth}" />
 					</li>
 					<li class="maxWidth[ (#ENV**{erreurs}|table_valeur{maxWidth}|oui)erreur]">
-						<label for='maxWidth'><:mediabox:label_maxWidth:></label>
+						<label for='maxWidth'><:mediabox:label_maxwidth:></label>
 						<input type="text" name="maxWidth" class="text" id="maxWidth" size="10" value="#ENV*{maxWidth}" />
 					</li>
 					<li class="minHeight[ (#ENV**{erreurs}|table_valeur{minHeight}|oui)erreur]">
-						<label for='minHeight'><:mediabox:label_minHeight:></label>
+						<label for='minHeight'><:mediabox:label_minheight:></label>
 						<input type="text" name="minHeight" class="text" id="minHeight" size="10" value="#ENV*{minHeight}" />
 					</li>
 					<li class="maxHeight[ (#ENV**{erreurs}|table_valeur{maxHeight}|oui)erreur]">
-						<label for='maxHeight'><:mediabox:label_maxHeight:></label>
+						<label for='maxHeight'><:mediabox:label_maxheight:></label>
 						<input type="text" name="maxHeight" class="text" id="maxHeight" size="10" value="#ENV*{maxHeight}" />
 					</li>
 					<li class="editer_slideshow_speed[ (#ENV**{erreurs}|table_valeur{slideshow_speed}|oui)erreur]">
@@ -102,7 +102,7 @@
 	</ul>
 
 	<p class="boutons">
-		<input style="display:none;" type="submit" name="enregistrer" class="submit" value="<:enregistrer:>" />
+		<input style="display:none;" type="submit" name="enregistrer" class="submit" value="<:bouton_valider:>" />
 		<input type="submit" name="reinit" class="submit" value="<:mediabox:bouton_reinitialiser:>" />
 		<input type="submit" name="enregistrer" class="submit" value="<:bouton_valider:>" />
 	</p>
