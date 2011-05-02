@@ -89,4 +89,5 @@ This plugin works on skeletons which have the <code>#INSERT_HEAD</code> tag.
 		<url>configurer_mediabox</url>
 	</bouton>
 	<categorie>multimedia</categorie>
+	<traduire gestionnaire="salvatore" module="mediabox" reference="fr" />
 </plugin>
