@@ -54,7 +54,7 @@ This plugin works on skeletons which have the <code>#INSERT_HEAD</code> tag.
 	</multi></description>
 	<lien>http://colorpowered.com/colorbox/</lien>
 	<prefix>mediabox</prefix>
-	<necessite id="SPIP" version="[2.3.0-dev;]" />
+	<necessite id="SPIP" version="[3.0.0-dev;]" />
 	<pipeline>
 		<nom>insert_head_css</nom>
 		<inclure>mediabox_pipelines.php</inclure>
