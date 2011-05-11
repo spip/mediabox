@@ -80,6 +80,7 @@ javascript/README -text
 javascript/jquery.colorbox.js -text
 javascript/spip.mediabox.js -text
 javascript/splash.mediabox.js -text
+lang/mediabox.xml -text
 lang/mediabox_ar.php -text
 lang/mediabox_en.php -text
 lang/mediabox_es.php -text
