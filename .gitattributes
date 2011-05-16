@@ -101,7 +101,7 @@ prive/colorbox/white-shadow/images/internet_explorer/borderTopLeft.png -text
 prive/colorbox/white-shadow/images/internet_explorer/borderTopRight.png -text
 prive/colorbox/white-shadow/images/loading.gif -text
 prive/colorbox/white-shadow/vignette.jpg -text
-prive/exec/configurer_mediabox.html -text
+prive/squelettes/contenu/configurer_mediabox.html -text
 prive/themes/spip/images/mediabox-16.png -text
 prive/themes/spip/images/mediabox-24.png -text
 prive/themes/spip/images/mediabox-32.png -text
