@@ -1,5 +1,7 @@
 <traduction module="mediabox" gestionnaire="salvatore" reference="fr">
-	<langue code="ar" />
+	<langue code="ar">
+		<traducteur nom="kandalaft" />
+	</langue>
 	<langue code="en" />
 	<langue code="es" />
 </traduction>
