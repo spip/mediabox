@@ -18,15 +18,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'boxstr_zoom' => 'Zoom',
 
 	// E
-	'explication_selecteur' => 'Specify the target element that will trigger the box. (jQuery CSS expression or extended)',
-	'explication_selecteur_galerie' => 'Specify the target elements to group together into a gallery. (jQuery CSS expression or extended)',
-	'explication_splash_url' => 'Enter the URL of the media to automatically display in a box at the first visit on the public site.',
-	'explication_traiter_toutes_images' => 'Insert a box on all pictures ?',
+	'explication_selecteur' => 'Specify the target element that will trigger the box. (jQuery or CSS expression)',
+	'explication_selecteur_galerie' => 'Specify the target elements to group together into a gallery. (jQuery or CSS expression)',
+	'explication_splash_url' => 'Enter the URL of the media to automatically display in a box on the first visit to the public site.',
+	'explication_traiter_toutes_images' => 'Insert a box around all images?',
 
 	// L
-	'label_active' => 'Activer la mediabox dans le site public', # NEW
+	'label_active' => 'Activate mediabox on the public site',
 	'label_apparence' => 'Appearance',
-	'label_aucun_style' => 'Do not use any default skin',
+	'label_aucun_style' => 'Do not use any frame by default',
 	'label_choix_transition_elastic' => 'Elastic',
 	'label_choix_transition_fade' => 'Fade',
 	'label_choix_transition_none' => 'Without transition effect',
@@ -34,7 +34,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_maxwidth' => 'Max width (% or px)',
 	'label_minheight' => 'Min height (% or px)',
 	'label_minwidth' => 'Min width (% or px)',
-	'label_opacite' => 'Opacit&eacute; du fond', # NEW
+	'label_opacite' => 'Background opacity',
 	'label_selecteur_commun' => 'In general',
 	'label_selecteur_galerie' => 'In gallery mode',
 	'label_skin' => 'Visual skin',

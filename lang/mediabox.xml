@@ -2,6 +2,8 @@
 	<langue code="ar">
 		<traducteur nom="kandalaft" />
 	</langue>
-	<langue code="en" />
+	<langue code="en">
+		<traducteur nom="paolo2" />
+	</langue>
 	<langue code="es" />
 </traduction>
