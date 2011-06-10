@@ -92,7 +92,7 @@ function mediabox_insert_head($flux){
 	.'",str_close:"'._T('mediabox:boxstr_close')
 	.'",splash_url:"'.$config['splash_url']
 	.'"};
-	if (window.jQuery) (jQuery(function(){ if(typeof onAjaxLoad == "function") onAjaxLoad(mediaboxInit); jQuery(mediaboxInit); }));
+	if (window.jQuery) (jQuery(function(){ if(typeof onAjaxLoad == "function") onAjaxLoad(mediaboxInit); mediaboxInit(); }));
 	/* ]]> */</script>'."\n";
 
 		if ($config['splash_url'])
