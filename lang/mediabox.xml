@@ -2,8 +2,14 @@
 	<langue code="ar">
 		<traducteur nom="kandalaft" />
 	</langue>
+	<langue code="de">
+		<traducteur nom="klaus" />
+	</langue>
 	<langue code="en">
 		<traducteur nom="paolo2" />
 	</langue>
 	<langue code="es" />
+	<langue code="sk">
+		<traducteur nom="jaro" />
+	</langue>
 </traduction>
