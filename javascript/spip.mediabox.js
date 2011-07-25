@@ -1,7 +1,7 @@
 // Inside the function "this" will be "document" when called by ready()
 // and "the ajaxed element" when called because of onAjaxLoad
 var mediaboxInit = function() {
-	console.log(box_settings);
+	//console.log(box_settings);
 	var options = {
 		transition:box_settings.trans,
 		speed:box_settings.speed,
