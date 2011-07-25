@@ -1,6 +1,7 @@
 // Inside the function "this" will be "document" when called by ready()
 // and "the ajaxed element" when called because of onAjaxLoad
 var mediaboxInit = function() {
+	console.log(box_settings);
 	var options = {
 		transition:box_settings.trans,
 		speed:box_settings.speed,
@@ -21,7 +22,7 @@ var mediaboxInit = function() {
 
 	// passer le portfolio de la dist en mode galerie
 	if (box_settings.sel_g){
-		jQuery(box_settings.sel_g, this).not('#colorbox')
+		jQuery(box_settings.sel_g, this).not('.hasbox,#colorbox')
 		.attr("onclick","") // se debarrasser du onclick de SPIP
 		.colorbox(jQuery.extend({}, options, {rel:'galerieauto',slideshow:true,slideshowAuto:false}))
 		.addClass("hasbox");
