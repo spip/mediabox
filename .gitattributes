@@ -87,6 +87,9 @@ lang/mediabox_en.php -text
 lang/mediabox_es.php -text
 lang/mediabox_fr.php -text
 lang/mediabox_sk.php -text
+lang/paquet-mediabox_ar.php -text
+lang/paquet-mediabox_en.php -text
+lang/paquet-mediabox_fr.php -text
 /mediabox_pipelines.php -text
 /plugin.xml -text
 prive/colorbox/white-shadow/colorbox.css -text
