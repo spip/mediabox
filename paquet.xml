@@ -22,5 +22,5 @@
 	<pipeline nom="jquery_plugins" inclure="mediabox_pipelines.php" />
 	<pipeline nom="header_prive" action="insert_head" inclure="mediabox_pipelines.php" />
 
-	<menu nom="mediabox" titre="mediabox:titre_menu_box" parent="bando_squelette" icone="images/mediabox-16.png" action="configurer_mediabox" />
+	<menu nom="mediabox" titre="mediabox:titre_menu_box" parent="menu_squelette" icone="images/mediabox-16.png" action="configurer_mediabox" />
 </paquet>
