@@ -1,9 +1,9 @@
 <paquet
 	prefix="mediabox"
 	categorie="multimedia"
-	version="0.7.2"
+	version="0.8.0"
 	etat="test"
-	compatibilite="[3.0.0-dev;["
+	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/mediabox-32.png"
 	documentation="http://colorpowered.com/colorbox/"
 >	
@@ -12,7 +12,7 @@
 	<!-- Boîte multimédia -->
 
 	<credit lien="http://colorpowered.com/colorbox/">ColorPowered</credit>
-	<auteur lien="http://www.yterium.com">Cedric</auteur>
+	<auteur>Collectif SPIP</auteur>
 
 	<traduire module="mediabox" reference="fr" gestionnaire="salvatore" />
 
@@ -22,6 +22,5 @@
 	<pipeline nom="jquery_plugins" inclure="mediabox_pipelines.php" />
 	<pipeline nom="header_prive" action="insert_head" inclure="mediabox_pipelines.php" />
 
-	<menu nom="mediabox" titre="mediabox:titre_menu_box" parent="configuration" icone="prive/themes/spip/images/mediabox-24.png" action="configurer_mediabox" />
-	<menu nom="mediabox2" titre="mediabox:titre_menu_box" parent="bando_squelette" icone="images/mediabox-16.png" action="configurer_mediabox" />
+	<menu nom="mediabox" titre="mediabox:titre_menu_box" parent="bando_squelette" icone="images/mediabox-16.png" action="configurer_mediabox" />
 </paquet>

@@ -91,7 +91,6 @@ lang/paquet-mediabox_ar.php -text
 lang/paquet-mediabox_en.php -text
 lang/paquet-mediabox_fr.php -text
 /mediabox_pipelines.php -text
-/plugin.xml -text
 prive/colorbox/white-shadow/colorbox.css -text
 prive/colorbox/white-shadow/images/border1.png -text
 prive/colorbox/white-shadow/images/border2.png -text
