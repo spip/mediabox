@@ -9,6 +9,9 @@
 		<traducteur nom="paolo2" />
 	</langue>
 	<langue code="es" />
+	<langue code="fa">
+		<traducteur nom="davood" />
+	</langue>
 	<langue code="sk">
 		<traducteur nom="jaro" />
 	</langue>
