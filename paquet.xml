@@ -5,8 +5,8 @@
 	etat="test"
 	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/mediabox-32.png"
-	documentation="http://colorpowered.com/colorbox/"
->	
+	documentation="http://www.spip-contrib.net/MediaBox"
+>
 
 	<nom>MediaBox</nom>
 	<!-- Boîte multimédia -->
