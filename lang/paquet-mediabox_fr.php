@@ -22,9 +22,9 @@ Il est possible de configurer chaque lien au cas par cas avec des classes suppl�
 
 -* <code>boxIframe</code> permet de demander à ouvrir le lien dans une boîte en iframe ;
 
--* <code>boxWidth-350px</code> permet de spécifier une largeur de 350px pour la boite ;
+-* <code>boxWidth-350px</code> permet de spécifier une largeur de 350px pour la boîte ;
 
--* <code>boxHeight-90pc</code> permet de spécifier une hauteur de 90% pour la boite ;
+-* <code>boxHeight-90pc</code> permet de spécifier une hauteur de 90% pour la boîte ;
 
 
 
