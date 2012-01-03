@@ -1,17 +1,11 @@
 <?php
-
-// Ceci est un fichier langue de SPIP -- This is a SPIP language file
-// Fichier produit par PlugOnet
-// Module: paquet-mediabox
-// Langue: fr
-// Date: 03-08-2011 19:45:21
-// Items: 3
-
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// Fichier source, a modifier dans svn://zone.spip.org/spip-zone/_core_/plugins/mediabox/lang/
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
-// M
+	// M
 	'mediabox_description' => 'Par défaut, tous les liens vers des images (avec un attribut type décrivant le mime/type de l\'image) ainsi que
 
 les liens avec la classe <code>.mediabox</code> sont enrichis par la boîte multimedia.
@@ -36,6 +30,7 @@ ainsi que l\'aspect de la boîte parmi les habillages disponibles.
 
 Ce plugin fonctionne sur les squelettes disposant de la balise <code>#INSERT_HEAD</code>',
 	'mediabox_nom' => 'MediaBox',
-	'mediabox_slogan' => 'Boîte multimédia',
+	'mediabox_slogan' => 'Boîte multimédia'
 );
+
 ?>
