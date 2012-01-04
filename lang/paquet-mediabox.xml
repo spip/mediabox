@@ -2,7 +2,7 @@
 	<langue code="ar" />
 	<langue code="de" />
 	<langue code="en">
-		<traducteur nom="kent1" />
+		<traducteur nom="kent1" lien="http://trad.spip.org/auteur/kent1" />
 	</langue>
 	<langue code="fr" />
 </traduction>
