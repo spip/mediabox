@@ -18,7 +18,7 @@ You can configure each link on a case by case basis with additional classes:
 
 A configuration panel lets you change the general settings to your liking, and the appearance of the box among the available skins.
 
-This plugin works on skeletons which have the <code>#INSERT_HEAD</code> tag.',
+This plugin works on skeletons which have the <code>#INSERT_HEAD</code> tag.', # MODIF
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Media box'
 );
