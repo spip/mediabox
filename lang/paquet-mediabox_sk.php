@@ -8,11 +8,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// M
-	'mediabox_description' => 'Podľa predvolených nastavení všetky odkazy k obrázkom (s typom v parametre, ktorý uvádza mime/typ obrázka) 
-
-a odkazy v triede <code>.mediabox</code> obohacuje multimediálny box.
-
-
+	'mediabox_description' => 'Podľa predvolených nastavení všetky odkazy k obrázkom (s typom v parametre, ktorý uvádza mime/typ obrázka) a odkazy v triede <code>.mediabox</code> obohacuje multimediálny box.
 
 Každý odkaz môžete osobitne nastaviť pomocou doplnkových tried:
 
@@ -22,19 +18,9 @@ Každý odkaz môžete osobitne nastaviť pomocou doplnkových tried:
 
 -* <code>boxHeight-90pc</code> umožňuje zadať výšku poľa 90%.
 
+Ovládací panel vám umožňuje všeobecné nastavenia podľa vašich želaní vybrať dizajn boxu z dostupných vzhľadov.
 
-
-Ovládací panel vám umožňuje všeobecné nastavenia podľa vašich želaní 
-
-
-
-vybrať dizajn boxu z dostupných vzhľadov.
-
-
-
-
-
-Tento zásuvný modul funguje so šablónami, ktoré obsahujú tag <code>#INSERT_HEAD</code>', # MODIF
+Tento zásuvný modul spolupracuje so šablónami, ktoré obsahujú tag <code>#INSERT_HEAD</code>',
 	'mediabox_nom' => 'Multimediálny box',
 	'mediabox_slogan' => 'Multimediálny box'
 );
