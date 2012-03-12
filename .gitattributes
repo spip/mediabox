@@ -27,6 +27,17 @@ colorbox/black-striped/images/loading.gif -text
 colorbox/black-striped/images/loading_background.png -text
 colorbox/black-striped/images/overlay.png -text
 colorbox/black-striped/vignette.jpg -text
+colorbox/bootstrap/colorbox.css -text
+colorbox/bootstrap/colorbox_rtl.css -text
+colorbox/bootstrap/images/bg_content.png -text
+colorbox/bootstrap/images/close.png -text
+colorbox/bootstrap/images/loading.gif -text
+colorbox/bootstrap/images/next.png -text
+colorbox/bootstrap/images/prev.png -text
+colorbox/bootstrap/images/start.png -text
+colorbox/bootstrap/images/start_rtl.png -text
+colorbox/bootstrap/images/stop.png -text
+colorbox/bootstrap/vignette.jpg -text
 colorbox/colorbox.ai -text
 colorbox/demo.jpg -text
 colorbox/fancybox/colorbox.css -text
