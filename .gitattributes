@@ -102,7 +102,10 @@ lang/mediabox_sk.php -text
 lang/paquet-mediabox.xml -text
 lang/paquet-mediabox_ar.php -text
 lang/paquet-mediabox_en.php -text
+lang/paquet-mediabox_fa.php -text
 lang/paquet-mediabox_fr.php -text
+lang/paquet-mediabox_it.php -text
+lang/paquet-mediabox_ru.php -text
 lang/paquet-mediabox_sk.php -text
 /mediabox_ieconfig.php -text
 /mediabox_pipelines.php -text
