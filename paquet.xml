@@ -2,7 +2,7 @@
 	prefix="mediabox"
 	categorie="multimedia"
 	version="0.8.0"
-	etat="test"
+	etat="stable"
 	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/mediabox-32.png"
 	documentation="http://www.spip-contrib.net/MediaBox"
