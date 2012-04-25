@@ -8,21 +8,19 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// M
-	'mediabox_description' => 'Par défaut, tous les liens vers des images (avec un attribut type décrivant le mime/type de l\'image) ainsi que les liens avec la classe <code>.mediabox</code> sont enrichis par la boîte multimédia.
+	'mediabox_description' => 'Per impostazione predefinita, tutti i collegamenti alle immagini (con un attributo che descrive il tipo mime/tipo di foto) e
+collegamenti con il <code> classe CSS. mediabox </ code> sono arricchite da box multimediale.
 	
-	Il est possible de configurer chaque lien au cas par cas avec des classes supplémentaires :
+È possibile configurare ogni collegamento in una caso per caso con le classi aggiuntive:
+- * <code> BoxIframe </ code> permette di aprire il collegamento nella casella iframe;
+- * <code> Boxwidth-350 pixel </ code> consente di specificare una larghezza di 350 pixel per il box;
+- * <code> BoxHeight-90pc </ code> consente di specificare una altezza di 90% per il box
 
--* <code>boxIframe</code> permet de demander à ouvrir le lien dans une boîte en iframe ;
+Un pannello di configurazione permette di modificare le impostazioni generali a proprio piacimento, e l\'aspetto tra le skin disponibili.
 
--* <code>boxWidth-350px</code> permet de spécifier une largeur de 350px pour la boîte ;
-
--* <code>boxHeight-90pc</code> permet de spécifier une hauteur de 90% pour la boîte.
-
-	Un panneau de configuration vous permet de modifier les réglages généraux à votre convenance, ainsi que l\'aspect de la boîte parmi les habillages disponibles.
-	
-	Ce plugin fonctionne sur les squelettes disposant de la balise <code>#INSERT_HEAD</code>', # NEW
-	'mediabox_nom' => 'مدياباكس',
-	'mediabox_slogan' => 'صندوق چندرسانه‌اي'
+Questo plugin funziona su scheletri che hanno la <code> INSERT_HEAD # </ code> tag.',
+	'mediabox_nom' => 'MediaBox',
+	'mediabox_slogan' => 'Media box'
 );
 
 ?>
