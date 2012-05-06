@@ -69,7 +69,7 @@ var box_settings = {tt_img:'.($config['traiter_toutes_images'] == 'oui'?'true':'
 .'",opa:"'.$config['opacite']
 .'",str_ssStart:"'.unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart')))
 .'",str_ssStop:"'.unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop')))
-.'",str_cur:"'._T('mediabox:boxstr_current')
+.'",str_cur:"'._T('mediabox:boxstr_current', array('current'=>'{current}', 'total'=>'{total}'))
 .'",str_prev:"'._T('mediabox:boxstr_previous')
 .'",str_next:"'._T('mediabox:boxstr_next')
 .'",str_close:"'._T('mediabox:boxstr_close')

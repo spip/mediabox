@@ -8,7 +8,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// B
 	'bouton_reinitialiser' => 'Réinitialiser',
 	'boxstr_close' => 'Fermer',
-	'boxstr_current' => '{current}/{total}',
+	'boxstr_current' => '@current@/@total@',
 	'boxstr_next' => 'Suivant',
 	'boxstr_previous' => 'Précédent',
 	'boxstr_slideshowStart' => 'Diaporama',
