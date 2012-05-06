@@ -10,7 +10,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// B
 	'bouton_reinitialiser' => 'Reinizializza',
 	'boxstr_close' => 'Chiudi',
-	'boxstr_current' => '{current}/{total}',
+	'boxstr_current' => '@current@/@total@',
 	'boxstr_next' => 'Prossimo',
 	'boxstr_previous' => 'Precedente',
 	'boxstr_slideshowStart' => 'Presentazione',
