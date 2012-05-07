@@ -10,7 +10,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// B
 	'bouton_reinitialiser' => 'Obnoviť',
 	'boxstr_close' => 'Zatvoriť',
-	'boxstr_current' => '@current@/@total@', # MODIF
+	'boxstr_current' => '@current@/@total@',
 	'boxstr_next' => 'Ďalšia',
 	'boxstr_previous' => 'Predchádzajúca',
 	'boxstr_slideshowStart' => 'Prezentácia',
