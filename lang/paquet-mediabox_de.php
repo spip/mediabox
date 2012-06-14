@@ -8,29 +8,23 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// M
-	'mediabox_description' => 'Par défaut, tous les liens vers des images (avec un attribut type décrivant le mime/type de l\'image) ainsi que
-
-les liens avec la classe <code>.mediabox</code> sont enrichis par la boîte multimedia.
+	'mediabox_description' => 'Alle Links zu Bildern (mit einem mime/type für Bilder) sowie Links mit der Klasse <code>.mediabox</code>werden in einer Multimedia-Box angezeigt.
 
 
 
-Il est possible de configurer chaque lien au cas par cas avec des classes supplémentaires :
+Jeder Link kann einzeln um folgende Klassen ergänzt werden:
 
--* <code>boxIframe</code> permet de demander à ouvrir le lien dans une boîte en iframe ;
+-* <code>boxIframe</code> öffnet den Link als iFrame in einer Box;
 
--* <code>boxWidth-350px</code> permet de spécifier une largeur de 350px pour la boîte ;
+-* <code>boxWidth-350px</code>öffnet eine 350px breite Box;
 
--* <code>boxHeight-90pc</code> permet de spécifier une hauteur de 90% pour la boîte ;
+-* <code>boxHeight-90pc</code> öffnet eine 90% hohe Box;
 
-
-
-Un panneau de configuration vous permet de modifier les réglages généraux à votre convenance,
-
-ainsi que l\'aspect de la boîte parmi les habillages disponibles.
+Sie können die Voreinstellungen in einem Konfigurationsdialog einstellen, und das Standarddesign der Boxen auswählen.
 
 
 
-Ce plugin fonctionne sur les squelettes disposant de la balise <code>#INSERT_HEAD</code>', # NEW
+Ce plugin fonctionne sur les squelettes disposant de la balise <code>#INSERT_HEAD</code>', # MODIF
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Multimedia-Box'
 );
