@@ -10,8 +10,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// M
 	'mediabox_description' => 'Alle Links zu Bildern (mit einem mime/type für Bilder) sowie Links mit der Klasse <code>.mediabox</code>werden in einer Multimedia-Box angezeigt.
 
-
-
 Jeder Link kann einzeln um folgende Klassen ergänzt werden:
 
 -* <code>boxIframe</code> öffnet den Link als iFrame in einer Box;
@@ -22,9 +20,7 @@ Jeder Link kann einzeln um folgende Klassen ergänzt werden:
 
 Sie können die Voreinstellungen in einem Konfigurationsdialog einstellen, und das Standarddesign der Boxen auswählen.
 
-
-
-Ce plugin fonctionne sur les squelettes disposant de la balise <code>#INSERT_HEAD</code>', # MODIF
+Dieses Plugin benötigt den Tag <code>#INSERT_HEAD</code> im Kopf des Skeletts.',
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Multimedia-Box'
 );
