@@ -25,6 +25,9 @@
 		<traducteur nom="phante" lien="http://trad.spip.net/auteur/phante" />
 		<traducteur nom="Matthieu Marcillaud" lien="http://trad.spip.net/auteur/matthieu-marcillaud" />
 	</langue>
+	<langue code="lb" url="http://trad.spip.net/tradlang_module/mediabox?lang_cible=lb">
+		<traducteur nom="jwander" lien="http://trad.spip.net/auteur/jwander" />
+	</langue>
 	<langue code="nl" url="http://trad.spip.net/tradlang_module/mediabox?lang_cible=nl">
 		<traducteur nom="Suske" lien="http://trad.spip.net/auteur/suske" />
 	</langue>
