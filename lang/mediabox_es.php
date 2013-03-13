@@ -10,7 +10,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// B
 	'bouton_reinitialiser' => 'Reinicializar',
 	'boxstr_close' => 'Cerrar',
-	'boxstr_current' => '@current@/@total@', # MODIF
+	'boxstr_current' => '@current@/@total@',
 	'boxstr_next' => 'Siguiente',
 	'boxstr_previous' => 'Anterior',
 	'boxstr_slideshowStart' => 'Presentación',
@@ -26,9 +26,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// L
 	'label_active' => 'Activar mediabox en el espacio público',
 	'label_apparence' => 'Apariencia',
-	'label_aucun_style' => 'No usar ningún estilo por defecto',
-	'label_choix_transition_elastic' => 'Elástico', # MODIF
-	'label_choix_transition_fade' => 'Degradado', # MODIF
+	'label_aucun_style' => 'No usar ningún estilo por omisión',
+	'label_choix_transition_elastic' => 'Elástico',
+	'label_choix_transition_fade' => 'transición progresiva',
 	'label_choix_transition_none' => 'Ninguno',
 	'label_maxheight' => 'Alto máximo (% o px)',
 	'label_maxwidth' => 'Ancho máximo (% o px)',
