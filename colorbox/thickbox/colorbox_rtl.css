@@ -41,7 +41,7 @@
         #cboxSlideshow{position:absolute; bottom:0px; right:80px; color:#666666;font-size:0.85em;}
         #cboxLoadingOverlay{background:#fff;}
         #cboxLoadingGraphic{background:url(images/loading.gif) center center no-repeat;}
-        #cboxClose{position:absolute; bottom:20px; left:0; background:url(images/close.gif) 0px 0px no-repeat; width:26px; height:26px; text-indent:-9999px;}
+        #cboxClose{position:absolute; bottom:20px; left:0; background:url(images/close.gif) 0px 0px no-repeat; width:26px; height:26px; text-indent:-9999px;border:0}
 
 /*
     The following fixes png-transparency for IE6.  

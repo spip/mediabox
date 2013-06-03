@@ -35,7 +35,7 @@
 #cboxPrevious { background-image: url(images/next.png); right: 5px; }
 #cboxNext { background-image: url(images/prev.png); right: 25px; }
 #cboxSlideshow { background-image: url(images/start_rtl.png); right: 45px; }
-#cboxClose { background-image: url(images/close.png); left: 5px; }
+#cboxClose { background-image: url(images/close.png); left: 5px; border:0}
 .cboxSlideshow_on #cboxSlideshow { background-image: url(images/stop.png) }
 .cboxSlideshow_off #cboxSlideshow { background-image: url(images/start_rtl.png) }
 #cboxLoadingGraphic { background: url(images/loading.gif) no-repeat center center }

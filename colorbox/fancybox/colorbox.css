@@ -44,7 +44,7 @@
         #cboxLoadingOverlay{background:#fff;}
         #cboxLoadingGraphic{background:url(images/loading.gif) center center no-repeat;}
         #cboxClose{position:absolute; top: -12px; right: -15px; height: 30px; width: 30px;
-        	background:url(images/fancy_shadow-spt2.png) -0px -35px no-repeat; text-indent:-9999px;}
+        	background:url(images/fancy_shadow-spt2.png) -0px -35px no-repeat; text-indent:-9999px;border:0}
 
         .cboxSlideshow_on #cboxSlideshow{background-position:-80px -35px;}
         .cboxSlideshow_off #cboxSlideshow{background-position:-40px -35px;}
