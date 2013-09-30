@@ -24,7 +24,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_traiter_toutes_images' => 'Insérer une boîte sur toutes les images ?',
 
 	// L
-	'label_active' => 'Activer la mediabox dans le site public',
+	'label_active' => 'Activer la Boîte Multimédia dans le site public',
 	'label_apparence' => 'Apparence',
 	'label_aucun_style' => 'N’insérer aucun habillage par défaut',
 	'label_choix_transition_elastic' => 'Élastique',
