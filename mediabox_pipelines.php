@@ -53,6 +53,9 @@ function mediabox_insert_head_css($flux){
 	if ($config['active']=='oui' AND $f = find_in_path((test_espace_prive()?"prive/":"")."colorbox/".$config['skin'].'/colorbox.css'))
 	{
 		$flux .= '<link rel="stylesheet" href="'.direction_css($f).'" type="text/css" media="all" />';
+		// Ne pas envoyer le script dans le public lorsque mediabox est desactive
+		if ($config['active']=='non' AND !test_espace_prive())
+        	return $flux;
 		/**
 		 * Initialiser la config de la mediabox
 		 */
