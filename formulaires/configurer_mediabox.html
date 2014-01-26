@@ -9,7 +9,8 @@
 		<li class="editer editer_active[ (#ENV**{erreurs}|table_valeur{active}|oui)erreur]">
 			<div class="choix">
 				<input type="checkbox" name="active" class="checkbox" id="active_on" value="oui" [(#ENV{active,oui}|=={oui}|oui) checked="checked"]
-				onchange="var t=jQuery(this).parents('li').eq(0).siblings('li.fieldset');if (jQuery(this).prop('checked')) t.show('fast'); else t.hide('fast');"
+					onclick="jQuery(this).blur();"
+					onchange="var t=jQuery(this).parents('li').eq(0).siblings('li.fieldset');if (jQuery(this).prop('checked')) t.show('fast'); else t.hide('fast');"
 				/>
 				<label for='active_on'><strong><:mediabox:label_active:></strong></label>
 			</div>
