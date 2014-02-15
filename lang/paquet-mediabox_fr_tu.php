@@ -18,9 +18,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 -* <code>boxHeight-90pc</code> permet de spécifier une hauteur de 90% pour la boîte.
 
-	Un panneau de configuration te permet de modifier les réglages généraux à votre convenance, ainsi que l’aspect de la boîte parmi les habillages disponibles.
+	Un panneau de configuration te permet de modifier les réglages généraux à ta convenance, ainsi que l’aspect de la boîte parmi les habillages disponibles.
 	
-	Ce plugin fonctionne sur les squelettes disposant de la balise <code>#INSERT_HEAD</code>', # RELIRE
+	Ce plugin fonctionne sur les squelettes disposant de la balise <code>#INSERT_HEAD</code>',
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Boîte multimédia'
 );
