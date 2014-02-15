@@ -18,9 +18,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'boxstr_zoom' => 'Zoom',
 
 	// E
-	'explication_selecteur' => 'Indique la cible des éléments qui déclencheront la boîte. (Expression CSS ou étendue jQuery)', # RELIRE
-	'explication_selecteur_galerie' => 'Indique la cible des éléments à regrouper en galerie. (Expression CSS ou étendue jQuery)', # RELIRE
-	'explication_splash_url' => 'Indique l’url du média à afficher automatiquement dans une boîte lors de la première visite sur le site public.', # RELIRE
+	'explication_selecteur' => 'Indique la cible des éléments qui déclencheront la boîte. (Expression CSS ou étendue jQuery)',
+	'explication_selecteur_galerie' => 'Indique la cible des éléments à regrouper en galerie. (Expression CSS ou étendue jQuery)',
+	'explication_splash_url' => 'Indique l’url du média à afficher automatiquement dans une boîte lors de la première visite sur le site public.',
 	'explication_traiter_toutes_images' => 'Insérer une boîte sur toutes les images ?',
 
 	// L
