@@ -377,15 +377,20 @@
 		if ($box) {
 			if (!init) {
 				init = true;
+				var init_dimensions = false;
+				function do_init_dimensions(){
+					if (!init_dimensions) {
+						init_dimensions = true;
+						// Cache values needed for size calculations
+						interfaceHeight = $topBorder.height() + $bottomBorder.height() + $content.outerHeight(true) - $content.height();//Subtraction needed for IE6
+						interfaceWidth = $leftBorder.width() + $rightBorder.width() + $content.outerWidth(true) - $content.width();
+						loadedHeight = $loaded.outerHeight(true);
+						loadedWidth = $loaded.outerWidth(true);
 
-				// Cache values needed for size calculations
-				interfaceHeight = $topBorder.height() + $bottomBorder.height() + $content.outerHeight(true) - $content.height();//Subtraction needed for IE6
-				interfaceWidth = $leftBorder.width() + $rightBorder.width() + $content.outerWidth(true) - $content.width();
-				loadedHeight = $loaded.outerHeight(true);
-				loadedWidth = $loaded.outerWidth(true);
-				
-				// Setting padding to remove the need to do size conversions during the animation step.
-				$box.css({"padding-bottom": interfaceHeight, "padding-right": interfaceWidth});
+						// Setting padding to remove the need to do size conversions during the animation step.
+						$box.css({"padding-bottom": interfaceHeight, "padding-right": interfaceWidth});
+					}
+				}
 
 				// Anonymous functions here keep the public method from being cached, thereby allowing them to be redefined on the fly.
 				$next.click(function () {
@@ -426,6 +431,7 @@
 					// See: http://jacklmoore.com/notes/click-events/
 					if (!(e.which > 1 || e.shiftKey || e.altKey || e.metaKey)) {
 						e.preventDefault();
+						do_init_dimensions();
 						launch(this);
 					}
 				});
