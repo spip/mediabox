@@ -41,13 +41,13 @@
         
         #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{position:absolute; bottom:-29px; background:url(images/controls.png) 0px 0px no-repeat; width:23px; height:23px; text-indent:-9999px;}
         #cboxPrevious{left:0px; background-position: -51px -25px;}
-        #cboxPrevious.hover{background-position:-51px 0px;}
+        #cboxPrevious:hover{background-position:-51px 0px;}
         #cboxNext{left:27px; background-position:-75px -25px;}
-        #cboxNext.hover{background-position:-75px 0px;}
+        #cboxNext:hover{background-position:-75px 0px;}
         #cboxClose{right:0; background-position:-100px -25px;}
-        #cboxClose.hover{background-position:-100px 0px;}
+        #cboxClose:hover{background-position:-100px 0px;}
         
         .cboxSlideshow_on #cboxSlideshow{background-position:-150px -25px; right:27px;}
-        .cboxSlideshow_on #cboxSlideshow.hover{background-position:-150px 0px;}
+        .cboxSlideshow_on #cboxSlideshow:hover{background-position:-150px 0px;}
         .cboxSlideshow_off #cboxSlideshow{background-position:-125px -25px; right:27px;}
-        .cboxSlideshow_off #cboxSlideshow.hover{background-position:-125px 0px;}
+        .cboxSlideshow_off #cboxSlideshow:hover{background-position:-125px 0px;}

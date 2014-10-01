@@ -28,10 +28,10 @@
 #cboxNext,
 #cboxSlideshow,
 #cboxClose { border: 0; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; position: absolute; bottom: 8px; width: 20px; height: 20px; line-height: 20px; text-indent: -9999px; opacity: 0.2; }
-#cboxPrevious.hover,
-#cboxNext.hover,
-#cboxSlideshow.hover,
-#cboxClose.hover { opacity: 1 }
+#cboxPrevious:hover,
+#cboxNext:hover,
+#cboxSlideshow:hover,
+#cboxClose:hover { opacity: 1 }
 #cboxCurrent { position: absolute; bottom: 9px; left: 70px; color: #999; }
 #cboxPrevious { background-image: url(images/prev.png); left: 5px; }
 #cboxNext { background-image: url(images/next.png); left: 25px; }
