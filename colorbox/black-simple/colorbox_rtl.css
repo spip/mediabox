@@ -26,8 +26,8 @@
 #colorbox{}
     #cboxContent{margin-top:20px;}
         #cboxLoadedContent{background:#000; padding:5px;}
-        #cboxTitle{position:absolute; top:-20px; right:0; color:#ccc;}
-        #cboxCurrent{position:absolute; top:-20px; left:0px; color:#ccc;}
+				#cboxTitle{position:absolute; top:-21px; left:0; right:0;color:#ccc;background:rgba(0,0,0,0.6);padding:1px 5px;padding-left: 50px;float: none !important;}
+				#cboxCurrent{position:absolute; top:-20px; left:5px; color:#ccc;}
         #cboxSlideshow{position:absolute; top:-20px; left:90px; color:#fff;}
         #cboxPrevious{position:absolute; top:50%; right:5px; margin-top:-32px; background:url(images/controls.png) top right no-repeat; width:28px; height:65px; text-indent:-9999px;}
         #cboxPrevious:hover{background-position:bottom right;}
