@@ -18,9 +18,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 -* <code>boxHeight-90pc</code> permete de spechificà una autessa de 90% per la bouòta.
 
-	Un panèu de counfiguracioun vous permete de moudificà lu reglage general a la vouòstra counveniença, couma pura l’aspet de la bouòta tra lu abilhage dispounible.
+	Un panèu de counfiguracioun vi permete de moudificà lu reglage general a la vouòstra counveniença, couma pura l’aspet de la bouòta tra lu abilhage dispounible.
 
-	Aqueu plugin founciouna sus lu esquèletrou qu’an una balisa <code>#INSERT_HEAD</code>',
+	Aqueu plugin founciouna soubre lu esquèletrou qu’an una balisa <code>#INSERT_HEAD</code>',
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Bouòta multimedia'
 );
