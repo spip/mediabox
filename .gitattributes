@@ -101,10 +101,13 @@ lang/mediabox_es.php -text
 lang/mediabox_fa.php -text
 lang/mediabox_fr.php -text
 lang/mediabox_fr_fem.php -text
+lang/mediabox_fr_tu.php -text
 lang/mediabox_it.php -text
 lang/mediabox_lb.php -text
 lang/mediabox_nl.php -text
+lang/mediabox_oc_ni_mis.php -text
 lang/mediabox_pt.php -text
+lang/mediabox_pt_br.php -text
 lang/mediabox_ru.php -text
 lang/mediabox_sk.php -text
 lang/paquet-mediabox.xml -text
@@ -114,10 +117,13 @@ lang/paquet-mediabox_es.php -text
 lang/paquet-mediabox_fa.php -text
 lang/paquet-mediabox_fr.php -text
 lang/paquet-mediabox_fr_fem.php -text
+lang/paquet-mediabox_fr_tu.php -text
 lang/paquet-mediabox_it.php -text
 lang/paquet-mediabox_lb.php -text
 lang/paquet-mediabox_nl.php -text
+lang/paquet-mediabox_oc_ni_mis.php -text
 lang/paquet-mediabox_pt.php -text
+lang/paquet-mediabox_pt_br.php -text
 lang/paquet-mediabox_ru.php -text
 lang/paquet-mediabox_sk.php -text
 /mediabox_ieconfig.php -text
