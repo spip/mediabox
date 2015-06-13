@@ -5,7 +5,7 @@
 	
 <form method="post" action="#ENV{action}"><div>
 	#ACTION_FORMULAIRE{#ENV{action}}
-	<ul>
+	<ul class="editer-groupe">
 		<li class="editer editer_active[ (#ENV**{erreurs}|table_valeur{active}|oui)erreur]">
 			<div class="choix">
 				<input type="checkbox" name="active" class="checkbox" id="active_on" value="oui" [(#ENV{active,oui}|=={oui}|oui) checked="checked"]
@@ -16,7 +16,7 @@
 			</div>
 		</li>
 		<li class="fieldset[(#ENV{active,oui}|=={oui}|non)none]">
-			<ul>
+			<ul class="editer-groupe">
 				<li class="editer editer_selecteur_commun[ (#ENV**{erreurs}|table_valeur{selecteur_commun}|oui)erreur]">
 					<label for="selecteur_commun"><:mediabox:label_selecteur_commun:></label>
 					[<span class='erreur'>(#ENV**{erreurs}|table_valeur{selecteur_commun})</span>]
@@ -44,7 +44,7 @@
 				</li>
 
 				<li class="fieldset"><fieldset><legend><:mediabox:label_apparence:></legend>
-				<ul>
+				<ul class="editer-groupe">
 					[<li class="editer editer_skin[ (#ENV**{erreurs}|table_valeur{skin}|oui)erreur]">
 						<label><:mediabox:label_skin:></label>
 						(#ENV{_skins}|box_choisir_skin{#ENV{skin}}|image_reduire{130})
@@ -89,7 +89,7 @@
 				</li>
 
 				<li class="fieldset"><fieldset><legend><:mediabox:label_splash:></legend>
-				<ul>
+				<ul class="editer-groupe">
 					<li class="editer editer_splash_url[ (#ENV**{erreurs}|table_valeur{splash_url}|oui)erreur]">
 						<label for="splash_url"><:mediabox:label_splash_url:></label>
 						[<span class='erreur'>(#ENV**{erreurs}|table_valeur{splash_url})</span>]
