@@ -20,7 +20,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// E
 	'explication_selecteur' => 'Укажите элемент, который вызовет окно. (JQuery или CSS)',
 	'explication_selecteur_galerie' => 'Выберите элементы, которые нужно сгруппировать в галерее. (jQuery или CSS)',
-	'explication_splash_url' => 'Укажите URL к медиа файлу, который будет отображаться в сплывающем окне при первом входе на сайт.',
+	'explication_splash_url' => 'Укажите URL к медиа файлу, который будет отображаться во всплывающем окне при первом входе на сайт.',
 	'explication_traiter_toutes_images' => 'Вставить рамку вокруг всех изображений?',
 
 	// L
