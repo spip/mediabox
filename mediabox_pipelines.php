@@ -39,6 +39,12 @@ function mediabox_config($public=null){
 		));
 	}
 	
+	// Gerer aussi les liens internes de SPIP
+	if ($config['splash_url']) {
+		include_spip("inc/filtres_ecrire");
+		$config['splash_url'] = url_absolue(extraire_attribut(lien_article_virtuel($config['splash_url']),'href'));
+	}
+	
 	// charger la config du theme uniquement dans le public
 	if (!test_espace_prive() AND include_spip("colorbox/".$config['skin']."/mediabox_config_theme")) {
 		$config_theme = mediabox_config_theme();
