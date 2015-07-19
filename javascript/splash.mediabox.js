@@ -11,8 +11,8 @@
 				onComplete:set_cookie,
 				overlayClose:true,
 				iframe: true,
-				minHeight: box_settings_splash_width,
-				minWidth: box_settings_splash_height
+				width: box_settings_splash_width,
+				height: box_settings_splash_height
 			},options));
 		};
 		// ouvrir la splash page si pas deja vue
