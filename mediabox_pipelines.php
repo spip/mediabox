@@ -13,6 +13,8 @@ function mediabox_config($public=null){
 		'selecteur_galerie' => '#documents_portfolio a[type=\'image/jpeg\'],#documents_portfolio a[type=\'image/png\'],#documents_portfolio a[type=\'image/gif\']',
 		'selecteur_commun' => '.mediabox',
 		'splash_url' => '',
+		'splash_width' => '600px',
+		'splash_height' => '90%',
 		'skin' => 'black-striped',
 		'transition' => 'elastic',
 		'speed'=>'200',
@@ -82,6 +84,8 @@ var box_settings = {tt_img:'.($config['traiter_toutes_images'] == 'oui'?'true':'
 .'",str_close:"'._T('mediabox:boxstr_close')
 .'",splash_url:"'.$config['splash_url']
 .'"};
+var box_settings_splash_width = "'.$config['splash_width'].'";
+var box_settings_splash_height = "'.$config['splash_height'].'";
 /* ]]> */</script>'."\n" . $flux;
 	}
 	return $flux;

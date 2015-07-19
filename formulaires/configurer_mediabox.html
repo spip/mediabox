@@ -96,6 +96,14 @@
 						<p class="explication"><:mediabox:explication_splash_url:></p>
 						<input type="text" name="splash_url" class="text" id="splash_url" size="60" value="#ENV*{splash_url}" />
 					</div>
+					<div class="editer splash_width[ (#ENV**{erreurs}|table_valeur{splash_width}|oui)erreur]">
+						<label for='splash_width'><:mediabox:label_splash_width:></label>
+						<input type="text" name="splash_width" class="text" id="splash_width" size="10" value="#ENV*{splash_width}" />
+					</div>
+					<div class="editer splash_height[ (#ENV**{erreurs}|table_valeur{splash_height}|oui)erreur]">
+						<label for='splash_height'><:mediabox:label_splash_height:></label>
+						<input type="text" name="splash_height" class="text" id="splash_height" size="10" value="#ENV*{splash_height}" />
+					</div>
 				</div></fieldset>
 				</div>
 			</div>
