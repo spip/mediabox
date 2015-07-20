@@ -64,7 +64,7 @@ function mediabox_insert_head_css($flux){
 		/**
 		 * Initialiser la config de la mediabox
 		 */
-		$flux ='<script type="text/javascript">/* <![CDATA[ */
+		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
 var box_settings = {tt_img:'.($config['traiter_toutes_images'] == 'oui'?'true':'false')
 .',sel_g:"'.$config['selecteur_galerie']
 .'",sel_c:"'.$config['selecteur_commun']
@@ -83,10 +83,18 @@ var box_settings = {tt_img:'.($config['traiter_toutes_images'] == 'oui'?'true':'
 .'",str_next:"'._T('mediabox:boxstr_next')
 .'",str_close:"'._T('mediabox:boxstr_close')
 .'",splash_url:"'.$config['splash_url']
-.'"};
-var box_settings_splash_width = "'.$config['splash_width'].'";
-var box_settings_splash_height = "'.$config['splash_height'].'";
-/* ]]> */</script>'."\n" . $flux;
+.'"};'."\n";
+		// Si c'est une image, on la chargera avec une redimentionnement automatique
+		// Sinon, chargement dans une iframe
+		$extension = pathinfo($config['splash_url'], PATHINFO_EXTENSION);
+		if (match($extension, 'gif|png|jpg|jpeg')) {
+			$configmediabox .= 'var box_settings_iframe = false;'."\n";
+		} else {
+			$configmediabox .= 'var box_settings_splash_width = "'.$config['splash_width'].'";
+var box_settings_splash_height = "'.$config['splash_height'].'";'."\n";
+			$configmediabox .= 'var box_settings_iframe = true;'."\n";
+		}
+		$flux = $configmediabox . '/* ]]> */</script>'."\n" . $flux;
 	}
 	return $flux;
 }
