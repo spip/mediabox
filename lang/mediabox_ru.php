@@ -41,7 +41,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_slideshow_speed' => 'Время демонстрации картинки  в слайдоу (ms)',
 	'label_speed' => 'Скорость смены кадров (ms)',
 	'label_splash' => 'Всплывающее Окно',
+	'label_splash_height' => 'Высота (% или px)', # RELIRE
 	'label_splash_url' => 'Ссылка для просмотра',
+	'label_splash_width' => 'Ширина (% или px)', # RELIRE
 	'label_traiter_toutes_images' => 'Изображения',
 	'label_transition' => 'Смена изображений',
 
