@@ -41,7 +41,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_slideshow_speed' => 'فترة عرض الصور خلال العرض المتواصل (ألف من الثانية)',
 	'label_speed' => 'سرعة الانتقال (ألف من الثانية)',
 	'label_splash' => 'شاشة البداية',
+	'label_splash_height' => 'الارتفاع (٪ او px)',
 	'label_splash_url' => 'عنوان شاشة البداية',
+	'label_splash_width' => 'العرض (٪ او px)',
 	'label_traiter_toutes_images' => 'الصور',
 	'label_transition' => 'الانتقال بين عرضين',
 
