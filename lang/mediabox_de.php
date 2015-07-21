@@ -41,7 +41,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_slideshow_speed' => 'Anzeigedauer der Diaschau-Bilder (ms)',
 	'label_speed' => 'Dauer des Übergangseffekts (ms)',
 	'label_splash' => 'Splash Box',
+	'label_splash_height' => 'Höhe (% oder px)',
 	'label_splash_url' => 'URL anzeigen',
+	'label_splash_width' => 'Breite (% oder px)',
 	'label_traiter_toutes_images' => 'Bilder',
 	'label_transition' => 'Übergang zwischen zwei Elementen',
 
