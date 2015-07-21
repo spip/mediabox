@@ -42,7 +42,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_speed' => '
 Overgangssnelheid (ms)',
 	'label_splash' => 'Splash doos',
+	'label_splash_height' => 'Hoogte (% of px)',
 	'label_splash_url' => 'Te tonen URL',
+	'label_splash_width' => 'Breedte (% of px)',
 	'label_traiter_toutes_images' => 'Beelden',
 	'label_transition' => 'Overgang tussen twee afbeeldingen',
 
