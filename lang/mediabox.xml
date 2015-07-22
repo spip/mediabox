@@ -60,7 +60,7 @@
 		<traducteur nom="Ricardo Porto" lien="http://trad.spip.net/auteur/ricardo-porto" />
 		<traducteur nom="telopa" lien="http://trad.spip.net/auteur/telopa" />
 	</langue>
-	<langue code="ru" url="http://trad.spip.net/tradlang_module/mediabox?lang_cible=ru" total="36" traduits="34" relire="2" modifs="0" nouveaux="0" pourcent="94.44">
+	<langue code="ru" url="http://trad.spip.net/tradlang_module/mediabox?lang_cible=ru" total="36" traduits="36" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="Matthieu Marcillaud" lien="http://trad.spip.net/auteur/matthieu-marcillaud" />
 		<traducteur nom="nazar" lien="http://trad.spip.net/auteur/nazar" />
 		<traducteur nom="olly" lien="http://trad.spip.net/auteur/olly" />
@@ -72,7 +72,7 @@
 		<traducteur nom="Matthieu Marcillaud" lien="http://trad.spip.net/auteur/matthieu-marcillaud" />
 		<traducteur nom="RealET" lien="http://trad.spip.net/auteur/realet" />
 	</langue>
-	<langue code="uk" url="http://trad.spip.net/tradlang_module/mediabox?lang_cible=uk" total="36" traduits="34" relire="2" modifs="0" nouveaux="0" pourcent="94.44">
+	<langue code="uk" url="http://trad.spip.net/tradlang_module/mediabox?lang_cible=uk" total="36" traduits="36" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="olly" lien="http://trad.spip.net/auteur/olly" />
 		<traducteur nom="RealET" lien="http://trad.spip.net/auteur/realet" />
 	</langue>
