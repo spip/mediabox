@@ -22,10 +22,12 @@
 		initialWidth: "600",
 		innerWidth: false,
 		maxWidth: false,
+		minWidth:false,
 		height: false,
 		initialHeight: "450",
 		innerHeight: false,
 		maxHeight: false,
+		minHeight:false,
 		scalePhotos: true,
 		scrolling: true,
 		opacity: 0.9,
@@ -123,6 +125,7 @@
 
 	// Abstracting the HTML and event identifiers for easy rebranding
 	colorbox = 'colorbox',
+	colorbox_class = 'box_mediabox box_modalbox',
 	prefix = 'cbox',
 	boxElement = prefix + 'Element',
 
@@ -472,7 +475,7 @@
 			$window = $(window);
 			$box = $tag(div).attr({
 				id: colorbox,
-				'class': $.support.opacity === false ? prefix + 'IE' : '', // class for optional IE8 & lower targeted CSS.
+				'class': ($.support.opacity === false ? prefix + 'IE ' : '')+colorbox_class, // class for optional IE8 & lower targeted CSS.
 				role: 'dialog',
 				tabindex: '-1'
 			}).hide();
@@ -622,6 +625,28 @@
 			$obj.each(function () {
 				var old = $.data(this, colorbox) || {};
 				$.data(this, colorbox, $.extend(old, options));
+				var eltclass = $(this).attr('class');
+				if (eltclass){
+					if (eltclass.indexOf("boxWidth-")!== -1){
+						var w = eltclass.match(/boxWidth-([^\s'">]*)/);
+						w = w[1].replace(/pc/, '%'); // % not allowed in html attribute ; use 100pc instead of 100%
+						$.data(this, colorbox, $.extend($.data(this, colorbox), {width: w}));
+					}
+					if (eltclass.indexOf("boxHeight-")!== -1){
+						var h = eltclass.match(/boxHeight-([^\s'">]*)/);
+						h = h[1].replace(/pc/, '%'); // % not allowed in html attribute ; use 100pc instead of 100%
+						$.data(this, colorbox, $.extend($.data(this, colorbox), {height: h}));
+					}
+					if (eltclass.indexOf("boxIframe")!== -1){
+						$.data(this, colorbox, $.extend($.data(this, colorbox), {iframe: true}));
+					}
+					if (eltclass.indexOf("boxInline")!== -1) {
+						$.data(this, colorbox, $.extend($.data(this, colorbox),{inline:true}));
+					}
+					if (eltclass.indexOf("boxSlideshow_off")!== -1){
+						$.data(this, colorbox, $.extend($.data(this, colorbox), {slideshow: false}));
+					}
+				}
 			}).addClass(boxElement);
 
 			settings = new Settings($obj[0], options);
@@ -788,11 +813,13 @@
 
 		function getWidth() {
 			settings.w = settings.w || $loaded.width();
+			settings.w = settings.minw && settings.minw > settings.w ? settings.minw : settings.w;
 			settings.w = settings.mw && settings.mw < settings.w ? settings.mw : settings.w;
 			return settings.w;
 		}
 		function getHeight() {
 			settings.h = settings.h || $loaded.height();
+			settings.h = settings.minh && settings.minh > settings.h ? settings.minh : settings.h;
 			settings.h = settings.mh && settings.mh < settings.h ? settings.mh : settings.h;
 			return settings.h;
 		}
@@ -931,6 +958,8 @@
 		// Sets the minimum dimensions for use in image scaling
 		settings.mw = settings.w;
 		settings.mh = settings.h;
+		settings.minw = settings.w;
+		settings.minh = settings.h;
 
 		// Re-evaluate the minimum width and height based on maxWidth and maxHeight values.
 		// If the width or height exceed the maxWidth or maxHeight, use the maximum values instead.
@@ -938,9 +967,17 @@
 			settings.mw = setSize(settings.get('maxWidth'), 'x') - loadedWidth - interfaceWidth;
 			settings.mw = settings.w && settings.w < settings.mw ? settings.w : settings.mw;
 		}
+		if(settings.get('minWidth')){
+			settings.minw = setSize(settings.get('minWidth'), 'x') - loadedWidth - interfaceWidth;
+			settings.minw = settings.w && settings.w > settings.minw ? settings.w : settings.minw;
+		}
 		if (settings.get('maxHeight')) {
 			settings.mh = setSize(settings.get('maxHeight'), 'y') - loadedHeight - interfaceHeight;
 			settings.mh = settings.h && settings.h < settings.mh ? settings.h : settings.mh;
+		}
+		if(settings.get('minHeight')){
+			settings.minh = setSize(settings.get('minHeight'), 'y') - loadedHeight - interfaceHeight;
+			settings.minh = settings.h && settings.h > settings.minh ? settings.h : settings.minh;
 		}
 
 		href = settings.get('href');
