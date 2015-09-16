@@ -10,9 +10,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// M
 	'mediabox_description' => 'En mancança, toui lu estac devers li image (embé un atribut type descrivent lou mime/type de l’image) couma pura lu estac embé la classa <code>.mediabox</code> soun enriquit per la bouòta multimedia.
 
-	Es poussible de counfigurà cada estac au cas per cas embé dei classa suplementari :
+	Es poussible de counfigurà cada estac au cas per cas embé de classa suplementari :
 
--* <code>boxIframe</code> permete de demandà da durbì l’estac en una bouòta iframe ;
+-* <code>boxIframe</code> permete de demandà a durbì l’estac en una bouòta iframe ;
 
 -* <code>boxWidth-350px</code> permete de spechificà una larguessa de 350px per la bouòta ;
 
