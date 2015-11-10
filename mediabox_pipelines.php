@@ -4,9 +4,9 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function mediabox_config($public=null){
 	include_spip("inc/filtres");
-	$config = @unserialize($GLOBALS['meta']['mediabox']);
-	if (!is_array($config))
-		$config = array();
+	include_spip("inc/config");
+	$config = lire_config('mediabox', array());
+
 	$config = array_merge(array(
 		'active' => 'oui',
 		'traiter_toutes_images' => 'oui',
