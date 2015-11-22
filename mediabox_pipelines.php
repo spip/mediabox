@@ -2,7 +2,7 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-function mediabox_config($public=null){
+function mediabox_config($public = null){
 	include_spip("inc/filtres");
 	include_spip("inc/config");
 	$config = lire_config('mediabox', array());

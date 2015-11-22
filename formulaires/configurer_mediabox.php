@@ -38,7 +38,7 @@ function box_lister_skins(){
 	return $skins;
 }
 
-function box_choisir_skin($skins,$selected,$name='skin'){
+function box_choisir_skin($skins, $selected, $name = 'skin'){
 	$out = "";
 	if (!is_array($skins) OR !count($skins))
 		return $out;
