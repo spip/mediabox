@@ -28,7 +28,7 @@ function mediabox_config($public = null) {
 		'opacite' => '0.9',
 	), $config);
 
-	if ((is_null($public) AND test_espace_prive()) OR $public === false) {
+	if ((is_null($public) and test_espace_prive()) or $public === false) {
 		$config = array_merge($config, array(
 			'active' => 'oui',
 			'selecteur_galerie' => '#portfolios a[type^=\'image/\']',
@@ -44,13 +44,13 @@ function mediabox_config($public = null) {
 	}
 
 	// Gerer aussi les liens internes de SPIP
-	if (!test_espace_prive() AND $config['splash_url']) {
+	if (!test_espace_prive() and $config['splash_url']) {
 		include_spip("inc/filtres_ecrire");
 		$config['splash_url'] = url_absolue(extraire_attribut(lien_article_virtuel($config['splash_url']), 'href'));
 	}
 
 	// charger la config du theme uniquement dans le public
-	if (!test_espace_prive() AND include_spip("colorbox/" . $config['skin'] . "/mediabox_config_theme")) {
+	if (!test_espace_prive() and include_spip("colorbox/" . $config['skin'] . "/mediabox_config_theme")) {
 		$config_theme = mediabox_config_theme();
 		$config = array_merge($config, $config_theme);
 	}
@@ -60,7 +60,7 @@ function mediabox_config($public = null) {
 
 function mediabox_insert_head_css($flux) {
 	$config = mediabox_config();
-	if ($config['active'] == 'oui' AND $f = find_in_path((test_espace_prive() ? "prive/" : "") . "colorbox/" . $config['skin'] . '/colorbox.css')) {
+	if ($config['active'] == 'oui' and $f = find_in_path((test_espace_prive() ? "prive/" : "") . "colorbox/" . $config['skin'] . '/colorbox.css')) {
 		$flux .= '<link rel="stylesheet" href="' . direction_css($f) . '" type="text/css" media="all" />';
 		/**
 		 * Initialiser la config de la mediabox
@@ -133,5 +133,3 @@ function mediabox_jquery_plugins($plugins) {
 
 	return $plugins;
 }
-
-?>

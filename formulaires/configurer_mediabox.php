@@ -21,7 +21,7 @@ function box_lister_skins() {
 	foreach (creer_chemin() as $d) {
 		$f = $d . "colorbox/";
 		if (@is_dir($f)) {
-			$liste = preg_files($f, "colorbox[.]css$", $maxfiles-count($liste_fichiers), $recurs);
+			$liste = preg_files($f, "colorbox[.]css$", $maxfiles - count($liste_fichiers), $recurs);
 			foreach ($liste as $chemin) {
 				$nom = substr(dirname($chemin), strlen($f));
 				// ne prendre que les fichiers pas deja trouves
@@ -45,7 +45,7 @@ function box_lister_skins() {
 
 function box_choisir_skin($skins, $selected, $name = 'skin') {
 	$out = "";
-	if (!is_array($skins) OR !count($skins)) {
+	if (!is_array($skins) or !count($skins)) {
 		return $out;
 	}
 	foreach ($skins as $k => $skin) {
@@ -98,5 +98,3 @@ function formulaires_configurer_mediabox_traiter_dist() {
 
 	return array('message_ok' => _T('config_info_enregistree'), 'editable' => true);
 }
-
-?>

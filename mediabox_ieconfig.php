@@ -12,5 +12,3 @@ function mediabox_ieconfig_metas($table) {
 
 	return $table;
 }
-
-?>

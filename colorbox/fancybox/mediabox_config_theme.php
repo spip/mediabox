@@ -12,5 +12,3 @@ function mediabox_config_theme() {
 
 	return $config;
 }
-
-?>
