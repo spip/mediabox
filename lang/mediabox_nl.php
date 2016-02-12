@@ -26,7 +26,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_traiter_toutes_images' => 'Een box op alle beelden instellen ?',
 
 	// L
-	'label_active' => 'Mediabox activeren op het openbare site',
+	'label_active' => 'Mediabox activeren op het publieke site',
 	'label_apparence' => 'Verschijning',
 	'label_aucun_style' => 'Geen standaard stijl invoegen',
 	'label_choix_transition_elastic' => 'Elastisch',
