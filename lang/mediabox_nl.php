@@ -47,7 +47,7 @@ Overgangssnelheid (ms)',
 	'label_splash_height' => 'Hoogte (% of px)',
 	'label_splash_url' => 'Te tonen URL',
 	'label_splash_width' => 'Breedte (% of px)',
-	'label_traiter_toutes_images' => 'Beelden',
+	'label_traiter_toutes_images' => 'Afbeeldingen',
 	'label_transition' => 'Overgang tussen twee afbeeldingen',
 
 	// T
