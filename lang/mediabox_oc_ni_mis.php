@@ -20,9 +20,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'boxstr_zoom' => 'Zoom',
 
 	// E
-	'explication_selecteur' => 'Endicàs la bressai dei elemen que desgancheran la bouòta. (Espressioun CSS o destenduda jQuery)',
-	'explication_selecteur_galerie' => 'Endicàs la bressai dei elemen da groupà en galerìa. (Espressioun CSS o destenduda jQuery)',
-	'explication_splash_url' => 'Endicàs l’url dóu media da afichà automaticamen en una bouòta per la premièra visita sus lou sit pùblicou.',
+	'explication_selecteur' => 'Endicas la bressai dei elemen que desgancheran la bouòta. (Espressioun CSS o destenduda jQuery)',
+	'explication_selecteur_galerie' => 'Endicas la bressai dei elemen da groupà en galerìa. (Espressioun CSS o destenduda jQuery)',
+	'explication_splash_url' => 'Endicas l’url dóu media da afichà automaticamen en una bouòta per la premièra visita sus lou sit pùblicou.',
 	'explication_traiter_toutes_images' => 'Inserì una bouòta soubre touti li image ?',
 
 	// L
