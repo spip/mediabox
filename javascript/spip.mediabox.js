@@ -84,7 +84,6 @@ if (typeof(box_settings)!='undefined')
 			onComplete: (options && options.onShow) || null,
 			onClosed: (options && options.onClose) || null
 		};
-		console.log($.extend(cbox_options,options));
 
 		if (!this.length)
 			return $.colorbox($.extend(cbox_options,options));
