@@ -23,7 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_selecteur' => 'Geef de doelelementen die de box zullen activeren (uitgebreide CSS of jQuery uitdrukking)',
 	'explication_selecteur_galerie' => 'Geef de doelelementen die zich in een galerij moeten bevinden (uitgebreide CSS of jQuery uitdrukking)',
 	'explication_splash_url' => 'Geef de URL van de in een box te tonen media bij een eerste bezoek aan de site',
-	'explication_traiter_toutes_images' => 'Een box op alle beelden instellen ?',
+	'explication_traiter_toutes_images' => 'Een box op alle afbeeldingen instellen?',
 
 	// L
 	'label_active' => 'Mediabox activeren op het publieke site',
