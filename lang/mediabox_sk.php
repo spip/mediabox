@@ -43,9 +43,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_slideshow_speed' => 'Trvanie zobrazenia fotografií v prezentácii (v ms)',
 	'label_speed' => 'Rýchlosť prechodu (v ms)',
 	'label_splash' => 'Úvodná obrazovka',
-	'label_splash_height' => 'Výška (% alebo px)', # RELIRE
+	'label_splash_height' => 'Výška (% alebo px)',
 	'label_splash_url' => 'Adresa, ktorá sa má zobraziť',
-	'label_splash_width' => 'Šírka (% alebo px)', # RELIRE
+	'label_splash_width' => 'Šírka (% alebo px)',
 	'label_traiter_toutes_images' => 'Obrázky',
 	'label_transition' => 'Prechod medzi dvoma zobrazeniami',
 
