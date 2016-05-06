@@ -26,4 +26,3 @@ Dieses Plugin benötigt den Tag <code>#INSERT_HEAD</code> im Kopf des Skeletts.'
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Multimedia-Box'
 );
-

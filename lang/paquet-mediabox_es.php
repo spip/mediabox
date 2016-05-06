@@ -26,4 +26,3 @@ Este plugin funciona en los esqueletos que incluyen la baliza <code>#INSERT_HEAD
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Caja multimedia'
 );
-

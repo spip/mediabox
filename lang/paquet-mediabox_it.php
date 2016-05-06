@@ -24,4 +24,3 @@ Questo plugin funziona su scheletri che hanno la <code> INSERT_HEAD # </ code> t
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Media box'
 );
-

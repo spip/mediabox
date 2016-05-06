@@ -26,4 +26,3 @@ Deze plugin werkt op de skeletten die het SPIP baken <code>#INSERT_HEAD</ code> 
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Multimedia Box'
 );
-

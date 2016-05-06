@@ -30,4 +30,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'mediabox_nom' => 'صندوق الفرجة',
 	'mediabox_slogan' => 'صندوق الفرجة'
 );
-

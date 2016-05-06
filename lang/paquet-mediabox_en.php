@@ -24,4 +24,3 @@ This plugin works on skeletons which have the <code>#INSERT_HEAD</code> tag.',
 	'mediabox_nom' => 'MediaBox',
 	'mediabox_slogan' => 'Media box'
 );
-
