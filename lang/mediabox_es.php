@@ -53,4 +53,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_menu_box' => 'Caja Multimedia',
 	'titre_page_configurer_box' => 'Configuracíon de la caja multimedia'
 );
-

@@ -53,4 +53,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_menu_box' => 'Media Box',
 	'titre_page_configurer_box' => 'Configurazione del Media Box'
 );
-

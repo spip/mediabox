@@ -54,4 +54,3 @@ Overgangssnelheid (ms)',
 	'titre_menu_box' => 'Multimedia Box',
 	'titre_page_configurer_box' => 'Configuratie van de Multimedia Box'
 );
-

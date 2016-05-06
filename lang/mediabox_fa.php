@@ -51,4 +51,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_menu_box' => 'جعبه‌ي مديا',
 	'titre_page_configurer_box' => 'پيكربندي جعبه‌ي مديا'
 );
-

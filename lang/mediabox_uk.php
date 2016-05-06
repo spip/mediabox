@@ -53,4 +53,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_menu_box' => 'Медіабокс',
 	'titre_page_configurer_box' => 'Налаштування Медіабокса'
 );
-
