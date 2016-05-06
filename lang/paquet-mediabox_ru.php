@@ -26,4 +26,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'mediabox_slogan' => 'Медиабокс'
 );
 
-?>

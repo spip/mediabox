@@ -23,4 +23,3 @@ Dëse Plugin fonktionnéiert mat Skeletter déi den Tag <code>#INSERT_HEAD</code
 	'mediabox_slogan' => 'Mediabox'
 );
 
-?>

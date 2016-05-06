@@ -27,4 +27,3 @@ Tento zásuvný modul spolupracuje so šablónami, ktoré obsahujú tag <code>#
 	'mediabox_slogan' => 'Multimediálny box'
 );
 
-?>
