@@ -5,8 +5,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 function mediabox_config($public = null) {
-	include_spip("inc/filtres");
-	include_spip("inc/config");
+	include_spip('inc/filtres');
+	include_spip('inc/config');
 	$config = lire_config('mediabox', array());
 
 	$config = array_merge(array(
@@ -45,12 +45,12 @@ function mediabox_config($public = null) {
 
 	// Gerer aussi les liens internes de SPIP
 	if (!test_espace_prive() and $config['splash_url']) {
-		include_spip("inc/filtres_ecrire");
+		include_spip('inc/filtres_ecrire');
 		$config['splash_url'] = url_absolue(extraire_attribut(lien_article_virtuel($config['splash_url']), 'href'));
 	}
 
 	// charger la config du theme uniquement dans le public
-	if (!test_espace_prive() and include_spip("colorbox/" . $config['skin'] . "/mediabox_config_theme")) {
+	if (!test_espace_prive() and include_spip('colorbox/' . $config['skin'] . '/mediabox_config_theme')) {
 		$config_theme = mediabox_config_theme();
 		$config = array_merge($config, $config_theme);
 	}
@@ -60,7 +60,8 @@ function mediabox_config($public = null) {
 
 function mediabox_insert_head_css($flux) {
 	$config = mediabox_config();
-	if ($config['active'] == 'oui' and $f = find_in_path((test_espace_prive() ? "prive/" : "") . "colorbox/" . $config['skin'] . '/colorbox.css')) {
+	if ($config['active'] == 'oui'
+		and $f = find_in_path((test_espace_prive() ? 'prive/' : '') . 'colorbox/' . $config['skin'] . '/colorbox.css')) {
 		$flux .= '<link rel="stylesheet" href="' . direction_css($f) . '" type="text/css" media="all" />';
 		/**
 		 * Initialiser la config de la mediabox
@@ -113,7 +114,6 @@ function mediabox_timestamp($fichier) {
 function mediabox_insert_head($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
-
 		$flux .= '
 	<script src="' . mediabox_timestamp(find_in_path('javascript/jquery.colorbox.js')) . '" type="text/javascript"></script>
 	<script src="' . mediabox_timestamp(find_in_path('javascript/spip.mediabox.js')) . '" type="text/javascript"></script>';

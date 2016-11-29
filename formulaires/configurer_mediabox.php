@@ -19,9 +19,9 @@ function box_lister_skins() {
 	$liste_fichiers = array();
 	$recurs = array();
 	foreach (creer_chemin() as $d) {
-		$f = $d . "colorbox/";
+		$f = $d . 'colorbox/';
 		if (@is_dir($f)) {
-			$liste = preg_files($f, "colorbox[.]css$", $maxfiles - count($liste_fichiers), $recurs);
+			$liste = preg_files($f, 'colorbox[.]css$', $maxfiles - count($liste_fichiers), $recurs);
 			foreach ($liste as $chemin) {
 				$nom = substr(dirname($chemin), strlen($f));
 				// ne prendre que les fichiers pas deja trouves
@@ -35,7 +35,7 @@ function box_lister_skins() {
 	}
 	foreach ($liste_fichiers as $short => $fullpath) {
 		$skins[$short] = array('nom' => basename($short));
-		if (file_exists($f = dirname($fullpath) . "/vignette.jpg")) {
+		if (file_exists($f = dirname($fullpath) . '/vignette.jpg')) {
 			$skins[$short]['img'] = $f;
 		}
 	}
@@ -44,17 +44,17 @@ function box_lister_skins() {
 }
 
 function box_choisir_skin($skins, $selected, $name = 'skin') {
-	$out = "";
+	$out = '';
 	if (!is_array($skins) or !count($skins)) {
 		return $out;
 	}
 	foreach ($skins as $k => $skin) {
-		$id = "${name}_" . preg_replace(",[^a-z0-9_],i", "_", $k);
+		$id = "${name}_" . preg_replace(',[^a-z0-9_],i', '_', $k);
 		$sel = ($selected == "$k" ? " checked='checked'" : '');
 		$balise_img = chercher_filtre('balise_img');
 		$label = isset($skin['img']) ?
 			'<a href="' . $skin['img'] . '" class="mediabox" rel="habillage">' . $balise_img($skin['img'],
-				$skin['nom']) . "</a>"
+				$skin['nom']) . '</a>'
 			: $skin['nom'];
 
 		$out .= "<div class='choix'>";
