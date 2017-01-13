@@ -128,7 +128,7 @@ function mediabox_insert_head($flux) {
 function mediabox_jquery_plugins($plugins) {
 	$config = mediabox_config();
 	if ($config['splash_url']) {
-		$plugins[] = 'javascript/jquery.cookie.js';
+		$plugins[] = 'javascript/js.cookie.js';
 	}
 
 	return $plugins;
