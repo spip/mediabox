@@ -70,6 +70,7 @@ colorbox/white-simple/colorbox.css -text
 colorbox/white-simple/colorbox_rtl.css -text
 colorbox/white-simple/images/controls.png -text
 colorbox/white-simple/images/loading.gif -text
+colorbox/white-simple/images/start_rtl.png -text
 colorbox/white-simple/vignette.jpg -text
 formulaires/configurer_mediabox.html -text
 formulaires/configurer_mediabox.php -text
@@ -115,6 +116,7 @@ lang/paquet-mediabox_uk.php -text
 /mediabox_ieconfig.php -text
 /mediabox_pipelines.php -text
 prive/colorbox/white-shadow/colorbox.css -text
+prive/colorbox/white-shadow/colorbox_rtl.css -text
 prive/colorbox/white-shadow/images/border1.png -text
 prive/colorbox/white-shadow/images/border2.png -text
 prive/colorbox/white-shadow/images/controls.png -text
