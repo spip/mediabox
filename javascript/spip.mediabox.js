@@ -30,7 +30,7 @@ var mediaboxInit = function() {
 
 	if (box_settings.tt_img) {
 		// selectionner tous les liens vers des images
-		jQuery("a[type=\'image/jpeg\'],a[type=\'image/png\'],a[type=\'image/gif\']",this).not('.hasbox')
+		jQuery(box_settings.tt_img, this).not('.hasbox')
 		.attr("onclick","") // se debarrasser du onclick de SPIP
 		.colorbox(options) // activer la box
 		.addClass("hasbox") // noter qu\'on l\'a vue
@@ -69,6 +69,8 @@ if (typeof(box_settings)!='undefined')
 		var cbox_options = {
 			overlayClose: true,
 			iframe: false,
+			transition:box_settings.trans,
+			speed:box_settings.speed,
 			maxWidth:box_settings.maxW,
 			maxHeight:box_settings.maxH,
 			minWidth:box_settings.minW,
