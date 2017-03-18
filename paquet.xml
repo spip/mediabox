@@ -5,7 +5,7 @@
 	etat="stable"
 	compatibilite="[3.2.0-dev;3.2.*]"
 	logo="prive/themes/spip/images/mediabox-32.png"
-	documentation="http://contrib.spip.net/MediaBox"
+	documentation="https://contrib.spip.net/MediaBox"
 >
 
 	<nom>MediaBox</nom>
