@@ -87,7 +87,7 @@ if (typeof(box_settings)!='undefined')
 			onClosed: (options && options.onClose) || null
 		};
 
-		if (!this.length)
+		if (this === jQuery.fn)
 			return $.colorbox($.extend(cbox_options,options));
 		else
 			return this.colorbox($.extend(cbox_options,options));
@@ -95,6 +95,7 @@ if (typeof(box_settings)!='undefined')
 	$.mediaboxClose = function () {$.fn.colorbox.close();};
 
 	// API modalbox
+	$.mediabox = function(options) { return jQuery.fn.mediabox(options);}
 	$.modalbox = function (href, options) {$.fn.mediabox($.extend({href:href,inline:href.match(/^#/)?true:false,overlayClose:true},options));};
 	$.modalboxload = function (url, options) { $.modalbox(url,options); };
 	$.modalboxclose = $.mediaboxClose;
