@@ -30,7 +30,7 @@ var mediaboxInit = function() {
 
 	if (box_settings.tt_img) {
 		// selectionner tous les liens vers des images
-		jQuery(box_settings.tt_img, this).not('.hasbox')
+		jQuery("a[type=\'image/jpeg\'],a[type=\'image/png\'],a[type=\'image/gif\']", this).not('.hasbox')
 		.attr("onclick","") // se debarrasser du onclick de SPIP
 		.colorbox(options) // activer la box
 		.addClass("hasbox") // noter qu\'on l\'a vue
