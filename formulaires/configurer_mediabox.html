@@ -4,7 +4,7 @@
 [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
 	
 <form method="post" action="#ENV{action}"><div>
-	#ACTION_FORMULAIRE{#ENV{action}}
+	#ACTION_FORMULAIRE
 	<div class="editer-groupe">
 		<div class="editer editer_active[ (#ENV**{erreurs}|table_valeur{active}|oui)erreur]">
 			<div class="choix">
