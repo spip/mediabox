@@ -44,6 +44,11 @@ var mediaboxInit = function() {
 		.addClass("hasbox") // noter qu\'on l\'a vue
 		;
 	}
+	
+	if (window.var_zajax_content){
+		jQuery('a.popin', this).click(function(){if (jQuery.modalbox) jQuery.modalbox(parametre_url(this.href,"var_zajax",jQuery(this).attr('data-var_zajax')?jQuery(this).attr('data-var_zajax'):var_zajax_content));return false;});
+	}
+	
 };
 
 /* initialiser maintenant si box_settings est deja la
@@ -99,5 +104,5 @@ if (typeof(box_settings)!='undefined')
 	$.modalbox = function (href, options) {$.fn.mediabox($.extend({href:href,inline:href.match(/^#/)?true:false,overlayClose:true},options));};
 	$.modalboxload = function (url, options) { $.modalbox(url,options); };
 	$.modalboxclose = $.mediaboxClose;
-
+	
 })(jQuery);
