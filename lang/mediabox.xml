@@ -1,4 +1,10 @@
-<traduction module="mediabox" gestionnaire="salvatore" url="https://trad.spip.net" source="svn://zone.spip.org/spip-zone/_core_/plugins/mediabox/lang/" reference="fr">
+<traduction
+	module="mediabox"
+	id="mediabox--mediabox-e6585"
+	gestionnaire="salvatore"
+	url="https://trad.spip.net"
+	source="svn://zone.spip.org/spip-zone/_core_/plugins/mediabox/lang"
+	reference="fr">
 	<langue code="ar" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ar" total="36" traduits="36" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
@@ -26,8 +32,7 @@
 		<traducteur nom="Davood Hossein" lien="https://trad.spip.net/auteur/davood-hossein" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 	</langue>
-	<langue code="fr" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=fr" total="36" traduits="36" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
-	</langue>
+	<langue code="fr" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=fr" total="36" traduits="36" relire="0" modifs="0" nouveaux="0" pourcent="100.00" />
 	<langue code="fr_fem" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=fr_fem" total="36" traduits="36" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="denisb" lien="https://trad.spip.net/auteur/denisb" />
 		<traducteur nom="RealET" lien="https://trad.spip.net/auteur/realet" />
