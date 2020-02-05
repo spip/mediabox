@@ -1,9 +1,9 @@
 <traduction
 	module="mediabox"
-	id="mediabox--mediabox-e6585"
+	id="mediabox--mediabox-82362"
 	gestionnaire="salvatore"
 	url="https://trad.spip.net"
-	source="svn://zone.spip.org/spip-zone/_core_/plugins/mediabox/lang"
+	source="https://git.spip.net/spip/mediabox.git"
 	reference="fr">
 	<langue code="ar" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ar" total="36" traduits="36" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
