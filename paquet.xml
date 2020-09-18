@@ -1,7 +1,7 @@
 <paquet
 	prefix="mediabox"
 	categorie="multimedia"
-	version="1.5.0"
+	version="1.6.0"
 	etat="stable"
 	compatibilite="[3.3.0-dev;3.3.*]"
 	logo="prive/themes/spip/images/mediabox-xx.svg"
@@ -24,6 +24,8 @@
 	<pipeline nom="jquery_plugins" inclure="mediabox_pipelines.php" />
 	<pipeline nom="header_prive" action="insert_head" inclure="mediabox_pipelines.php" />
 	<pipeline nom="ieconfig_metas" inclure="mediabox_ieconfig.php" />
+
+	<pipeline nom="mediabox_config" action="" />
 
 	<menu nom="mediabox" titre="mediabox:titre_menu_box" parent="menu_squelette" icone="images/mediabox-xx.svg" action="configurer_mediabox" />
 </paquet>

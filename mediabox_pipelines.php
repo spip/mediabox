@@ -105,7 +105,9 @@ function mediabox_config($public = null) {
 
 	// declarer colorbox
 	$config = mediabox_colorbox_config($config);
-	// todo : et les autres boxs si besoin via un pipeline
+
+	// et d'autres boxs si besoin via un pipeline
+	$config = pipeline('mediabox_config', $config);
 
 
 	// charger la config du theme uniquement dans le public
@@ -135,7 +137,13 @@ function mediabox_insert_head_css($flux) {
 
 		foreach($css_files as $file) {
 			if ($f = find_in_path($file)) {
-				$flux .= "\n" . '<link rel="stylesheet" href="' . timestamp(direction_css($f)) . '" type="text/css" media="all" />';
+				if (substr($file, -5) === '.html') {
+					$f = produire_fond_statique(substr($file, 0, -5), $config);
+				}
+				else {
+					$f = timestamp(direction_css($f));
+				}
+				$flux .= "\n" . '<link rel="stylesheet" href="' . $f . '" type="text/css" media="all" />';
 			}
 		}
 
