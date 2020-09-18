@@ -75,7 +75,8 @@ function mediabox_insert_head_css($flux) {
 		 * Initialiser la config de la mediabox
 		 */
 		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
-var box_settings = {tt_img:' . ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false')
+var box_settings = {auto_detect: true'
+			. ',tt_img:' . ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false')
 			. ',sel_g:"' . $config['selecteur_galerie']
 			. '",sel_c:"' . $config['selecteur_commun']
 			. '",trans:"' . $config['transition']
@@ -115,6 +116,7 @@ function mediabox_insert_head($flux) {
 	if ($config['active'] == 'oui') {
 		$js_files = [
 			'javascript/jquery.colorbox.js',
+			'javascript/colorbox.mediabox.js',
 			'javascript/spip.mediabox.js',
 		];
 		if ($config['splash_url']) {
