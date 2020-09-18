@@ -7,7 +7,7 @@
 		mediabox: function(options) {
 
 			var cfg = $.extend(options,{});
-			var b = typeof(box_settings) == 'object' ? box_settings : {};
+			var b = typeof(mediabox_settings) == 'object' ? mediabox_settings : {};
 
 			// completer le type
 			var type = (this === jQuery.fn) ? cfg.type : this.data(b.ns+'-type');
@@ -49,18 +49,18 @@
 
 	var initConfig = function() {
 
-			var b = typeof(box_settings) == 'object' ? box_settings : {};
-
+			var b = typeof(mediabox_settings) == 'object' ? mediabox_settings : {};
+console.log(b.colorbox);
 			var cbox_options = {
 				overlayClose: true,
 				iframe: false,
-				transition:b.trans || 'elastic',
-				speed:b.speed || 350,
-				maxWidth:b.maxW || false,
-				maxHeight:b.maxH || false,
-				minWidth:b.minW || false,
-				minHeight:b.minH || false,
-				opacity:b.opa || '0.85',
+				transition:b.colorbox.transition || 'elastic',
+				speed:b.colorbox.speed || 350,
+				maxWidth:b.colorbox.maxWidth || false,
+				maxHeight:b.colorbox.maxHeight || false,
+				minWidth:b.colorbox.minWidth || false,
+				minHeight:b.colorbox.minHeight || false,
+				opacity:b.colorbox.opacity || '0.85',
 				slideshowStart:b.str_ssStart,
 				slideshowStop:b.str_ssStop,
 				current:b.str_current,
@@ -75,7 +75,7 @@
 				//onCleanup:|| $.noop(), // hors API
 				onClosed:b.onClose || $.noop(),				
 			};
-
+		console.log(cbox_options);
 			if (typeof($.colorbox) == 'function') {
 				$.colorbox.settings = $.extend($.colorbox.settings,cbox_options);
 			}

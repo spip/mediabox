@@ -2,45 +2,54 @@
 <div class="fieldset"><fieldset><legend><:mediabox:label_apparence:></legend>
 	<div class="editer-groupe">
 
-		[<div class="editer editer_skin[ (#ENV**{erreurs}|table_valeur{skin}|oui)erreur]">
+		#SET{name,colorbox/skin}#SET{obli,''}#SET{defaut,black-striped}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		[<div class="editer editer_skin editer_colorbox_skin[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
 			<label><:mediabox:label_skin:></label>
-			(#REM|colorbox_lister_skins|mediabox_presenter_selection_skins{#ENV{skin},'skin'})
+			(#REM|colorbox_lister_skins|mediabox_presenter_selection_skins{#ENV{colorbox/skin,#GET{defaut}},'colorbox\[skin\]'})
 		</div>]
-		<div class="editer editer_transition[ (#ENV**{erreurs}|table_valeur{transition}|oui)erreur]">
-			<label for='transition'><:mediabox:label_transition:></label>
-			<select name="transition" id="transition">
-				<option value="elastic"[(#ENV{transition}|=={elastic}|oui)selected="selected"]><:mediabox:label_choix_transition_elastic:></option>
-				<option value="fade"[(#ENV{transition}|=={fade}|oui)selected="selected"]><:mediabox:label_choix_transition_fade:></option>
-				<option value="none"[(#ENV{transition}|=={none}|oui)selected="selected"]><:mediabox:label_choix_transition_none:></option>
+		#SET{name,colorbox/transition}#SET{obli,''}#SET{defaut,elastic}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_transition[ (#ENV**{erreurs}|table_valeur{transition}|oui)erreur]">
+			<label for='colorbox_transition'><:mediabox:label_transition:></label>
+			<select name="colorbox[transition]" id="colorbox_transition">
+				<option value="elastic"[(#ENV{#GET{name},#GET{defaut}}|=={elastic}|oui)selected="selected"]><:mediabox:label_choix_transition_elastic:></option>
+				<option value="fade"[(#ENV{#GET{name},#GET{defaut}}|=={fade}|oui)selected="selected"]><:mediabox:label_choix_transition_fade:></option>
+				<option value="none"[(#ENV{#GET{name},#GET{defaut}}|=={none}|oui)selected="selected"]><:mediabox:label_choix_transition_none:></option>
 			</select>
 		</div>
-		<div class="editer editer_speed[ (#ENV**{erreurs}|table_valeur{speed}|oui)erreur]">
-			<label for='speed'><:mediabox:label_speed:></label>
-			<input type="text" name="speed" class="text" id="speed" size="10" value="#ENV*{speed}" />
+		#SET{name,colorbox/speed}#SET{obli,''}#SET{defaut,200}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_speed[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+			<label for='colorbox_speed'><:mediabox:label_speed:></label>
+			<input type="text" name="colorbox[speed]" class="text" id="colorbox_speed" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 		</div>
-		<div class="editer minWidth[ (#ENV**{erreurs}|table_valeur{minWidth}|oui)erreur]">
-			<label for='minWidth'><:mediabox:label_minwidth:></label>
-			<input type="text" name="minWidth" class="text" id="minWidth" size="10" value="#ENV*{minWidth}" />
+		#SET{name,colorbox/minWidth}#SET{obli,''}#SET{defaut,400px}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_minWidth[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+			<label for='colorbox_minWidth'><:mediabox:label_minwidth:></label>
+			<input type="text" name="colorbox[minWidth]" class="text" id="colorbox_minWidth" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 		</div>
-		<div class="editer maxWidth[ (#ENV**{erreurs}|table_valeur{maxWidth}|oui)erreur]">
-			<label for='maxWidth'><:mediabox:label_maxwidth:></label>
-			<input type="text" name="maxWidth" class="text" id="maxWidth" size="10" value="#ENV*{maxWidth}" />
+		#SET{name,colorbox/maxWidth}#SET{obli,''}#SET{defaut,90%}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_maxWidth[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+			<label for='colorbox_maxWidth'><:mediabox:label_maxwidth:></label>
+			<input type="text" name="colorbox[maxWidth]" class="text" id="colorbox_maxWidth" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 		</div>
-		<div class="editer minHeight[ (#ENV**{erreurs}|table_valeur{minHeight}|oui)erreur]">
-			<label for='minHeight'><:mediabox:label_minheight:></label>
-			<input type="text" name="minHeight" class="text" id="minHeight" size="10" value="#ENV*{minHeight}" />
+		#SET{name,colorbox/minHeight}#SET{obli,''}#SET{defaut,''}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_minHeight[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+			<label for='colorbox_minHeight'><:mediabox:label_minheight:></label>
+			<input type="text" name="colorbox[minHeight]" class="text" id="colorbox_minHeight" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 		</div>
-		<div class="editer maxHeight[ (#ENV**{erreurs}|table_valeur{maxHeight}|oui)erreur]">
-			<label for='maxHeight'><:mediabox:label_maxheight:></label>
-			<input type="text" name="maxHeight" class="text" id="maxHeight" size="10" value="#ENV*{maxHeight}" />
+		#SET{name,colorbox/maxHeight}#SET{obli,''}#SET{defaut,90%}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_maxHeight[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+			<label for='colorbox_maxHeight'><:mediabox:label_maxheight:></label>
+			<input type="text" name="colorbox[maxHeight]" class="text" id="colorbox_maxHeight" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 		</div>
-		<div class="editer editer_slideshow_speed[ (#ENV**{erreurs}|table_valeur{slideshow_speed}|oui)erreur]">
-			<label for='slideshow_speed'><:mediabox:label_slideshow_speed:></label>
-			<input type="text" name="slideshow_speed" class="text" id="slideshow_speed" size="10" value="#ENV*{slideshow_speed}" />
+		#SET{name,colorbox/slideshow_speed}#SET{obli,''}#SET{defaut,2500}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_slideshow_speed[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+			<label for='colorbox_slideshow_speed'><:mediabox:label_slideshow_speed:></label>
+			<input type="text" name="colorbox[slideshow_speed]" class="text" id="colorbox_slideshow_speed" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 		</div>
-		<div class="editer editer_opacite[ (#ENV**{erreurs}|table_valeur{opacite}|oui)erreur]">
-			<label for='opacite'><:mediabox:label_opacite:></label>
-			<input type="text" name="opacite" class="text" id="opacite" size="10" value="#ENV*{opacite}" />
+		#SET{name,colorbox/opacite}#SET{obli,''}#SET{defaut,0.9}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+		<div class="editer editer_colorbox_opacite[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+			<label for='colorbox_opacite'><:mediabox:label_opacite:></label>
+			<input type="text" name="colorbox[opacite]" class="text" id="colorbox_opacite" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 		</div>
 	</div></fieldset>
 </div>

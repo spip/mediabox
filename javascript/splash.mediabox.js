@@ -1,26 +1,18 @@
 jQuery(function($){
 	// poser le cookie au callback de la box chargee
 	var set_cookie = function() {
-		Cookies.set("modalsplash", box_settings.splash_url, { expires: 7 });
+		Cookies.set("modalsplash", mediabox_settings.splash_url, { expires: 7 });
 	}
 
 	$.modalboxsplash = function(href, options) {
-		if (box_settings_iframe) {
-			$.fn.mediabox($.extend({
-				href:href,
-				onComplete:set_cookie,
-				overlayClose:true,
-				iframe: true,
-				width: box_settings_splash_width,
-				height: box_settings_splash_height
-			},options));
-		} else {
-			$.fn.mediabox($.extend({
-				href:href,
-				onComplete:set_cookie,
-				overlayClose:true
-			},options));
+		if (mediabox_settings.splash_iframe) {
+			options = $.extend({
+				type: 'iframe',
+				width: mediabox_settings.splash_width || '',
+				height: mediabox_settings.splash_height || ''
+			});
 		}
+		$.modalbox(href,$.extend({onShow:set_cookie},options));
 	};
 	// ouvrir la splash page si pas deja vue
 	if (Cookies.get("modalsplash") != box_settings.splash_url) {

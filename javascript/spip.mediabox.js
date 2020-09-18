@@ -43,7 +43,7 @@
 var mediaboxInit = function() {
 
 	// recuperer les préférences de l'utilisateur
-	var b = $.extend({ns: 'box'},box_settings);
+	var b = $.extend({},mediabox_settings);
 
 	// renommer le data-box-type en cas de namespace personnalisé
 	if (b.ns != 'box') {

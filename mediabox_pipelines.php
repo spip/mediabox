@@ -9,6 +9,19 @@ function mediabox_config($public = null) {
 	include_spip('inc/config');
 	$config = lire_config('mediabox', array());
 
+	// conversion a la volee de l'ancienne config toute melangee
+	if (empty($config['box_type']) and empty($config['colorbox']) and !empty($config['transition'])) {
+		$config['box_type'] = 'colorbox';
+		$config['colorbox'] = [];
+		foreach (['skin', 'transition', 'speed', 'maxWidth', 'maxHeight', 'minWidth', 'minHeight', 'slideshow_speed', 'opacite'] as $k) {
+			if (!empty($config[$k])) {
+				$config['colorbox'][$k] = $config[$k];
+				unset($config[$k]);
+			}
+		}
+		ecrire_config('mediabox', $config);
+	}
+
 	$config = array_merge(array(
 		'active' => 'oui',
 		'traiter_toutes_images' => 'oui',
@@ -17,15 +30,18 @@ function mediabox_config($public = null) {
 		'splash_url' => '',
 		'splash_width' => '600px',
 		'splash_height' => '90%',
-		'skin' => 'black-striped',
-		'transition' => 'elastic',
-		'speed' => '200',
-		'maxWidth' => '90%',
-		'maxHeight' => '90%',
-		'minWidth' => '400px',
-		'minHeight' => '',
-		'slideshow_speed' => '2500',
-		'opacite' => '0.9',
+		'box_type' => 'colorbox',
+		'colorbox' => [
+			'skin' => 'black-striped',
+			'transition' => 'elastic',
+			'speed' => '200',
+			'maxWidth' => '90%',
+			'maxHeight' => '90%',
+			'minWidth' => '400px',
+			'minHeight' => '',
+			'slideshow_speed' => '2500',
+			'opacite' => '0.9',
+		]
 	), $config);
 
 	if ((is_null($public) and test_espace_prive()) or $public === false) {
@@ -34,12 +50,15 @@ function mediabox_config($public = null) {
 			'selecteur_galerie' => '#portfolios a[type^=\'image/\']',
 			'selecteur_commun' => '.mediabox, .iconifier a[href$=jpg],.iconifier a[href$=png],.iconifier a[href$=gif]',
 			'splash_url' => '',
-			'skin' => 'white-shadow',
-			'maxWidth' => '90%',
-			'maxHeight' => '95%',
-			'minWidth' => '600px',
-			'minHeight' => '300px',
-			'opacite' => '0.9',
+			'box_type' => 'colorbox',
+			'colorbox' => [
+				'skin' => 'white-shadow',
+				'maxWidth' => '90%',
+				'maxHeight' => '95%',
+				'minWidth' => '600px',
+				'minHeight' => '300px',
+				'opacite' => '0.9',
+			]
 		));
 	}
 
@@ -50,9 +69,14 @@ function mediabox_config($public = null) {
 	}
 
 	// charger la config du theme uniquement dans le public
-	if (!test_espace_prive() and include_spip('colorbox/' . $config['skin'] . '/mediabox_config_theme')) {
-		$config_theme = mediabox_config_theme();
-		$config = array_merge($config, $config_theme);
+	if (!test_espace_prive()
+		and $box_type = $config['box_type']
+		and !empty($config[$box_type]['skin'])
+		and $box_skin = $config[$box_type]['skin']
+		and include_spip("$box_type/$box_skin/mediabox_config_theme")
+	  and function_exists($f = "mediabox_config_{$box_type}_$box_skin")
+	  and $config_theme = $f($config)) {
+		$config = $config_theme;
 	}
 
 	return $config;
@@ -61,9 +85,14 @@ function mediabox_config($public = null) {
 function mediabox_insert_head_css($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
-		$css_files = [
-			(test_espace_prive() ? 'prive/' : '') . 'colorbox/' . $config['skin'] . '/colorbox.css',
-		];
+
+		$css_files = [];
+
+		if ($box_type = $config['box_type']
+		and !empty($config[$box_type]['skin'])
+		and $box_skin = $config[$box_type]['skin']) {
+			$css_files[] = (test_espace_prive() ? 'prive/' : '') . "{$box_type}/{$box_skin}/{$box_type}.css";
+		}
 
 		foreach($css_files as $file) {
 			if ($f = find_in_path($file)) {
@@ -74,37 +103,38 @@ function mediabox_insert_head_css($flux) {
 		/**
 		 * Initialiser la config de la mediabox
 		 */
-		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
-var box_settings = {auto_detect: true'
-			. ',tt_img:' . ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false')
-			. ',sel_g:"' . $config['selecteur_galerie']
-			. '",sel_c:"' . $config['selecteur_commun']
-			. '",trans:"' . $config['transition']
-			. '",speed:"' . $config['speed']
-			. '",ssSpeed:"' . $config['slideshow_speed']
-			. '",maxW:"' . $config['maxWidth']
-			. '",maxH:"' . $config['maxHeight']
-			. '",minW:"' . $config['minWidth']
-			. '",minH:"' . $config['minHeight']
-			. '",opa:"' . $config['opacite']
-			. '",str_ssStart:"' . unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart')))
-			. '",str_ssStop:"' . unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop')))
-			. '",str_cur:"' . _T('mediabox:boxstr_current', array('current' => '{current}', 'total' => '{total}'))
-			. '",str_prev:"' . _T('mediabox:boxstr_previous')
-			. '",str_next:"' . _T('mediabox:boxstr_next')
-			. '",str_close:"' . _T('mediabox:boxstr_close')
-			. '",splash_url:"' . $config['splash_url']
-			. '"};' . "\n";
+		$js_config = [
+			'auto_detect' => true,
+			'ns' => 'box',
+			'tt_img' => ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false'),
+			'sel_g' => $config['selecteur_galerie'],
+			'sel_c' => $config['selecteur_commun'],
+			'str_ssStart' => unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart'))),
+			'str_ssStop' => unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop'))),
+			'str_cur' => unicode2charset(html2unicode(_T('mediabox:boxstr_current', array('current' => '{current}', 'total' => '{total}')))),
+			'str_prev' => unicode2charset(html2unicode(_T('mediabox:boxstr_previous'))),
+			'str_next' => unicode2charset(html2unicode(_T('mediabox:boxstr_next'))),
+			'str_close' => unicode2charset(html2unicode(_T('mediabox:boxstr_close'))),
+			'splash_url' => $config['splash_url'],
+		];
+		// plus la config specifique de la box selectionnee
+		if (!empty($config['box_type']) and !empty($config[$config['box_type']])) {
+			$js_config[$config['box_type']] = $config[$config['box_type']];
+		}
 		// Si c'est une image, on la chargera avec une redimentionnement automatique
 		// Sinon, chargement dans une iframe
-		$extension = pathinfo($config['splash_url'], PATHINFO_EXTENSION);
-		if (in_array($extension, ['gif', 'png', 'jpg', 'jpeg'])) {
-			$configmediabox .= 'var box_settings_iframe = false;' . "\n";
-		} else {
-			$configmediabox .= 'var box_settings_splash_width = "' . $config['splash_width'] . '";
-var box_settings_splash_height = "' . $config['splash_height'] . '";' . "\n";
-			$configmediabox .= 'var box_settings_iframe = true;' . "\n";
+		if ($config['splash_url']) {
+			$extension = pathinfo($config['splash_url'], PATHINFO_EXTENSION);
+			if (in_array($extension, ['gif', 'png', 'jpg', 'jpeg'])) {
+				$js_config['splash_iframe'] = false;
+			} else {
+				$js_config['splash_iframe'] = true;
+				$js_config['splash_width'] = $config['splash_width'];
+				$js_config['splash_height'] = $config['splash_height'];
+			}
 		}
+		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
+var mediabox_settings=' . json_encode($js_config) . ';' . "\n";
 		$flux = $configmediabox . '/* ]]> */</script>' . "\n" . $flux;
 	}
 
