@@ -149,10 +149,23 @@ var mediaboxInit = function() {
 
 	// box auto sur tous les liens vers des images
 	if (b.tt_img) {
-		$('a[type^=\'image\'],a[href$=png],a[href$=jpg],a[href$=jpeg]')
+		// regrouper les rel="xx" identiques et faire un appel pour chaque en mode galerie
+		var $images = $('a[type^=\'image\'],a[href$=png],a[href$=jpg],a[href$=jpeg]').not('.hasbox');
+		var $galeries = $images.filter("[rel]");
+		while($galeries.length) {
+			var rel =  $galeries.eq(0).attr('rel');
+			$galeries
+				.filter("[rel="+rel+"]")
+				.removeAttr('onclick') // se debarrasser du onclick de SPIP
+				.mediabox({rel:rel,slideshow:true,slideshowAuto:false,type:'image'})
+				.addClass('hasbox');
+			$galeries = $galeries.not('.hasbox');
+		}
+		// les images restantes
+		$images
 		.not('.hasbox')
 		.removeAttr('onclick') // se debarrasser du onclick de SPIP
-		.mediabox()
+		.mediabox({type:'image'})
 		.addClass('hasbox')
 		;
 	}
