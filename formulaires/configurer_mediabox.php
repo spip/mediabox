@@ -61,8 +61,13 @@ function formulaires_configurer_mediabox_traiter_dist() {
 			set_request('active', 'non');
 		}
 		foreach ($config as $k => $v) {
-			if (!is_null(_request($k))) {
-				$config[$k] = _request($k);
+			if (strpos($k, '_') === 0) {
+				unset($config[$k]);
+			}
+			else {
+				if (!is_null(_request($k))) {
+					$config[$k] = _request($k);
+				}
 			}
 		}
 		ecrire_meta('mediabox', serialize($config));

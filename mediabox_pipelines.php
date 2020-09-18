@@ -4,6 +4,45 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
+function mediabox_colorbox_config($config) {
+
+	$config['_libs']['colorbox'] = [
+		'nom' => 'Colorbox',
+		'css' => [],
+		'js' => [
+			'colorbox/js/jquery.colorbox.js',
+			'colorbox/js/colorbox.mediabox.js',
+		]
+	];
+
+	if (empty($config['colorbox'])) {
+		$config['colorbox'] = [];
+	}
+
+	$config['colorbox'] = array_merge(
+		[
+			'skin' => 'black-striped',
+			'transition' => 'elastic',
+			'speed' => '200',
+			'maxWidth' => '90%',
+			'maxHeight' => '90%',
+			'minWidth' => '400px',
+			'minHeight' => '',
+			'slideshow_speed' => '2500',
+			'opacite' => '0.9',
+		]
+		, $config['colorbox']
+	);
+
+	if (!empty($config['colorbox']['skin'])
+		and $box_skin = $config['colorbox']['skin']) {
+		$config['_libs']['colorbox']['css'][] = ($config['_public'] ? '' : 'prive/') . "colorbox/{$box_skin}/colorbox.css";
+	}
+
+
+	return $config;
+}
+
 function mediabox_config($public = null) {
 	include_spip('inc/filtres');
 	include_spip('inc/config');
@@ -32,27 +71,22 @@ function mediabox_config($public = null) {
 		'splash_width' => '600px',
 		'splash_height' => '90%',
 		'box_type' => 'colorbox',
-		'colorbox' => [
-			'skin' => 'black-striped',
-			'transition' => 'elastic',
-			'speed' => '200',
-			'maxWidth' => '90%',
-			'maxHeight' => '90%',
-			'minWidth' => '400px',
-			'minHeight' => '',
-			'slideshow_speed' => '2500',
-			'opacite' => '0.9',
-		]
 	), $config);
 
-	if ((is_null($public) and test_espace_prive()) or $public === false) {
+	$config['_public'] = (is_null($public) ? !test_espace_prive() : !!$public);
+	$config['_libs'] = [];
+
+	if ($config['_public'] === false) {
 		$config = array_merge($config, array(
 			'active' => 'oui',
 			'selecteur_galerie' => '#portfolios a[type^=\'image/\']',
 			'selecteur_commun' => '.mediabox, .iconifier a[href$=jpg],.iconifier a[href$=png],.iconifier a[href$=gif]',
 			'splash_url' => '',
 			'box_type' => 'colorbox',
-			'colorbox' => [
+		));
+		$config['colorbox'] = array_merge(
+			$config['colorbox'],
+			[
 				'skin' => 'white-shadow',
 				'maxWidth' => '90%',
 				'maxHeight' => '95%',
@@ -60,7 +94,7 @@ function mediabox_config($public = null) {
 				'minHeight' => '300px',
 				'opacite' => '0.9',
 			]
-		));
+		);
 	}
 
 	// Gerer aussi les liens internes de SPIP
@@ -68,6 +102,11 @@ function mediabox_config($public = null) {
 		include_spip('inc/filtres_ecrire');
 		$config['splash_url'] = url_absolue(extraire_attribut(lien_article_virtuel($config['splash_url']), 'href'));
 	}
+
+	// declarer colorbox
+	$config = mediabox_colorbox_config($config);
+	// todo : et les autres boxs si besoin via un pipeline
+
 
 	// charger la config du theme uniquement dans le public
 	if (!test_espace_prive()
@@ -90,9 +129,8 @@ function mediabox_insert_head_css($flux) {
 		$css_files = [];
 
 		if ($box_type = $config['box_type']
-		and !empty($config[$box_type]['skin'])
-		and $box_skin = $config[$box_type]['skin']) {
-			$css_files[] = (test_espace_prive() ? 'prive/' : '') . "{$box_type}/{$box_skin}/{$box_type}.css";
+		  and !empty($config['_libs'][$box_type]['css'])) {
+			$css_files = array_merge($css_files, $config['_libs'][$box_type]['css']);
 		}
 
 		foreach($css_files as $file) {
@@ -145,11 +183,14 @@ var mediabox_settings=' . json_encode($js_config) . ';' . "\n";
 function mediabox_insert_head($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
-		$js_files = [
-			'javascript/jquery.colorbox.js',
-			'javascript/colorbox.mediabox.js',
-			'javascript/spip.mediabox.js',
-		];
+
+		$js_files = [];
+		if ($box_type = $config['box_type']
+		and !empty($config['_libs'][$box_type]['js'])) {
+			$js_files = array_merge($js_files, $config['_libs'][$box_type]['js']);
+		}
+
+		$js_files[] = 'javascript/spip.mediabox.js';
 		if ($config['splash_url']) {
 			$js_files[] = 'javascript/splash.mediabox.js';
 		}

@@ -43,8 +43,20 @@
 					</div>
 				</div>
 
-				<input type="hidden" name="box_type" value="colorbox" />
-				<INCLURE{fond=formulaires/inc-configurer_mediabox-colorbox,env} />
+				<BOUCLE_boxtypes(POUR){tableau #ENV{_libs}}>
+					#SET{name,box_type}#SET{obli,''}#SET{defaut,colorbox}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+					<div class="editer pleine_largeur editer_box_type[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+						<div class="choix">
+							<input type="radio" name="box_type" id="box_type_#CLE" value="#CLE" [(#ENV{#GET{name},#GET{defaut}}|=={#CLE}|oui)checked="checked"]/>
+							<label for="box_type_#CLE">#VALEUR{nom}</label>
+						</div>
+						<div class="choix fieldset suite">
+							<fieldset><legend><:mediabox:label_apparence:></legend>
+								<INCLURE{fond=formulaires/inc-configurer_mediabox-#CLE,env} />
+							</fieldset>
+						</div>
+					</div>
+				</BOUCLE_boxtypes>
 
 
 				<div class="fieldset"><fieldset><legend><:mediabox:label_splash:></legend>
