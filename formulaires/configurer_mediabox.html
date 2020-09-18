@@ -49,11 +49,11 @@
 						<div class="choix">
 							<input type="radio" name="box_type" id="box_type_#CLE" value="#CLE" [(#ENV{#GET{name},#GET{defaut}}|=={#CLE}|oui)checked="checked"]/>
 							<label for="box_type_#CLE">#VALEUR{nom}</label>
-						</div>
-						<div class="choix fieldset suite">
-							<fieldset><legend><:mediabox:label_apparence:></legend>
-								<INCLURE{fond=formulaires/inc-configurer_mediabox-#CLE,env} />
-							</fieldset>
+							<div class="fieldset suite">
+								<fieldset><legend><:mediabox:label_apparence:></legend>
+									<INCLURE{fond=formulaires/inc-configurer_mediabox-#CLE,env} />
+								</fieldset>
+							</div>
 						</div>
 					</div>
 				</BOUCLE_boxtypes>
@@ -88,6 +88,28 @@
 	</p>
 </div></form>
 </div>
+<script type="application/javascript">
+	function update_visibilite_suite() {
+		jQuery('.choix .fieldset.suite').each(function(){
+			var $me = jQuery(this);
+			var $radio = $me.siblings('input[type=radio]');
+			if ($radio.prop('checked')) {
+				if ($me.not(':visible')) {
+					$me.show('fast');
+				}
+			}
+			else {
+				if ($me.is(':visible')) {
+					$me.hide('fast');
+				}
+			}
+		});
+	}
+	jQuery(function() {
+		update_visibilite_suite();
+		jQuery('.choix .fieldset.suite').siblings('input[type=radio]').on('change',update_visibilite_suite);
+	});
+</script>
 <style type="text/css">
 	.editer_skin>.choix {
 		display: flex;
