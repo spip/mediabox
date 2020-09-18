@@ -24,6 +24,7 @@ function mediabox_config($public = null) {
 
 	$config = array_merge(array(
 		'active' => 'oui',
+		'namespace' => 'box',
 		'traiter_toutes_images' => 'oui',
 		'selecteur_galerie' => '#documents_portfolio a[type=\'image/jpeg\'],#documents_portfolio a[type=\'image/png\'],#documents_portfolio a[type=\'image/gif\']',
 		'selecteur_commun' => '.mediabox',
@@ -105,7 +106,7 @@ function mediabox_insert_head_css($flux) {
 		 */
 		$js_config = [
 			'auto_detect' => true,
-			'ns' => 'box',
+			'ns' => $config['namespace'],
 			'tt_img' => ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false'),
 			'sel_g' => $config['selecteur_galerie'],
 			'sel_c' => $config['selecteur_commun'],
