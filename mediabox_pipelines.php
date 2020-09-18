@@ -60,9 +60,17 @@ function mediabox_config($public = null) {
 
 function mediabox_insert_head_css($flux) {
 	$config = mediabox_config();
-	if ($config['active'] == 'oui'
-		and $f = find_in_path((test_espace_prive() ? 'prive/' : '') . 'colorbox/' . $config['skin'] . '/colorbox.css')) {
-		$flux .= '<link rel="stylesheet" href="' . direction_css($f) . '" type="text/css" media="all" />';
+	if ($config['active'] == 'oui') {
+		$css_files = [
+			(test_espace_prive() ? 'prive/' : '') . 'colorbox/' . $config['skin'] . '/colorbox.css',
+		];
+
+		foreach($css_files as $file) {
+			if ($f = find_in_path($file)) {
+				$flux .= "\n" . '<link rel="stylesheet" href="' . timestamp(direction_css($f)) . '" type="text/css" media="all" />';
+			}
+		}
+
 		/**
 		 * Initialiser la config de la mediabox
 		 */
@@ -105,11 +113,17 @@ var box_settings_splash_height = "' . $config['splash_height'] . '";' . "\n";
 function mediabox_insert_head($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
-		$flux .= '
-	<script src="' . timestamp(find_in_path('javascript/jquery.colorbox.js')) . '" type="text/javascript"></script>
-	<script src="' . timestamp(find_in_path('javascript/spip.mediabox.js')) . '" type="text/javascript"></script>';
+		$js_files = [
+			'javascript/jquery.colorbox.js',
+			'javascript/spip.mediabox.js',
+		];
 		if ($config['splash_url']) {
-			$flux .= '<script src="' . timestamp(find_in_path('javascript/splash.mediabox.js')) . '" type="text/javascript"></script>';
+			$js_files[] = 'javascript/splash.mediabox.js';
+		}
+		foreach ($js_files as $file) {
+			if ($f = find_in_path($file)) {
+				$flux .= "\n". '<script src="' . timestamp($f) . '" type="text/javascript"></script>';
+			}
 		}
 	}
 
