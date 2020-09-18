@@ -43,50 +43,8 @@
 					</div>
 				</div>
 
-				<div class="fieldset"><fieldset><legend><:mediabox:label_apparence:></legend>
-				<div class="editer-groupe">
-					[<div class="editer editer_skin[ (#ENV**{erreurs}|table_valeur{skin}|oui)erreur]">
-						<label><:mediabox:label_skin:></label>
-						(#ENV{_skins}|box_choisir_skin{#ENV{skin}}|image_reduire{130})
-					</div>]
-					<div class="editer editer_transition[ (#ENV**{erreurs}|table_valeur{transition}|oui)erreur]">
-						<label for='transition'><:mediabox:label_transition:></label>
-						<select name="transition" id="transition">
-							<option value="elastic"[(#ENV{transition}|=={elastic}|oui)selected="selected"]><:mediabox:label_choix_transition_elastic:></option>
-							<option value="fade"[(#ENV{transition}|=={fade}|oui)selected="selected"]><:mediabox:label_choix_transition_fade:></option>
-							<option value="none"[(#ENV{transition}|=={none}|oui)selected="selected"]><:mediabox:label_choix_transition_none:></option>
-						</select>
-					</div>
-					<div class="editer editer_speed[ (#ENV**{erreurs}|table_valeur{speed}|oui)erreur]">
-						<label for='speed'><:mediabox:label_speed:></label>
-						<input type="text" name="speed" class="text" id="speed" size="10" value="#ENV*{speed}" />
-					</div>
-					<div class="editer minWidth[ (#ENV**{erreurs}|table_valeur{minWidth}|oui)erreur]">
-						<label for='minWidth'><:mediabox:label_minwidth:></label>
-						<input type="text" name="minWidth" class="text" id="minWidth" size="10" value="#ENV*{minWidth}" />
-					</div>
-					<div class="editer maxWidth[ (#ENV**{erreurs}|table_valeur{maxWidth}|oui)erreur]">
-						<label for='maxWidth'><:mediabox:label_maxwidth:></label>
-						<input type="text" name="maxWidth" class="text" id="maxWidth" size="10" value="#ENV*{maxWidth}" />
-					</div>
-					<div class="editer minHeight[ (#ENV**{erreurs}|table_valeur{minHeight}|oui)erreur]">
-						<label for='minHeight'><:mediabox:label_minheight:></label>
-						<input type="text" name="minHeight" class="text" id="minHeight" size="10" value="#ENV*{minHeight}" />
-					</div>
-					<div class="editer maxHeight[ (#ENV**{erreurs}|table_valeur{maxHeight}|oui)erreur]">
-						<label for='maxHeight'><:mediabox:label_maxheight:></label>
-						<input type="text" name="maxHeight" class="text" id="maxHeight" size="10" value="#ENV*{maxHeight}" />
-					</div>
-					<div class="editer editer_slideshow_speed[ (#ENV**{erreurs}|table_valeur{slideshow_speed}|oui)erreur]">
-						<label for='slideshow_speed'><:mediabox:label_slideshow_speed:></label>
-						<input type="text" name="slideshow_speed" class="text" id="slideshow_speed" size="10" value="#ENV*{slideshow_speed}" />
-					</div>
-					<div class="editer editer_opacite[ (#ENV**{erreurs}|table_valeur{opacite}|oui)erreur]">
-						<label for='opacite'><:mediabox:label_opacite:></label>
-						<input type="text" name="opacite" class="text" id="opacite" size="10" value="#ENV*{opacite}" />
-					</div>
-				</div></fieldset>
-				</div>
+				<INCLURE{fond=formulaires/inc-colorbox-configurer_mediabox,env} />
+
 
 				<div class="fieldset"><fieldset><legend><:mediabox:label_splash:></legend>
 				<div class="editer-groupe">
@@ -118,7 +76,29 @@
 </div></form>
 </div>
 <style type="text/css">
-	.editer-groupe .editer_skin .choix { overflow: hidden; margin-top: 10px; width: 155px; margin-#LANG_RIGHT: 10px; float: #LANG_LEFT; background-color: transparent; border: 0; }
-	.editer_skin .choix input { float: #LANG_LEFT; }
-	.editer_skin .choix label img { float: #LANG_LEFT; border: 1px solid #ddd; }
+	.editer_skin>.choix {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0 !important;
+	}
+	.editer_skin>.choix .choix-skin {
+		flex-basis: 33%;
+		box-sizing: border-box;
+		padding: 10px;
+		background-color: transparent;
+		border:0;
+
+		display: flex;
+		align-items: center;
+	}
+	.choix-skin:hover,.choix-skin:focus {
+		background: rgba(0,0,0,0.05) !important;
+	}
+	.choix-skin label { width: auto !important;max-width: 85%}
+	.choix-skin label,
+	.choix-skin a,
+	.choix-skin input { display: inline-block !important; width:auto; vertical-align: middle}
+
+/*	.editer_skin .choix input { float: #LANG_LEFT; }
+	.editer_skin .choix label img { float: #LANG_LEFT; border: 1px solid #ddd; }*/
 </style>
