@@ -1,10 +1,10 @@
 <paquet
 	prefix="mediabox"
 	categorie="multimedia"
-	version="1.2.0"
+	version="1.5.0"
 	etat="stable"
 	compatibilite="[3.3.0-dev;3.3.*]"
-	logo="prive/themes/spip/images/mediabox-32.png"
+	logo="prive/themes/spip/images/mediabox-xx.svg"
 	documentation="https://contrib.spip.net/MediaBox"
 >
 
@@ -12,6 +12,8 @@
 	<!-- Boîte multimédia -->
 
 	<credit lien="http://colorpowered.com/colorbox/">ColorPowered</credit>
+	<credit lien="http://www.freepik.com/">Icon made by Freepik www.flaticon.com</credit>
+
 	<auteur>Collectif SPIP</auteur>
 
 	<traduire module="mediabox" reference="fr" gestionnaire="salvatore" />
@@ -23,5 +25,5 @@
 	<pipeline nom="header_prive" action="insert_head" inclure="mediabox_pipelines.php" />
 	<pipeline nom="ieconfig_metas" inclure="mediabox_ieconfig.php" />
 
-	<menu nom="mediabox" titre="mediabox:titre_menu_box" parent="menu_squelette" icone="images/mediabox-16.png" action="configurer_mediabox" />
+	<menu nom="mediabox" titre="mediabox:titre_menu_box" parent="menu_squelette" icone="images/mediabox-xx.svg" action="configurer_mediabox" />
 </paquet>
