@@ -102,23 +102,14 @@ var box_settings_splash_height = "' . $config['splash_height'] . '";' . "\n";
 	return $flux;
 }
 
-
-function mediabox_timestamp($fichier) {
-	if ($m = filemtime($fichier)) {
-		return "$fichier?$m";
-	}
-
-	return $fichier;
-}
-
 function mediabox_insert_head($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
 		$flux .= '
-	<script src="' . mediabox_timestamp(find_in_path('javascript/jquery.colorbox.js')) . '" type="text/javascript"></script>
-	<script src="' . mediabox_timestamp(find_in_path('javascript/spip.mediabox.js')) . '" type="text/javascript"></script>';
+	<script src="' . timestamp(find_in_path('javascript/jquery.colorbox.js')) . '" type="text/javascript"></script>
+	<script src="' . timestamp(find_in_path('javascript/spip.mediabox.js')) . '" type="text/javascript"></script>';
 		if ($config['splash_url']) {
-			$flux .= '<script src="' . mediabox_timestamp(find_in_path('javascript/splash.mediabox.js')) . '" type="text/javascript"></script>';
+			$flux .= '<script src="' . timestamp(find_in_path('javascript/splash.mediabox.js')) . '" type="text/javascript"></script>';
 		}
 	}
 
