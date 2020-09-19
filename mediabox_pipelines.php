@@ -85,7 +85,7 @@ function mediabox_config($public = null) {
 			'box_type' => 'colorbox',
 		));
 		$config['colorbox'] = array_merge(
-			$config['colorbox'],
+			$config['colorbox'] ?  $config['colorbox'] : [],
 			[
 				'skin' => 'white-shadow',
 				'maxWidth' => '90%',
