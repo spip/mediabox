@@ -43,6 +43,26 @@ function mediabox_colorbox_config($config) {
 	return $config;
 }
 
+function mediabox_lity_config($config) {
+	$config['_libs']['lity'] = [
+		'nom' => 'Lity',
+		'css' => [
+			'lib/lity/lity.css',
+			'lity/css/lity.mediabox.css'
+		],
+		'js' => [
+			'lib/lity/lity.js',
+			'lity/js/lity.mediabox.js',
+		]
+	];
+
+	if (empty($config['lity'])) {
+		$config['lity'] = [];
+	}
+
+	return $config;
+}
+
 function mediabox_config($public = null) {
 	include_spip('inc/filtres');
 	include_spip('inc/config');
@@ -105,6 +125,9 @@ function mediabox_config($public = null) {
 
 	// declarer colorbox
 	$config = mediabox_colorbox_config($config);
+
+	// declarer lity
+	$config = mediabox_lity_config($config);
 
 	// et d'autres boxs si besoin via un pipeline
 	$config = pipeline('mediabox_config', $config);
