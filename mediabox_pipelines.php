@@ -162,6 +162,10 @@ function mediabox_insert_head_css($flux) {
 			'str_prev' => unicode2charset(html2unicode(_T('mediabox:boxstr_previous'))),
 			'str_next' => unicode2charset(html2unicode(_T('mediabox:boxstr_next'))),
 			'str_close' => unicode2charset(html2unicode(_T('mediabox:boxstr_close'))),
+			'str_loading' => unicode2charset(html2unicode(_T('mediabox:boxstr_loading'))),
+			'str_petc' => unicode2charset(html2unicode(_T('mediabox:boxstr_press_escape_to_close'))),
+			'str_dialTitDef' => unicode2charset(html2unicode(_T('mediabox:boxstr_dialog_title_default'))),
+			'str_dialTitMed' => unicode2charset(html2unicode(_T('mediabox:boxstr_dialog_title_medias'))),
 			'splash_url' => $config['splash_url'],
 		];
 		// plus la config specifique de la box selectionnee

@@ -16,6 +16,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'boxstr_slideshowStart' => 'Diaporama',
 	'boxstr_slideshowStop' => 'Arrêter',
 	'boxstr_zoom' => 'Zoom',
+	'boxstr_press_escape_to_close' => "Taper 'Echap' pour fermer",
+	'boxstr_dialog_title_default' => 'Boite de dialogue',
+	'boxstr_dialog_title_medias' => 'Affichage d\'un media',
+	'boxstr_loading' => 'Chargement…',
 
 	// E
 	'explication_selecteur' => 'Indiquez la cible des éléments qui déclencheront la boîte. (Expression CSS ou étendue jQuery)',
