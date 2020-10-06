@@ -9,7 +9,6 @@
 		config: {
 		},
 		strings: {
-
 		},
 		callbacks: {
 			onOpen: false,
@@ -22,6 +21,21 @@
 			if ($containerHeight) {
 				$content.css('max-height', Math.round($containerHeight) + 'px')
 			}
+		},
+		template: function() {
+			var close_button_aria_label = litySpip.strings.close + ' (' + litySpip.strings.press_escape + ')' ;
+			var dialog_title = litySpip.strings.dialog_title_def + ' (' + litySpip.strings.press_escape + ')' ;
+			var t =
+				  '<dialog class="box_mediabox box_modalbox lity" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
+				+   '<div class="lity-wrap" data-lity-close role="document">'
+				+     '<div class="lity-loader" aria-hidden="true">' + litySpip.strings.loading + '</div>'
+				+     '<div class="lity-container">'
+				+       '<div class="lity-content"></div>'
+				+       '<button class="lity-close" type="button" aria-label="' + close_button_aria_label + '" title="' + litySpip.strings.close +'" data-lity-close>&times;</button>'
+				+     '</div>'
+				+   '</div>'
+				+ '</dialog>';
+			return t;
 		}
 	}
 
@@ -29,7 +43,7 @@
 
 		mediabox: function (options){
 
-			var cfg = $.extend(litySpip.config, options);
+			var cfg = $.extend(litySpip.config, {template: litySpip.template()}, options);
 
 			var href = cfg.href || ""; // content
 			var galerie = !!cfg.slideshow || !!cfg.rel || false;
@@ -79,14 +93,16 @@
 		// recuperer les préférences de l'utilisateur
 		var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
 
-		litySpip.config.template = '<dialog class="box_mediabox box_modalbox lity" role="dialog" aria-label="Dialog Window (Press escape to close)" tabindex="-1"><div class="lity-wrap" data-lity-close role="document"><div class="lity-loader" aria-hidden="true">Loading...</div><div class="lity-container"><div class="lity-content"></div><button class="lity-close" type="button" aria-label="Close (Press escape to close)" data-lity-close>&times;</button></div></div></dialog>';
-
-		litySpip.strings.slideshowStart=b.str_ssStart;
-		litySpip.strings.slideshowStop=b.str_ssStop;
-		litySpip.strings.current=b.str_current;
-		litySpip.strings.previous=b.str_prev;
-		litySpip.strings.next=b.str_next;
-		litySpip.strings.close=b.str_close;
+		litySpip.strings.slideshowStart = b.str_ssStart;
+		litySpip.strings.slideshowStop = b.str_ssStop;
+		litySpip.strings.current = b.str_current;
+		litySpip.strings.previous = b.str_prev;
+		litySpip.strings.next = b.str_next;
+		litySpip.strings.close = b.str_close;
+		litySpip.strings.loading = b.str_loading;
+		litySpip.strings.press_escape = b.str_petc;
+		litySpip.strings.dialog_title_def = b.str_dialTitDef;
+		litySpip.strings.dialog_title_med = b.str_dialTitMed;
 
 		$(document).on('lity:open', function(event, instance) {
 			console.log('Lity opened');
