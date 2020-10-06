@@ -36,13 +36,27 @@
 				+   '</div>'
 				+ '</dialog>';
 			return t;
+		},
+		eventSet:false,
+		lityOpener: function(event) {
+			event.preventDefault();
+
+			var cfg = $(this).data('lity-options');
+
+			// routage des callbacks
+			litySpip.callbacks.onOpen = cfg.onOpen || false;
+			litySpip.callbacks.onShow = cfg.onShow || false;
+			litySpip.callbacks.onClose = cfg.onClose || false;
+
+			var opener = $(this);
+			var target = opener.data('lity-target') || opener.attr('href') || opener.attr('src');
+			lity(target, cfg, this);
 		}
 	}
 
 	jQuery.fn.extend({
 
 		mediabox: function (options){
-
 			var cfg = $.extend(litySpip.config, {template: litySpip.template()}, options);
 
 			var href = cfg.href || ""; // content
@@ -51,15 +65,10 @@
 			if (!!cfg.className){
 			//	cfg.variant = cfg.className;
 			}
-			// routage des callbacks
-			litySpip.callbacks.onOpen = cfg.onOpen || false;
-			litySpip.callbacks.onShow = cfg.onShow || false;
-			litySpip.callbacks.onClose = cfg.onClose || false;
 
 			if (this===jQuery.fn){
 				lity(href, cfg);
 				return this;
-				//return (galerie) ? $.featherlightGallery(href, cfg) : $.featherlight(href, cfg);
 			} else {
 				var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
 				if (b.ns){
@@ -69,12 +78,16 @@
 						$e.removeAttr('data-'+b.ns+'-type').attr('data-lity-type', d);
 					});
 				}
+
+				if (!litySpip.eventSet) {
+					litySpip.eventSet = true;
+					$(document).on('click', '.lity-enabled', litySpip.lityOpener);
+				}
+
 				return this
 					.data('lity-options', cfg)
-					.on('click', lity);
-				//return (galerie) ? this.featherlightGallery(cfg) : this.featherlight(cfg);
+					.addClass('lity-enabled');
 			}
-
 		},
 
 		mediaboxClose: function (){
