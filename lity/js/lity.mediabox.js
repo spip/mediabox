@@ -5,18 +5,31 @@
 	 *  https://sorgalla.com/lity/
 	 */
 
-	_lityConfig = {};
-	_lityCallbacks = {
-		onOpen: false,
-		onShow: false,
-		onClose: false
-	};
+	var litySpip = {
+		config: {
+		},
+		strings: {
+
+		},
+		callbacks: {
+			onOpen: false,
+			onShow: false,
+			onClose: false
+		},
+		adjustHeight: function(instance) {
+			var $content = instance.content();
+			var $containerHeight = jQuery('.lity-container').height();
+			if ($containerHeight) {
+				$content.css('max-height', Math.round($containerHeight) + 'px')
+			}
+		}
+	}
 
 	jQuery.fn.extend({
 
 		mediabox: function (options){
 
-			var cfg = $.extend(_lityConfig, options);
+			var cfg = $.extend(litySpip.config, options);
 
 			var href = cfg.href || ""; // content
 			var galerie = !!cfg.slideshow || !!cfg.rel || false;
@@ -25,9 +38,9 @@
 			//	cfg.variant = cfg.className;
 			}
 			// routage des callbacks
-			_lityCallbacks.onOpen = cfg.onOpen || false;
-			_lityCallbacks.onShow = cfg.onShow || false;
-			_lityCallbacks.onClose = cfg.onClose || false;
+			litySpip.callbacks.onOpen = cfg.onOpen || false;
+			litySpip.callbacks.onShow = cfg.onShow || false;
+			litySpip.callbacks.onClose = cfg.onClose || false;
 
 			if (this===jQuery.fn){
 				lity(href, cfg);
@@ -66,38 +79,37 @@
 		// recuperer les préférences de l'utilisateur
 		var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
 
-		_lityConfig['template'] = '<dialog class="box_mediabox box_modalbox lity" role="dialog" aria-label="Dialog Window (Press escape to close)" tabindex="-1"><div class="lity-wrap" data-lity-close role="document"><div class="lity-loader" aria-hidden="true">Loading...</div><div class="lity-container"><div class="lity-content"></div><button class="lity-close" type="button" aria-label="Close (Press escape to close)" data-lity-close>&times;</button></div></div></dialog>';
+		litySpip.config.template = '<dialog class="box_mediabox box_modalbox lity" role="dialog" aria-label="Dialog Window (Press escape to close)" tabindex="-1"><div class="lity-wrap" data-lity-close role="document"><div class="lity-loader" aria-hidden="true">Loading...</div><div class="lity-container"><div class="lity-content"></div><button class="lity-close" type="button" aria-label="Close (Press escape to close)" data-lity-close>&times;</button></div></div></dialog>';
+
+		litySpip.strings.slideshowStart=b.str_ssStart;
+		litySpip.strings.slideshowStop=b.str_ssStop;
+		litySpip.strings.current=b.str_current;
+		litySpip.strings.previous=b.str_prev;
+		litySpip.strings.next=b.str_next;
+		litySpip.strings.close=b.str_close;
 
 		$(document).on('lity:open', function(event, instance) {
-		    console.log('Lity opened');
-		    if (_lityCallbacks.onOpen) {
-			    _lityCallbacks.onOpen(event, instance);
-		    }
+			console.log('Lity opened');
+			if (litySpip.callbacks.onOpen) {
+				litySpip.callbacks.onOpen(event, instance);
+			}
 		});
 		$(document).on('lity:ready', function(event, instance) {
-		    console.log('Lity ready');
-				$content = instance.content();
-				$containerHeight = jQuery('.lity-container').height();
-				if ($containerHeight) {
-					$content.css('max-height', Math.round($containerHeight) + 'px')
-				}
-		    if (_lityCallbacks.onShow) {
-			    _lityCallbacks.onShow(event, instance);
-		    }
+			console.log('Lity ready');
+			litySpip.adjustHeight(instance);
+			if (litySpip.callbacks.onShow) {
+				litySpip.callbacks.onShow(event, instance);
+			}
 		});
 		$(document).on('lity:close', function(event, instance) {
-		    console.log('Lity close');
-		    if (_lityCallbacks.onClose) {
-			    _lityCallbacks.onClose(event, instance);
-		    }
+			console.log('Lity close');
+			if (litySpip.callbacks.onClose) {
+				litySpip.callbacks.onClose(event, instance);
+			}
 		});
 		$(document).on('lity:resize', function(event, instance) {
-		    console.log('Lity resize');
-				$content = instance.content();
-				$containerHeight = jQuery('.lity-container').height();
-				if ($containerHeight) {
-					$content.css('max-height', Math.round($containerHeight) + 'px')
-				}
+			console.log('Lity resize');
+			litySpip.adjustHeight(instance);
 		});
 
 	}
