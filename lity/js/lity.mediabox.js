@@ -28,7 +28,7 @@
 			var t =
 				  '<dialog class="box_mediabox box_modalbox lity" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
 				+   '<div class="lity-wrap" data-lity-close role="document">'
-				+     '<div class="lity-loader" aria-hidden="true">' + litySpip.strings.loading + '</div>'
+				+     '<div class="lity-loader" aria-hidden="true" aria-label="' + litySpip.strings.loading + '"><span class="box-loading"></span></div>'
 				+     '<div class="lity-container">'
 				+       '<div class="lity-content"></div>'
 				+       '<button class="lity-close" type="button" aria-label="' + close_button_aria_label + '" title="' + litySpip.strings.close +'" data-lity-close>&times;</button>'
