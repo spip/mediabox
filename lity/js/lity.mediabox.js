@@ -22,11 +22,15 @@
 				$content.css('max-height', Math.round($containerHeight) + 'px')
 			}
 		},
-		template: function() {
+		template: function(cfg) {
 			var close_button_aria_label = litySpip.strings.close + ' (' + litySpip.strings.press_escape + ')' ;
 			var dialog_title = litySpip.strings.dialog_title_def + ' (' + litySpip.strings.press_escape + ')' ;
+			var className = '';
+			if (!!cfg.className){
+				className = ' ' + cfg.className;
+			}
 			var t =
-				  '<dialog class="box_mediabox box_modalbox lity" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
+				  '<dialog class="box_mediabox box_modalbox lity' + className + '" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
 				+   '<div class="lity-wrap" data-lity-close role="document">'
 				+     '<div class="lity-loader" aria-hidden="true" aria-label="' + litySpip.strings.loading + '"><span class="box-loading"></span></div>'
 				+     '<div class="lity-container">'
@@ -38,7 +42,6 @@
 			return t;
 		},
 		ajaxHandler: function (target, instance){
-			console.log('InAjaxHandler');
 			var _deferred = $.Deferred;
 			var deferred = _deferred();
 			var failed = function (){
@@ -76,13 +79,12 @@
 			}
 
 			if (type === 'ajax') {
-				console.log('is-ajax');
 				cfg = $.extend({handlers: {}}, cfg);
 				cfg.handlers.ajax = litySpip.ajaxHandler;
 				//cfg.handlers.iframe = null;
 			}
 
-			cfg = $.extend({template: litySpip.template()}, cfg);
+			cfg = $.extend({template: litySpip.template(cfg)}, cfg);
 
 			lity(target, cfg, opener);
 		}
