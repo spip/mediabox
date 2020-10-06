@@ -37,27 +37,61 @@
 				+ '</dialog>';
 			return t;
 		},
+		ajaxHandler: function(target, instance) {
+			console.log('InAjaxHandler');
+			var _deferred = $.Deferred;
+			var deferred = _deferred();
+			var failed = function() {
+				deferred.reject($('<span class="lity-error"></span>').append('Failed loading ajax'));
+      };
+			$.get( target)
+			  .done(function(content) {
+				  deferred.resolve($('<div class="lity-content-inner"></div>').append(content));
+			  })
+			  .fail(failed);
+      return deferred.promise();
+		},
 		eventSet:false,
-		lityOpener: function(event) {
+		onClickOpener: function(event) {
 			event.preventDefault();
 
-			var cfg = $(this).data('lity-options');
+			var opener = $(this);
+			var cfg = opener.data('mediabox-options');
+			var target = opener.data('lity-target') || opener.attr('href') || opener.attr('src');
 
+			litySpip.lityOpener(target, cfg, this);
+		},
+		lityOpener: function(target, cfg, opener) {
 			// routage des callbacks
 			litySpip.callbacks.onOpen = cfg.onOpen || false;
 			litySpip.callbacks.onShow = cfg.onShow || false;
 			litySpip.callbacks.onClose = cfg.onClose || false;
 
-			var opener = $(this);
-			var target = opener.data('lity-target') || opener.attr('href') || opener.attr('src');
-			lity(target, cfg, this);
+			var type = cfg.type || '';
+			if (!type && opener) {
+				var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
+				if (b.ns){
+					type = $(opener).data(b.ns+'-type') || '';
+				}
+			}
+
+			if (type === 'ajax') {
+				console.log('is-ajax');
+				cfg = $.extend({handlers: {}}, cfg);
+				cfg.handlers.ajax = litySpip.ajaxHandler;
+				//cfg.handlers.iframe = null;
+			}
+
+			cfg = $.extend({template: litySpip.template()}, cfg);
+
+			lity(target, cfg, opener);
 		}
 	}
 
 	jQuery.fn.extend({
 
 		mediabox: function (options){
-			var cfg = $.extend(litySpip.config, {template: litySpip.template()}, options);
+			var cfg = $.extend({}, litySpip.config, options);
 
 			var href = cfg.href || ""; // content
 			var galerie = !!cfg.slideshow || !!cfg.rel || false;
@@ -67,7 +101,7 @@
 			}
 
 			if (this===jQuery.fn){
-				lity(href, cfg);
+				litySpip.lityOpener(href, cfg, null);
 				return this;
 			} else {
 				var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
@@ -81,11 +115,11 @@
 
 				if (!litySpip.eventSet) {
 					litySpip.eventSet = true;
-					$(document).on('click', '.lity-enabled', litySpip.lityOpener);
+					$(document).on('click', '.lity-enabled', litySpip.onClickOpener);
 				}
 
 				return this
-					.data('lity-options', cfg)
+					.data('mediabox-options', cfg)
 					.addClass('lity-enabled');
 			}
 		},

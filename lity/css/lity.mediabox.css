@@ -10,9 +10,15 @@
 	max-height: 90%;
 }
 
-.box_mediabox.lity-inline .lity-content {
-	padding: 1rem;
+.box_mediabox.lity-inline .lity-content,
+.box_mediabox.lity-ajax .lity-content {
 	background: #fff;
+}
+
+.box_mediabox.lity-inline .lity-content>*,
+.box_mediabox.lity-ajax .lity-content-inner {
+	overflow: auto;
+	padding: 1rem;
 }
 
 .box_mediabox.lity-iframe .lity-iframe-container iframe {
