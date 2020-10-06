@@ -37,19 +37,19 @@
 				+ '</dialog>';
 			return t;
 		},
-		ajaxHandler: function(target, instance) {
+		ajaxHandler: function (target, instance){
 			console.log('InAjaxHandler');
 			var _deferred = $.Deferred;
 			var deferred = _deferred();
-			var failed = function() {
+			var failed = function (){
 				deferred.reject($('<span class="lity-error"></span>').append('Failed loading ajax'));
-      };
-			$.get( target)
-			  .done(function(content) {
-				  deferred.resolve($('<div class="lity-content-inner"></div>').append(content));
-			  })
-			  .fail(failed);
-      return deferred.promise();
+			};
+			$.get(target)
+				.done(function (content){
+					deferred.resolve($('<div class="lity-content-inner"></div>').append(content));
+				})
+				.fail(failed);
+			return deferred.promise();
 		},
 		eventSet:false,
 		onClickOpener: function(event) {
