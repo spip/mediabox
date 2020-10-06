@@ -177,7 +177,10 @@ var mediaboxInit = function() {
 		.addClass('hasbox') // noter qu\'on l\'a vue
 	;
 
-	$('[data-href-popin]', this).click(function(){if ($.modalbox) $.modalbox($(this).attr('data-href-popin'), {type:$(this).attr('data-' + b.ns + '-type')});return false;});
+	$('[data-href-popin]', this)
+		.not('.hasbox')
+		.click(function(){if ($.modalbox) $.modalbox($(this).attr('data-href-popin'), {type:$(this).attr('data-' + b.ns + '-type')});return false;})
+		.addClass('hasbox');
 
 };
 
