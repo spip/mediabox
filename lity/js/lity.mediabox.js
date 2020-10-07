@@ -24,20 +24,39 @@
 				$content.css('max-height', Math.round($containerHeight) + 'px')
 			}
 		},
-		template: function(cfg) {
-			var close_button_aria_label = litySpip.strings.close + ' (' + litySpip.strings.press_escape + ')' ;
-			var dialog_title = litySpip.strings.dialog_title_def + ' (' + litySpip.strings.press_escape + ')' ;
+		template: function(cfg, groupName, groupPosition, groupLength) {
 			var className = '';
 			if (!!cfg.className){
 				className = ' ' + cfg.className;
 			}
+
+			var button_next_prev = '',
+			    group_info_text = '',
+			    group_info = '';
+			if (groupName && groupLength) {
+				var newPosition = (groupPosition <= 0 ? groupLength - 1 : groupPosition - 1);
+				button_next_prev += '<button class="lity-previous" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'" aria-label="' + litySpip.strings.previous + '" data-lity-prev'
+					+'><b title="' + litySpip.strings.previous +'">❮</b></button>';
+				newPosition = (groupPosition >= groupLength - 1 ? 0 : groupPosition + 1);
+				button_next_prev += '<button class="lity-next" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'"  aria-label="' + litySpip.strings.next + '" data-lity-next'
+					+'><b title="' + litySpip.strings.next +'">❯</b></button>';
+				group_info_text = " " + (groupPosition+1) + "/" + groupLength;
+				group_info = '<div class="lity-group-caption">'
+					+ '<span class="lity-group-current">'+group_info_text+'</span>'
+					+ button_next_prev
+					+ '</div>';
+			}
+			var close_button_aria_label = litySpip.strings.close + ' (' + litySpip.strings.press_escape + ')' ;
+			var dialog_title = litySpip.strings.dialog_title_def + group_info_text + ' (' + litySpip.strings.press_escape + ')' ;
+
 			var t =
 				  '<dialog class="box_mediabox box_modalbox lity' + className + '" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
 				+   '<div class="lity-wrap" data-lity-close role="document">'
 				+     '<div class="lity-loader" aria-hidden="true" aria-label="' + litySpip.strings.loading + '"><span class="box-loading"></span></div>'
 				+     '<div class="lity-container">'
-				+       '<button class="lity-close" type="button" aria-label="' + close_button_aria_label + '" title="' + litySpip.strings.close +'" data-lity-close>&times;</button>'
+				+       '<button class="lity-close" type="button" aria-label="' + close_button_aria_label + '" data-lity-close><b data-lity-close title="' + litySpip.strings.close +'">&times;</b></button>'
 				+       '<div class="lity-content"></div>'
+				+       group_info
 				+     '</div>'
 				+   '</div>'
 				+ '</dialog>';
@@ -59,7 +78,20 @@
 				.fail(failed);
 			return deferred.promise();
 		},
+		groupElements: function(groupName) {
+			return $('.lity-enabled[data-'+litySpip.nameSpace+'-group'+'='+groupName+']');
+		},
 		eventSet:false,
+		onPrevNext: function(event) {
+			var $button = $(this);
+			var groupName = $button.data('group-name');
+			var groupPosition = $button.data('group-position');
+			var newEl = litySpip.groupElements(groupName).eq(groupPosition);
+			if (newEl) {
+				lity.current().close();
+				newEl.trigger('click');
+			}
+		},
 		onClickOpener: function(event) {
 			event.preventDefault();
 
@@ -105,7 +137,19 @@
 				cfg.handler = type;
 			}
 
-			cfg = $.extend({template: litySpip.template(cfg)}, cfg);
+			// est-ce une galerie ?
+			if (opener) {
+				var groupName = cfg.rel || (opener ? $(opener).data(litySpip.nameSpace+'-group') : '');
+				var groupPosition = 0;
+				var groupLength = 0;
+				if (groupName) {
+					var elements = litySpip.groupElements(groupName);
+					groupPosition = elements.index($(opener));
+					groupLength = elements.length;
+				}
+			}
+
+			cfg = $.extend({template: litySpip.template(cfg, groupName, groupPosition, groupLength)}, cfg);
 
 			lity(target, cfg, opener);
 		}
@@ -123,9 +167,22 @@
 				return this;
 			} else {
 
+				if (cfg.rel) {
+					this.attr('data-'+litySpip.nameSpace+'-group', cfg.rel);
+				}
+				else {
+					this.each(function() {
+						var rel = $(this).attr('rel');
+						if (rel) {
+							$(this).attr('data-'+litySpip.nameSpace+'-group', rel);
+						}
+					});
+				}
+
 				if (!litySpip.eventSet) {
 					litySpip.eventSet = true;
 					$(document).on('click', '.lity-enabled', litySpip.onClickOpener);
+					$(document).on('click', '.lity-previous,.lity-next', litySpip.onPrevNext);
 				}
 
 				return this
