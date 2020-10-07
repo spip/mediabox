@@ -6,6 +6,7 @@
 	 */
 
 	var litySpip = {
+		nameSpace: 'mediabox',
 		config: {
 		},
 		strings: {
@@ -64,7 +65,7 @@
 
 			var opener = $(this);
 			var cfg = opener.data('mediabox-options');
-			var target = opener.data('lity-target') || opener.attr('href') || opener.attr('src');
+			var target = opener.data('href') || opener.attr('href') || opener.attr('src');
 
 			litySpip.lityOpener(target, cfg, this);
 		},
@@ -79,10 +80,7 @@
 
 			var type = cfg.type || '';
 			if (!type && opener) {
-				var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
-				if (b.ns){
-					type = $(opener).data(b.ns+'-type') || '';
-				}
+				type = $(opener).data(litySpip.nameSpace+'-type') || '';
 			}
 
 			var handlers = lity.handlers();
@@ -119,24 +117,11 @@
 			var cfg = $.extend({}, litySpip.config, options);
 
 			var href = cfg.href || ""; // content
-			var galerie = !!cfg.slideshow || !!cfg.rel || false;
-
-			if (!!cfg.className){
-			//	cfg.variant = cfg.className;
-			}
 
 			if (this===jQuery.fn){
 				litySpip.lityOpener(href, cfg, null);
 				return this;
 			} else {
-				var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
-				if (b.ns){
-					this.find('[data-'+b.ns+'-type]').each(function (i, e){
-						var $e = $(e);
-						var d = $e.attr('data-'+b.ns+'-type');
-						$e.removeAttr('data-'+b.ns+'-type').attr('data-lity-type', d);
-					});
-				}
 
 				if (!litySpip.eventSet) {
 					litySpip.eventSet = true;
@@ -164,6 +149,7 @@
 
 		// recuperer les préférences de l'utilisateur
 		var b = typeof (mediabox_settings)=='object' ? mediabox_settings : {};
+		litySpip.nameSpace = b.ns ? b.ns : 'mediabox';
 
 		litySpip.strings.slideshowStart = b.str_ssStart;
 		litySpip.strings.slideshowStop = b.str_ssStop;
