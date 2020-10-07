@@ -41,6 +41,9 @@
 				+ '</dialog>';
 			return t;
 		},
+		failHandler: function (target, instance) {
+			return '<div class="error lity-error">Failed loading content</div>';
+		},
 		ajaxHandler: function (target, instance){
 			var _deferred = $.Deferred;
 			var deferred = _deferred();
@@ -78,10 +81,26 @@
 				}
 			}
 
-			if (type === 'ajax') {
-				cfg = $.extend({handlers: {}}, cfg);
-				cfg.handlers.ajax = litySpip.ajaxHandler;
-				//cfg.handlers.iframe = null;
+			var handlers = lity.handlers();
+			// ajouter le handler ajax si besoin
+			if (type==='ajax'){
+				handlers.ajax = litySpip.ajaxHandler;
+			}
+			// si on est inline, router sur le handler fail si la cible n'existe pas
+			if (type==='inline'){
+				var el = [];
+				try {
+					el = $(target);
+				} catch (e) {
+					el = [];
+				}
+				if (!el.length){
+					handlers.inline = litySpip.failHandler;
+				}
+			}
+			cfg = $.extend({handlers: handlers}, cfg);
+			if (type && ['image', 'inline', 'ajax', 'iframe'].indexOf(type)!== -1){
+				cfg.handler = type;
 			}
 
 			cfg = $.extend({template: litySpip.template(cfg)}, cfg);
