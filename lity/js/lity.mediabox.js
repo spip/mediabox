@@ -17,6 +17,7 @@
 			onClose: []
 		},
 		focusedItem: [],
+		isTransition: false,
 		adjustHeight: function(instance) {
 			var $content = instance.content();
 			var $containerHeight = jQuery('.lity-container').height();
@@ -156,7 +157,8 @@
 			var groupPosition = $button.data('group-position');
 			var newEl = litySpip.groupElements(groupName).eq(groupPosition);
 			if (newEl) {
-				lity.current().element().addClass('lity-no-transition')
+				litySpip.isTransition = {oldClosed:false, newOpened:true};
+				lity.current().element().addClass('lity-no-transition').css('visibility','hidden');
 				lity.current().close();
 				litySpip.elementOpener(newEl, {noTransitionOnOpen: true});
 			}
@@ -177,13 +179,15 @@
 			litySpip.lityOpener(target, cfg, opener.get(0));
 		},
 		lityOpener: function(target, cfg, opener) {
-			// routage des callbacks
-			litySpip.callbacks.onOpen.push(cfg.onOpen || false);
-			litySpip.callbacks.onShow.push(cfg.onShow || false);
-			litySpip.callbacks.onClose.push(cfg.onClose || false);
+			if (!litySpip.isTransition) {
+				// routage des callbacks
+				litySpip.callbacks.onOpen.push(cfg.onOpen || false);
+				litySpip.callbacks.onShow.push(cfg.onShow || false);
+				litySpip.callbacks.onClose.push(cfg.onClose || false);
 
-			// memoriser le focus
-			litySpip.focusedItem.push($(document.activeElement));
+				// memoriser le focus
+				litySpip.focusedItem.push($(document.activeElement));
+			}
 
 			var type = cfg.type || '';
 			if (!type && opener) {
@@ -292,35 +296,60 @@
 		litySpip.strings.dialog_title_med = b.str_dialTitMed;
 
 		$(document).on('lity:open', function(event, instance) {
-			console.log('Lity opened');
-			//instance.element.is('.lity-no-transition-on-open').removeClass('lity-no-transition-on-open');
-			// placer le focus sur le bouton close
 			jQuery('.lity-close',instance.element()).focus();
-			var callback = litySpip.callbacks.onOpen.pop();
-			if (callback) {
-				callback(event, instance);
+			if (!litySpip.isTransition){
+				console.log('Lity opened');
+				//instance.element.is('.lity-no-transition-on-open').removeClass('lity-no-transition-on-open');
+				// placer le focus sur le bouton close
+				var callback = litySpip.callbacks.onOpen.pop();
+				if (callback){
+					callback(event, instance);
+				}
 			}
 		});
 		$(document).on('lity:ready', function(event, instance) {
-			console.log('Lity ready');
 			litySpip.adjustHeight(instance);
-			var callback = litySpip.callbacks.onShow.pop();
-			if (callback) {
-				callback(event, instance);
+			if (!litySpip.isTransition){
+				console.log('Lity ready');
+				var callback = litySpip.callbacks.onShow.pop();
+				if (callback){
+					callback(event, instance);
+				}
+			}
+			else {
+				litySpip.isTransition.newOpened = true;
+				if (litySpip.isTransition.oldClosed) {
+					litySpip.isTransition = false; // transition terminee
+				}
 			}
 		});
 		$(document).on('lity:close', function(event, instance) {
-			console.log('Lity close');
-			var callback = litySpip.callbacks.onClose.pop();
-			if (callback) {
-				callback(event, instance);
+			if (!litySpip.isTransition){
+				console.log('Lity close');
+				var callback = litySpip.callbacks.onClose.pop();
+				if (callback) {
+					callback(event, instance);
+				}
 			}
 		});
 		$(document).on('lity:remove', function(event, instance) {
-			console.log('Lity remove');
-			var focused = litySpip.focusedItem.pop();
-			if (focused) {
-				focused.focus();
+			if (!litySpip.isTransition){
+				console.log('Lity remove');
+				var focused = litySpip.focusedItem.pop();
+				if (focused){
+					try {
+						focused.focus();
+					} catch (e) {
+						// Ignore exceptions, eg. for SVG elements which can't be
+						// focused in IE11
+					}
+				}
+			}
+			else {
+				litySpip.isTransition.oldClosed = true;
+				if (litySpip.isTransition.newOpened) {
+					litySpip.isTransition = false; // transition terminee
+				}
 			}
 		});
 		$(document).on('lity:resize', function(event, instance) {
