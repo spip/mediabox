@@ -11,9 +11,9 @@
 		strings: {
 		},
 		callbacks: {
-			onOpen: false,
-			onShow: false,
-			onClose: false
+			onOpen: [],
+			onShow: [],
+			onClose: []
 		},
 		adjustHeight: function(instance) {
 			var $content = instance.content();
@@ -66,9 +66,9 @@
 		},
 		lityOpener: function(target, cfg, opener) {
 			// routage des callbacks
-			litySpip.callbacks.onOpen = cfg.onOpen || false;
-			litySpip.callbacks.onShow = cfg.onShow || false;
-			litySpip.callbacks.onClose = cfg.onClose || false;
+			litySpip.callbacks.onOpen.push(cfg.onOpen || false);
+			litySpip.callbacks.onShow.push(cfg.onShow || false);
+			litySpip.callbacks.onClose.push(cfg.onClose || false);
 
 			var type = cfg.type || '';
 			if (!type && opener) {
@@ -155,21 +155,24 @@
 
 		$(document).on('lity:open', function(event, instance) {
 			console.log('Lity opened');
-			if (litySpip.callbacks.onOpen) {
-				litySpip.callbacks.onOpen(event, instance);
+			var callback = litySpip.callbacks.onOpen.pop();
+			if (callback) {
+				callback(event, instance);
 			}
 		});
 		$(document).on('lity:ready', function(event, instance) {
 			console.log('Lity ready');
 			litySpip.adjustHeight(instance);
-			if (litySpip.callbacks.onShow) {
-				litySpip.callbacks.onShow(event, instance);
+			var callback = litySpip.callbacks.onShow.pop();
+			if (callback) {
+				callback(event, instance);
 			}
 		});
 		$(document).on('lity:close', function(event, instance) {
 			console.log('Lity close');
-			if (litySpip.callbacks.onClose) {
-				litySpip.callbacks.onClose(event, instance);
+			var callback = litySpip.callbacks.onClose.pop();
+			if (callback) {
+				callback(event, instance);
 			}
 		});
 		$(document).on('lity:resize', function(event, instance) {
