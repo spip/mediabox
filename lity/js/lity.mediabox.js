@@ -21,7 +21,11 @@
 			var $content = instance.content();
 			var $containerHeight = jQuery('.lity-container').height();
 			if ($containerHeight) {
-				$content.css('max-height', Math.round($containerHeight) + 'px')
+				$content
+					.css('max-height', Math.round($containerHeight) + 'px')
+					.filter('.lity-image')
+					.find('img')
+					.css('max-height', Math.round($containerHeight) + 'px');
 			}
 		},
 		template: function(cfg, groupName, groupPosition, groupLength) {
@@ -82,6 +86,46 @@
 					deferred.resolve($('<div class="lity-content-inner"></div>').append(content));
 				})
 				.fail(failed);
+			return deferred.promise();
+		},
+		imageHandler: function (target, instance){
+			var _deferred = $.Deferred;
+			var desc = '';
+			var longdesc = '';
+			var opener = instance.opener();
+			if (opener){
+				desc = opener.attr('title') || $('img[alt]', opener).eq(0).attr('alt');
+				if (opener.attr('aria-describedby')){
+					longdesc = $('#'+opener.attr('aria-describedby')).html();
+					if (by && !desc){
+						desc = by; // hum ? achtung au html
+					}
+				}
+				if (!desc){
+					desc = desc || instance.opener().attr('aria-label');
+				}
+			}
+			var img = $('<img src="'+target+'" alt="'+desc+'"/>');
+			var deferred = _deferred();
+			var failed = function (){
+				deferred.reject($('<span class="lity-error"></span>').append('Failed loading image'));
+			};
+			img
+				.on('load', function (){
+					if (this.naturalWidth===0){
+						return failed();
+					}
+
+					desc = (longdesc ? longdesc : desc);
+					if (desc){
+						img.attr('aria-describedby', 'lity-caption');
+						img = $('<figure class="lity-image"></figure>').append(img).append('<figcaption id="lity-caption" class="lity-caption">'+desc+'</figcaption>');
+					}
+					deferred.resolve(img);
+				})
+				.on('error', failed)
+			;
+
 			return deferred.promise();
 		},
 		groupElements: function(groupName) {
@@ -151,6 +195,7 @@
 			if (type==='ajax'){
 				handlers.ajax = litySpip.ajaxHandler;
 			}
+			handlers.image = litySpip.imageHandler;
 			// si on est inline, router sur le handler fail si la cible n'existe pas
 			if (type==='inline'){
 				var el = [];
