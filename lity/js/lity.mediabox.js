@@ -15,6 +15,7 @@
 			onShow: [],
 			onClose: []
 		},
+		focusedItem: [],
 		adjustHeight: function(instance) {
 			var $content = instance.content();
 			var $containerHeight = jQuery('.lity-container').height();
@@ -34,8 +35,8 @@
 				+   '<div class="lity-wrap" data-lity-close role="document">'
 				+     '<div class="lity-loader" aria-hidden="true" aria-label="' + litySpip.strings.loading + '"><span class="box-loading"></span></div>'
 				+     '<div class="lity-container">'
-				+       '<div class="lity-content"></div>'
 				+       '<button class="lity-close" type="button" aria-label="' + close_button_aria_label + '" title="' + litySpip.strings.close +'" data-lity-close>&times;</button>'
+				+       '<div class="lity-content"></div>'
 				+     '</div>'
 				+   '</div>'
 				+ '</dialog>';
@@ -72,6 +73,9 @@
 			litySpip.callbacks.onOpen.push(cfg.onOpen || false);
 			litySpip.callbacks.onShow.push(cfg.onShow || false);
 			litySpip.callbacks.onClose.push(cfg.onClose || false);
+
+			// memoriser le focus
+			litySpip.focusedItem.push($(document.activeElement));
 
 			var type = cfg.type || '';
 			if (!type && opener) {
@@ -174,6 +178,8 @@
 
 		$(document).on('lity:open', function(event, instance) {
 			console.log('Lity opened');
+			// placer le focus sur le bouton close
+			jQuery('.lity-close',instance.element()).focus();
 			var callback = litySpip.callbacks.onOpen.pop();
 			if (callback) {
 				callback(event, instance);
@@ -192,6 +198,13 @@
 			var callback = litySpip.callbacks.onClose.pop();
 			if (callback) {
 				callback(event, instance);
+			}
+		});
+		$(document).on('lity:remove', function(event, instance) {
+			console.log('Lity remove');
+			var focused = litySpip.focusedItem.pop();
+			if (focused) {
+				focused.focus();
 			}
 		});
 		$(document).on('lity:resize', function(event, instance) {
