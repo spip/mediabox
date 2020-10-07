@@ -29,6 +29,12 @@
 			if (!!cfg.className){
 				className = ' ' + cfg.className;
 			}
+			if (!!cfg.noTransitionOnOpen) {
+				className += ' lity-no-transition-on-open';
+			}
+			if (!!cfg.noTransition) {
+				className += ' lity-no-transition';
+			}
 
 			var button_next_prev = '',
 			    group_info_text = '',
@@ -82,24 +88,49 @@
 			return $('.lity-enabled[data-'+litySpip.nameSpace+'-group'+'='+groupName+']');
 		},
 		eventSet:false,
+		setEvents: function() {
+			if (!litySpip.eventSet) {
+				$(document).on('click', '.lity-enabled', litySpip.onClickOpener);
+				$(document).on('click', '.lity-previous,.lity-next', litySpip.onPrevNext);
+				$(window).on('keyup', litySpip.onKeyUp);
+				litySpip.eventSet = true;
+			}
+		},
+		onKeyUp: function(event) {
+			var c = {37: "previous", 39: "next"}[event.keyCode];
+			console.log(['keyup', event.keyCode, c]);
+			if (c) {
+				var current = lity.current();
+				if (current) {
+					jQuery('.lity-' + c, current.element()).trigger('click');
+				}
+			}
+		},
 		onPrevNext: function(event) {
 			var $button = $(this);
 			var groupName = $button.data('group-name');
 			var groupPosition = $button.data('group-position');
 			var newEl = litySpip.groupElements(groupName).eq(groupPosition);
 			if (newEl) {
+				lity.current().element().addClass('lity-no-transition')
 				lity.current().close();
-				newEl.trigger('click');
+				litySpip.elementOpener(newEl, {noTransitionOnOpen: true});
 			}
 		},
 		onClickOpener: function(event) {
 			event.preventDefault();
 
 			var opener = $(this);
+			litySpip.elementOpener(opener);
+		},
+		elementOpener: function(opener, options) {
 			var cfg = opener.data('mediabox-options');
+			if (options) {
+				cfg = $.extend({}, cfg, options);
+			}
 			var target = opener.data('href') || opener.attr('href') || opener.attr('src');
 
-			litySpip.lityOpener(target, cfg, this);
+			litySpip.lityOpener(target, cfg, opener.get(0));
 		},
 		lityOpener: function(target, cfg, opener) {
 			// routage des callbacks
@@ -160,9 +191,9 @@
 		mediabox: function (options){
 			var cfg = $.extend({}, litySpip.config, options);
 
-			var href = cfg.href || ""; // content
 
 			if (this===jQuery.fn){
+				var href = cfg.href || ""; // content
 				litySpip.lityOpener(href, cfg, null);
 				return this;
 			} else {
@@ -179,11 +210,7 @@
 					});
 				}
 
-				if (!litySpip.eventSet) {
-					litySpip.eventSet = true;
-					$(document).on('click', '.lity-enabled', litySpip.onClickOpener);
-					$(document).on('click', '.lity-previous,.lity-next', litySpip.onPrevNext);
-				}
+				litySpip.setEvents();
 
 				return this
 					.data('mediabox-options', cfg)
@@ -221,6 +248,7 @@
 
 		$(document).on('lity:open', function(event, instance) {
 			console.log('Lity opened');
+			//instance.element.is('.lity-no-transition-on-open').removeClass('lity-no-transition-on-open');
 			// placer le focus sur le bouton close
 			jQuery('.lity-close',instance.element()).focus();
 			var callback = litySpip.callbacks.onOpen.pop();

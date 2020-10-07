@@ -115,3 +115,16 @@
 .lity-next:hover b, .lity-previous:hover b {
 	display: inline-block
 }
+
+.lity-no-transition-on-open .lity-content,
+.lity-no-transition .lity-content {
+	transition: none !important;
+}
+.lity-no-transition-on-open.lity-loading .lity-content,
+.lity-no-transition.lity-loading .lity-content,
+.lity-no-transition.lity-closed .lity-content {
+	-webkit-transform: none !important;
+	-ms-transform: none !important;
+	-o-transform: none !important;
+	transform: none !important;
+}
