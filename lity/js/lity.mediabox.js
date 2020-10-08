@@ -20,7 +20,7 @@
 		isTransition: false,
 		adjustHeight: function(instance) {
 			var $content = instance.content();
-			var $containerHeight = jQuery('.lity-container').height();
+			var $containerHeight = instance.element().find('.lity-container').height();
 			if ($containerHeight) {
 				$content
 					.css('max-height', Math.round($containerHeight) + 'px')
