@@ -68,6 +68,11 @@
 }
 
 /* Caption */
+.lity-image {
+	display: block;
+	margin: 0;
+}
+
 .lity-caption {
 	display: block;
 	position: absolute;

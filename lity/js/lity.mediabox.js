@@ -80,7 +80,7 @@
 			var _deferred = $.Deferred;
 			var deferred = _deferred();
 			var failed = function (){
-				deferred.reject($('<span class="lity-error"></span>').append('Failed loading ajax'));
+				deferred.reject($('<span class="error lity-error"></span>').append('Failed loading ajax'));
 			};
 			$.get(target)
 				.done(function (content){
@@ -109,7 +109,7 @@
 			var img = $('<img src="'+target+'" alt="'+desc+'"/>');
 			var deferred = _deferred();
 			var failed = function (){
-				deferred.reject($('<span class="lity-error"></span>').append('Failed loading image'));
+				deferred.reject($('<span class="error lity-error"></span>').append('Failed loading image'));
 			};
 			img
 				.on('load', function (){
