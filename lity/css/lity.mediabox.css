@@ -24,6 +24,11 @@
 .box_mediabox.lity-iframe .lity-iframe-container iframe {
 	background: #fff;
 }
+/* antiscroll */
+.lity-active body {
+	height: auto !important;
+	overflow: hidden !important;
+}
 
 /* Loader */
 .lity-loading .box-loading {
