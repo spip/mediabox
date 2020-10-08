@@ -149,10 +149,10 @@ var mediaboxInit = function() {
 
 	// box auto sur tous les liens vers des images
 	if (b.tt_img) {
-		$('a[type^=\'image\'],a[href$=png],a[href$=jpg],a[href$=jpeg]')
+		$('a[type^=\'image\'],a[href$=png],a[href$=jpg],a[href$=jpeg],a[href$=svg]')
 		.not('.hasbox')
 		.removeAttr('onclick') // se debarrasser du onclick de SPIP
-		.mediabox()
+		.mediabox({type:'image'})
 		.addClass('hasbox')
 		;
 	}
