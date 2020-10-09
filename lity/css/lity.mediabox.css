@@ -93,6 +93,67 @@
 	top:0.75em;
 }
 
+/* start stop */
+.lity-loading .lity-group-start-stop {
+	display: none;
+}
+.lity-group-start-stop {
+	display: block;
+	position: absolute;
+	top:-1.5rem;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+}
+.lity-group-start-stop button {
+	display: inline-block;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+	color:#fff;
+}
+.lity-group-start-stop button b {
+	color: transparent;
+}
+.lity-group-start-stop button b::after {
+	content: attr(title);
+	display: inline-block;
+	color: #fff;
+}
+
+.lity-group-start-stop .lity-stop {
+	display: none;
+}
+.lity-slideshow .lity-group-start-stop .lity-start {
+	display: none;
+}
+.lity-slideshow .lity-group-start-stop .lity-stop {
+	display: inline-block;
+}
+/* Progress bar */
+.lity-group-progress-bar {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 0.33em;
+}
+.lity-slideshow .lity-group-progress-bar {
+	display: block;
+}
+.lity-group-progress-bar-status {
+	position: absolute;
+	left: 0;
+	height: 100%;
+	top:0;
+	background: #888;
+}
+
+
 /* Caption */
 .lity-image-figure {
 	display: block;

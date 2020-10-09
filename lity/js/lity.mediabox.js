@@ -40,8 +40,12 @@
 			if (!!cfg.noTransition) {
 				className += ' lity-no-transition';
 			}
+			if (!!cfg.slideShow) {
+				className += ' lity-slideshow';
+			}
 
 			var button_next_prev = '',
+				  button_start_stop = '',
 			    group_info_text = '',
 			    group_info = '';
 			if (groupName && groupLength) {
@@ -51,10 +55,20 @@
 				newPosition = (groupPosition >= groupLength - 1 ? 0 : groupPosition + 1);
 				button_next_prev += '<button class="lity-next" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'"  aria-label="' + litySpip.strings.next + '" data-lity-next'
 					+'><b title="' + litySpip.strings.next +'">❯</b></button>';
-				group_info_text = " " + (groupPosition+1) + "/" + groupLength;
+				group_info_text = " " + litySpip.strings.current;
+				group_info_text = group_info_text.replace('{current}',(groupPosition+1)+'');
+				group_info_text = group_info_text.replace('{total}',groupLength+'');
+
+				button_start_stop += '<button class="lity-start-stop" type="button" data-lity-stop-start>'
+					+'<b class="lity-start" aria-label="' + litySpip.strings.slideshowStart + '" title="' + litySpip.strings.slideshowStart +'">▶</b>'
+					+'<b class="lity-stop" aria-label="' + litySpip.strings.slideshowStop + '" title="' + litySpip.strings.slideshowStop +'">□</b>'
+				  +'</button>';
+
 				group_info = '<div class="lity-group-caption">'
-					+ '<span class="lity-group-current">'+group_info_text+'</span>'
-					+ button_next_prev
+					+ '<span class="lity-group-start-stop">' + button_start_stop + '</span>'
+					+ '<span class="lity-group-current">' + group_info_text + '</span>'
+					+ '<span class="lity-group-next-prev">' + button_next_prev + '</span>'
+					+ '<span class="lity-group-progress-bar"><span class="lity-group-progress-bar-status" style="width:0"></span></span>'
 					+ '</div>';
 			}
 			var close_button_aria_label = litySpip.strings.close + ' (' + litySpip.strings.press_escape + ')' ;
@@ -139,6 +153,7 @@
 			if (!litySpip.eventSet) {
 				$(document).on('click', '.lity-enabled', litySpip.onClickOpener);
 				$(document).on('click', '.lity-previous,.lity-next', litySpip.onPrevNext);
+				$(document).on('click', '.lity-start-stop', litySpip.onSlideShowToggle);
 				$(window).on('keyup', litySpip.onKeyUp);
 				litySpip.eventSet = true;
 			}
@@ -159,11 +174,55 @@
 			var groupPosition = $button.data('group-position');
 			var newEl = litySpip.groupElements(groupName).eq(groupPosition);
 			if (newEl) {
+				var element = lity.current().element();
 				litySpip.isTransition = {oldClosed:false, newOpened:true};
-				lity.current().element().addClass('lity-no-transition').css('visibility','hidden');
+				element.addClass('lity-no-transition').css('visibility','hidden');
+				litySpip.slideshowStop(element);
+				var options = {noTransitionOnOpen: true};
+				if (element.is('.lity-slideshow')) {
+					options.slideShow = true;
+				}
 				lity.current().close();
-				litySpip.elementOpener(newEl, {noTransitionOnOpen: true});
+				litySpip.elementOpener(newEl, options);
 			}
+		},
+		slideshowStart: function(element) {
+			var $progress = element.find('.lity-group-progress-bar-status');
+			$progress.attr('style','');
+			$progress.css('width','100%');
+			var delay = litySpip.config.slideshowSpeed;
+			setTimeout(function(){
+				$progress.css('transition','width ' + ((delay-200)/1000) + 's linear');
+				$progress.css('width','0');
+			},200);
+			timer = setTimeout(function(){element.find('.lity-next').trigger('click')}, delay);
+			element.data('lity-timer', timer);
+			$('.lity-start', element).attr('aria-hidden', 'true');
+			$('.lity-stop', element).attr('aria-hidden', 'false');
+			jQuery('.lity-start-stop',element).focus();
+		},
+		slideshowStop: function(element) {
+			timer = element.data('lity-timer');
+			if (timer) {
+				clearTimeout(timer);
+			}
+		},
+		onSlideShowToggle: function(event) {
+			var $button = $(this);
+			var element = $button.closest('.lity');
+			var slideShowState = (element.is('.lity-slideshow') ? true : false);
+			var timer;
+
+			if (!slideShowState) {
+				litySpip.slideshowStart(element);
+			}
+			else {
+				litySpip.slideshowStop(element);
+				$('.lity-start', element).attr('aria-hidden', 'false');
+				$('.lity-stop', element).attr('aria-hidden', 'true');
+			}
+			element.toggleClass('lity-slideshow');
+
 		},
 		onClickOpener: function(event) {
 			event.preventDefault();
@@ -288,7 +347,7 @@
 
 		litySpip.strings.slideshowStart = b.str_ssStart;
 		litySpip.strings.slideshowStop = b.str_ssStop;
-		litySpip.strings.current = b.str_current;
+		litySpip.strings.current = b.str_cur;
 		litySpip.strings.previous = b.str_prev;
 		litySpip.strings.next = b.str_next;
 		litySpip.strings.close = b.str_close;
@@ -296,9 +355,12 @@
 		litySpip.strings.press_escape = b.str_petc;
 		litySpip.strings.dialog_title_def = b.str_dialTitDef;
 		litySpip.strings.dialog_title_med = b.str_dialTitMed;
+		litySpip.config.slideshowSpeed = 5000;
 
 		$(document).on('lity:open', function(event, instance) {
-			jQuery('.lity-close',instance.element()).focus();
+			if (!instance.element().is('.lity-slideshow')){
+				jQuery('.lity-close', instance.element()).focus();
+			}
 			if (!litySpip.isTransition){
 				console.log('Lity opened');
 				//instance.element.is('.lity-no-transition-on-open').removeClass('lity-no-transition-on-open');
@@ -311,6 +373,9 @@
 		});
 		$(document).on('lity:ready', function(event, instance) {
 			litySpip.adjustHeight(instance);
+			if (instance.element().is('.lity-slideshow')) {
+				litySpip.slideshowStart(instance.element());
+			}
 			if (!litySpip.isTransition){
 				console.log('Lity ready');
 				var callback = litySpip.callbacks.onShow.pop();
