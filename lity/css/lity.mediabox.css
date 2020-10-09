@@ -118,11 +118,13 @@
 	padding: 0;
 	margin: 0;
 	position: fixed;
-	top: 5rem;
-	left:2px;
-	text-align: left;
-	bottom: 5rem;
-	width: 10rem;
+	border-radius: 50%;
+	left:-4.75rem;
+	text-align: center;
+	top:50%;
+	margin-top: -6rem;
+	width: 8rem;
+	height: 12rem;
 	cursor: pointer;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -138,7 +140,7 @@
 
 .lity-next {
 	left: auto;
-	right: 2px;
+	right: -4.75rem;
 	text-align: right;
 }
 
@@ -152,10 +154,10 @@
 	display: inline-block;
 	position: absolute;
 	top: 50%;
-	font-size: 5rem;
-	line-height: 5rem;
-	margin-top: -2.5rem;
-	left: 1rem;
+	left: 5.5rem;
+	font-size: 3rem;
+	line-height: 3rem;
+	margin-top: -1.5rem;
 	text-shadow: 0 0 10px #000;
 	color: #fff;
 	font-style: normal;
@@ -163,7 +165,7 @@
 }
 
 .lity-next b {
-	right: 1rem;
+	right: 5.5rem;
 	left: auto;
 }
 
