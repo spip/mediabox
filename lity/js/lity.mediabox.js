@@ -106,7 +106,7 @@
 					desc = desc || instance.opener().attr('aria-label');
 				}
 			}
-			var img = $('<img src="'+target+'" alt="'+desc+'" data-'+litySpip.nameSpace+'-force-max-height />');
+			var img = $('<img src="'+target+'" class="lity-image-img" alt="'+desc+'" data-'+litySpip.nameSpace+'-force-max-height />');
 			var deferred = _deferred();
 			var failed = function (){
 				deferred.reject($('<span class="error lity-error"></span>').append('Failed loading image'));
@@ -119,8 +119,9 @@
 
 					desc = (longdesc ? longdesc : desc);
 					if (desc){
-						img.attr('aria-describedby', 'lity-caption');
-						img = $('<figure class="lity-image"></figure>').append(img).append('<figcaption id="lity-caption" class="lity-caption">'+desc+'</figcaption>');
+						var id = 'lity-image-caption-' + Date.now().toString(36) + Math.random().toString(36).substr(2);
+						img.attr('aria-describedby', id);
+						img = $('<figure class="lity-image-figure"></figure>').append(img).append('<figcaption id="'+id+'" class="lity-image-caption">'+desc+'</figcaption>');
 					}
 					deferred.resolve(img);
 				})

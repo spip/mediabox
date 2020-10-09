@@ -10,6 +10,9 @@
 	max-height: 90%;
 }
 
+.box_mediabox.lity-image .lity-image-img {
+	background: #fff;
+}
 .box_mediabox.lity-inline .lity-content,
 .box_mediabox.lity-ajax .lity-content {
 	background: #fff;
@@ -73,12 +76,12 @@
 }
 
 /* Caption */
-.lity-image {
+.lity-image-figure {
 	display: block;
 	margin: 0;
 }
 
-.lity-caption {
+.lity-image-caption {
 	display: block;
 	position: absolute;
 	left: 0;
