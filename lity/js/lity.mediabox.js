@@ -29,7 +29,7 @@
 					.css('max-height', h);
 			}
 		},
-		template: function(cfg, groupName, groupPosition, groupLength) {
+		template: function(cfg, type, groupName, groupPosition, groupLength) {
 			var className = '';
 			if (!!cfg.className){
 				className = ' ' + cfg.className;
@@ -58,7 +58,8 @@
 					+ '</div>';
 			}
 			var close_button_aria_label = litySpip.strings.close + ' (' + litySpip.strings.press_escape + ')' ;
-			var dialog_title = litySpip.strings.dialog_title_def + group_info_text + ' (' + litySpip.strings.press_escape + ')' ;
+			var dialog_title = (type === 'image' ? litySpip.strings.dialog_title_med : litySpip.strings.dialog_title_def);
+			dialog_title += group_info_text + ' (' + litySpip.strings.press_escape + ')' ;
 
 			var t =
 				  '<dialog class="box_mediabox box_modalbox lity' + className + '" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
@@ -230,7 +231,7 @@
 				}
 			}
 
-			cfg = $.extend({template: litySpip.template(cfg, groupName, groupPosition, groupLength)}, cfg);
+			cfg = $.extend({template: litySpip.template(cfg, type, groupName, groupPosition, groupLength)}, cfg);
 
 			lity(target, cfg, opener);
 		}
