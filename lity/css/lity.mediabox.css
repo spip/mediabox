@@ -122,6 +122,7 @@
 	content: attr(title);
 	display: inline-block;
 	color: #fff;
+	padding-right: 0.75em;
 }
 
 .lity-group-start-stop .lity-stop {
