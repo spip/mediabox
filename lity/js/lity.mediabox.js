@@ -327,6 +327,10 @@
 		$(document).on('lity:close', function(event, instance) {
 			if (!litySpip.isTransition){
 				console.log('Lity close');
+				// depiler si la box a ete fermee avant d'etre ready
+				if (litySpip.callbacks.onShow.length > litySpip.callbacks.onOpen.length) {
+					litySpip.callbacks.onShow.pop();
+				}
 				var callback = litySpip.callbacks.onClose.pop();
 				if (callback) {
 					callback(event, instance);
