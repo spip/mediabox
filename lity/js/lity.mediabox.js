@@ -22,11 +22,11 @@
 			var $content = instance.content();
 			var $containerHeight = instance.element().find('.lity-container').height();
 			if ($containerHeight) {
+				var h = Math.round($containerHeight) + 'px';
 				$content
-					.css('max-height', Math.round($containerHeight) + 'px')
-					.filter('.lity-image')
-					.find('img')
-					.css('max-height', Math.round($containerHeight) + 'px');
+					.css('max-height', h)
+					.find('[data-'+litySpip.nameSpace+'-force-max-height]')
+					.css('max-height', h);
 			}
 		},
 		template: function(cfg, groupName, groupPosition, groupLength) {
@@ -46,7 +46,7 @@
 			    group_info = '';
 			if (groupName && groupLength) {
 				var newPosition = (groupPosition <= 0 ? groupLength - 1 : groupPosition - 1);
-				button_next_prev += '<button class="lity-previous" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'" aria-label="' + litySpip.strings.previous + '" data-lity-prev'
+				button_next_prev += '<button class="lity-previous" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'" aria-label="' + litySpip.strings.previous + '" data-lity-previous'
 					+'><b title="' + litySpip.strings.previous +'">❮</b></button>';
 				newPosition = (groupPosition >= groupLength - 1 ? 0 : groupPosition + 1);
 				button_next_prev += '<button class="lity-next" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'"  aria-label="' + litySpip.strings.next + '" data-lity-next'
@@ -106,7 +106,7 @@
 					desc = desc || instance.opener().attr('aria-label');
 				}
 			}
-			var img = $('<img src="'+target+'" alt="'+desc+'"/>');
+			var img = $('<img src="'+target+'" alt="'+desc+'" data-'+litySpip.nameSpace+'-force-max-height />');
 			var deferred = _deferred();
 			var failed = function (){
 				deferred.reject($('<span class="error lity-error"></span>').append('Failed loading image'));
