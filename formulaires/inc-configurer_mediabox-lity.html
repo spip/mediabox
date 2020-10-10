@@ -1,2 +1,32 @@
 <div class="editer-groupe">
+	#SET{name,lity/minWidth}#SET{obli,''}#SET{defaut,400px}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	<div class="editer editer_lity_minWidth[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label for='lity_minWidth'><:mediabox:label_minwidth:></label>
+		<input type="text" name="lity[minWidth]" class="text" id="lity_minWidth" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
+	</div>
+	#SET{name,lity/maxWidth}#SET{obli,''}#SET{defaut,90%}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	<div class="editer editer_lity_maxWidth[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label for='lity_maxWidth'><:mediabox:label_maxwidth:></label>
+		<input type="text" name="lity[maxWidth]" class="text" id="lity_maxWidth" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
+	</div>
+	#SET{name,lity/minHeight}#SET{obli,''}#SET{defaut,''}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	<div class="editer editer_lity_minHeight[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label for='lity_minHeight'><:mediabox:label_minheight:></label>
+		<input type="text" name="lity[minHeight]" class="text" id="lity_minHeight" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
+	</div>
+	#SET{name,lity/maxHeight}#SET{obli,''}#SET{defaut,90%}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	<div class="editer editer_lity_maxHeight[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label for='lity_maxHeight'><:mediabox:label_maxheight:></label>
+		<input type="text" name="lity[maxHeight]" class="text" id="lity_maxHeight" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
+	</div>
+	#SET{name,lity/slideshow_speed}#SET{obli,''}#SET{defaut,2500}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	<div class="editer editer_lity_slideshow_speed[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label for='lity_slideshow_speed'><:mediabox:label_slideshow_speed:></label>
+		<input type="text" name="lity[slideshow_speed]" class="text" id="lity_slideshow_speed" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
+	</div>
+	#SET{name,lity/opacite}#SET{obli,''}#SET{defaut,0.9}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	<div class="editer editer_lity_opacite[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label for='lity_opacite'><:mediabox:label_opacite:></label>
+		<input type="text" name="lity[opacite]" class="text" id="lity_opacite" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
+	</div>
 </div>
