@@ -49,11 +49,13 @@
 						<div class="choix">
 							<input type="radio" name="box_type" id="box_type_#CLE" value="#CLE" [(#ENV{#GET{name},#GET{defaut}}|=={#CLE}|oui)checked="checked"]/>
 							<label for="box_type_#CLE">#VALEUR{nom}</label>
-							<div class="fieldset suite">
+							#SET{fond,formulaires/inc-configurer_mediabox-#CLE}
+							[(#GET{fond}|trouver_fond|oui)
+							<div class="fieldset suite"[(#ENV{#GET{name},#GET{defaut}}|=={#CLE}|non) style="display: none"]>
 								<fieldset><legend><:mediabox:label_apparence:></legend>
-									<INCLURE{fond=formulaires/inc-configurer_mediabox-#CLE,env} />
+									<INCLURE{fond=#GET{fond},env} />
 								</fieldset>
-							</div>
+							</div>]
 						</div>
 					</div>
 				</BOUCLE_boxtypes>
