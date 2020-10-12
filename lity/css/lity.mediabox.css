@@ -283,11 +283,33 @@
 .lity-no-transition .lity-content {
 	transition: none !important;
 }
-.lity-no-transition-on-open.lity-loading .lity-content,
+.lity-no-transition-on-open-none.lity-loading .lity-content,
 .lity-no-transition.lity-loading .lity-content,
 .lity-no-transition.lity-closed .lity-content {
 	-webkit-transform: none !important;
 	-ms-transform: none !important;
 	-o-transform: none !important;
 	transform: none !important;
+}
+
+.lity-transition-on-open-slide-from-right. .lity-content,
+.lity-transition-on-open-slide-from-left. .lity-content {
+	-webkit-transform: scale(1) translateX(0);
+	-ms-transform: scale(1) translateX(0);
+	-o-transform: scale(1) translateX(0);
+	transform: scale(1) translateX(0);
+}
+
+.lity-transition-on-open-slide-from-right.lity-loading .lity-content {
+	-webkit-transform: scale(1) translateX(50vw);
+	-ms-transform: scale(1) translateX(50vw);
+	-o-transform: scale(1) translateX(50vw);
+	transform: scale(1) translateX(50vw);
+}
+
+.lity-transition-on-open-slide-from-left.lity-loading .lity-content {
+	-webkit-transform: scale(1) translateX(-50vw);
+	-ms-transform: scale(1) translateX(-50vw);
+	-o-transform: scale(1) translateX(-50vw);
+	transform: scale(1) translateX(-50vw);
 }

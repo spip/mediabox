@@ -34,8 +34,8 @@
 			if (!!cfg.className){
 				className = ' ' + cfg.className;
 			}
-			if (!!cfg.noTransitionOnOpen) {
-				className += ' lity-no-transition-on-open';
+			if (cfg.transitionOnOpen) {
+				className += ' lity-transition-on-open-'+cfg.transitionOnOpen;
 			}
 			if (!!cfg.noTransition) {
 				className += ' lity-no-transition';
@@ -181,7 +181,7 @@
 				litySpip.isTransition = {oldClosed:false, newOpened:true};
 				element.addClass('lity-no-transition').css('visibility','hidden');
 				litySpip.slideshowStop(element);
-				var options = {noTransitionOnOpen: true};
+				var options = {transitionOnOpen: $button.is('.lity-next') ? 'slide-from-right' : 'slide-from-left'};
 				if (element.is('.lity-slideshow')) {
 					options.slideShow = true;
 				}
