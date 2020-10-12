@@ -46,7 +46,7 @@ var mediaboxInit = function() {
 	var b = $.extend({},mediabox_settings);
 
 	// renommer le data-box-type en cas de namespace personnalisé
-	if (b.ns != 'box') {
+	if (b.ns !== 'box') {
 		$('[data-box-type]').each(function(i,e) {
 			var $e = $(e);
 			var d = $e.attr('data-box-type');
@@ -58,7 +58,7 @@ var mediaboxInit = function() {
 	// 2) Auto detection de type de contenu pour la popin
 	if (b.auto_detect) {
 
-		var $popins = $('[data-href-popin]' + (window.var_zajax_content ? ',[data-var_zajax],a.popin' : ''))
+		var $popins = $('[data-href-popin],[data-'+b.ns+'-type]' + (window.var_zajax_content ? ',[data-var_zajax],a.popin' : ''))
 			.add(b.sel_c)
 			.not(ajaxbloc_selecteur,'.ajaxbloc','.hasbox');
 
@@ -90,7 +90,7 @@ var mediaboxInit = function() {
 				}
 
 				// compléter href-popin si pertinent
-				if (url !== $e.attr('href') && url !== "./" ) {
+				if ((url !== $e.attr('href') || (!popin && type)) && url !== "./" ) {
 					$e.attr('data-href-popin', url);
 				}
 			}
