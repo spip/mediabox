@@ -92,6 +92,12 @@
 			return '<div class="error lity-error">Failed loading content</div>';
 		},
 		ajaxHandler: function (target, instance){
+			var cache = instance.opener().data('lity-ajax-cache') || {};
+			if (cache[target]) {
+				console.log("CACHE for "+target);
+				return $('<div class="lity-content-inner"></div>').append(cache[target]);
+			}
+
 			var _deferred = $.Deferred;
 			var deferred = _deferred();
 			var failed = function (){
@@ -99,10 +105,25 @@
 			};
 			$.get(target)
 				.done(function (content){
+					cache[target] = content;
+					instance.opener().data('lity-ajax-cache', cache);
 					deferred.resolve($('<div class="lity-content-inner"></div>').append(content));
 				})
 				.fail(failed);
 			return deferred.promise();
+		},
+		imageBuildContent: function(img, desc, longdesc) {
+			img.attr('alt', desc ? desc : '');
+			desc = (longdesc ? longdesc : desc);
+			if (desc){
+				var id = 'lity-image-caption-' + Date.now().toString(36) + Math.random().toString(36).substr(2);
+				img.attr('aria-describedby', id);
+				img = $('<figure class="lity-image-figure"></figure>').append(img).append('<figcaption id="'+id+'" class="lity-image-caption">'+desc+'</figcaption>');
+			}
+			else {
+				img = $('<figure class="lity-image-figure"></figure>').append(img);
+			}
+			return img;
 		},
 		imageHandler: function (target, instance){
 			var _deferred = $.Deferred;
@@ -121,7 +142,17 @@
 					desc = desc || instance.opener().attr('aria-label');
 				}
 			}
-			var img = $('<img src="'+target+'" class="lity-image-img" alt="'+desc+'" data-'+litySpip.nameSpace+'-force-max-height />');
+
+			var img;
+			var cache = opener.data('lity-image-cache') || {};
+			if (cache[target]) {
+				console.log("CACHE for "+target);
+				img = cache[target];
+				img = litySpip.imageBuildContent(img, desc, longdesc);
+				return img;
+			}
+
+			img = $('<img src="'+target+'" class="lity-image-img" data-'+litySpip.nameSpace+'-force-max-height />');
 			var deferred = _deferred();
 			var failed = function (){
 				deferred.reject($('<span class="error lity-error"></span>').append('Failed loading image'));
@@ -131,17 +162,10 @@
 					if (this.naturalWidth===0){
 						return failed();
 					}
+					cache[target] = img;
+					opener.data('lity-image-cache', cache);
 
-					desc = (longdesc ? longdesc : desc);
-					if (desc){
-						var id = 'lity-image-caption-' + Date.now().toString(36) + Math.random().toString(36).substr(2);
-						img.attr('aria-describedby', id);
-						img = $('<figure class="lity-image-figure"></figure>').append(img).append('<figcaption id="'+id+'" class="lity-image-caption">'+desc+'</figcaption>');
-					}
-					else {
-						img = $('<figure class="lity-image-figure"></figure>').append(img);
-					}
-					deferred.resolve(img);
+					deferred.resolve(litySpip.imageBuildContent(img, desc, longdesc));
 				})
 				.on('error', failed)
 			;
@@ -171,11 +195,14 @@
 				}
 			}
 		},
-		onPrevNext: function(event) {
-			var $button = $(this);
+		openerFromPrevNext($button) {
 			var groupName = $button.data('group-name');
 			var groupPosition = $button.data('group-position');
-			var newEl = litySpip.groupElements(groupName).eq(groupPosition);
+			return litySpip.groupElements(groupName).eq(groupPosition);
+		},
+		onPrevNext: function(event) {
+			var $button = $(this);
+			var newEl = litySpip.openerFromPrevNext($button);
 			if (newEl) {
 				var element = lity.current().element();
 				litySpip.isTransition = {oldClosed:false, newOpened:true};
@@ -238,7 +265,7 @@
 			if (options) {
 				cfg = $.extend({}, cfg, options);
 			}
-			var target = opener.data('href') || opener.attr('href') || opener.attr('src');
+			var target = opener.data('href-popin') || opener.data('href') || opener.attr('href') || opener.attr('src');
 
 			litySpip.lityOpener(target, cfg, opener.get(0));
 		},
@@ -281,21 +308,38 @@
 				cfg.handler = type;
 			}
 
-			// est-ce une galerie ?
-			if (opener) {
-				var groupName = cfg.rel || (opener ? $(opener).data(litySpip.nameSpace+'-group') : '');
-				var groupPosition = 0;
-				var groupLength = 0;
-				if (groupName) {
-					var elements = litySpip.groupElements(groupName);
-					groupPosition = elements.index($(opener));
-					groupLength = elements.length;
+			if (!!cfg.preloadOnly) {
+				litySpip.lityPreLoader(target, cfg, opener);
+			}
+			else {
+				// est-ce une galerie ?
+				if (opener) {
+					var groupName = cfg.rel || (opener ? $(opener).data(litySpip.nameSpace+'-group') : '');
+					var groupPosition = 0;
+					var groupLength = 0;
+					if (groupName) {
+						var elements = litySpip.groupElements(groupName);
+						groupPosition = elements.index($(opener));
+						groupLength = elements.length;
+					}
 				}
+
+				cfg = $.extend({template: litySpip.template(cfg, type, groupName, groupPosition, groupLength)}, cfg);
+console.log("Call lity "+cfg.handler+' '+target);
+				lity(target, cfg, opener);
 			}
 
-			cfg = $.extend({template: litySpip.template(cfg, type, groupName, groupPosition, groupLength)}, cfg);
-
-			lity(target, cfg, opener);
+		},
+		lityPreLoader: function (target, cfg, opener) {
+			console.log("lityPreLoader " + target);
+			if (cfg.handler && cfg.handlers[cfg.handler]) {
+				if (cfg.handler === 'image' || cfg.handler === 'ajax') {
+					var instance = {
+						opener: function() { return $(opener);}
+					};
+					var content = cfg.handlers[cfg.handler](target, instance);
+				}
+			}
 		}
 	}
 
@@ -325,9 +369,15 @@
 
 				litySpip.setEvents();
 
-				return this
+				this
 					.data('mediabox-options', cfg)
 					.addClass('lity-enabled');
+
+				(cfg.preload ? this : this.filter('[data-'+litySpip.nameSpace+'-preload]')).each(function() {
+					litySpip.elementOpener($(this),{preloadOnly: true});
+				});
+
+				return this;
 			}
 		},
 
@@ -420,6 +470,16 @@
 				litySpip.isTransition.newOpened = true;
 				if (litySpip.isTransition.oldClosed) {
 					litySpip.isTransition = false; // transition terminee
+				}
+				// trigger un resize, c'est un minimum
+				instance.content().trigger('lity:resize', [instance]);
+			}
+			// preloader le next si on est dans une galerie
+			var $next = instance.element().find('.lity-next');
+			if ($next.length) {
+				$next = litySpip.openerFromPrevNext($next);
+				if ($next) {
+					litySpip.elementOpener($next, {preloadOnly: true});
 				}
 			}
 		});
