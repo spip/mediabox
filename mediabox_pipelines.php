@@ -60,6 +60,17 @@ function mediabox_lity_config($config) {
 		$config['lity'] = [];
 	}
 
+	if (!empty($config['lity']['skin'])
+		and $box_skin = $config['lity']['skin']) {
+
+		if ($box_skin === 'none') {
+			$config['_libs']['lity']['css'] = [];
+		}
+		else {
+			$config['_libs']['lity']['css'][] = ($config['_public'] ? '' : 'prive/') . "lity/skins/{$box_skin}/lity.css";
+		}
+	}
+
 	return $config;
 }
 
@@ -102,12 +113,12 @@ function mediabox_config($public = null) {
 			'selecteur_galerie' => '#portfolios a[type^=\'image/\']',
 			'selecteur_commun' => '.mediabox, .iconifier a[href$=jpg],.iconifier a[href$=png],.iconifier a[href$=gif]',
 			'splash_url' => '',
-			'box_type' => 'colorbox',
+			'box_type' => 'lity',
 		));
-		$config['colorbox'] = array_merge(
-			$config['colorbox'] ?  $config['colorbox'] : [],
+		$config['lity'] = array_merge(
+			$config['lity'] ?  $config['lity'] : [],
 			[
-				'skin' => 'white-shadow',
+				'skin' => 'simple-white',
 				'maxWidth' => '90%',
 				'maxHeight' => '95%',
 				'minWidth' => '600px',

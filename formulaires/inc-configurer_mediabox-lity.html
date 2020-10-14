@@ -1,4 +1,9 @@
 <div class="editer-groupe">
+	#SET{name,lity/skin}#SET{obli,''}#SET{defaut,black-striped}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	[<div class="editer editer_skin editer_lity_skin[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label><:mediabox:label_skin:></label>
+		(#REM|mediabox_lity_lister_skins|mediabox_presenter_selection_skins{#ENV{lity/skin,#GET{defaut}},'lity\[skin\]'})
+	</div>]
 	#SET{name,lity/minWidth}#SET{obli,''}#SET{defaut,400px}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
 	<div class="editer editer_lity_minWidth[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
 		<label for='lity_minWidth'><:mediabox:label_minwidth:></label>
