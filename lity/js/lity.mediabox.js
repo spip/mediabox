@@ -456,6 +456,9 @@ console.log("Call lity "+cfg.handler+' '+target);
 		});
 		$(document).on('lity:ready', function(event, instance) {
 			litySpip.adjustHeight(instance);
+			if (jQuery.spip) {
+				jQuery.spip.triggerAjaxLoad(instance.element().get(0))
+			}
 			if (instance.element().addClass('lity-ready').is('.lity-slideshow')) {
 				litySpip.slideshowStart(instance.element());
 			}
