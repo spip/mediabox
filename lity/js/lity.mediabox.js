@@ -8,6 +8,7 @@
 	var litySpip = {
 		nameSpace: 'mediabox',
 		config: {
+			forceFocusInside: true,
 		},
 		strings: {
 		},
