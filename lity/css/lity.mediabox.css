@@ -104,8 +104,9 @@
 	height: 4em;
 	margin: 0.5em;
 	border-radius: 50%;
-	border: 0.375em solid #888;
-	border-color: #888 transparent #888 transparent;
+	border: 0.375em solid #000;
+	border-color: #000 transparent #000 transparent;
+	opacity: 0.5;
 	animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
@@ -134,7 +135,8 @@
 	left: 0;
 	height: 100%;
 	top:0;
-	background: #888;
+	background: #000;
+	opacity: 0.5;
 }
 
 .lity-no-transition-on-open .lity-content,
