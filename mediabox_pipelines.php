@@ -4,44 +4,6 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-function mediabox_colorbox_config($config) {
-
-	$config['_libs']['colorbox'] = [
-		'nom' => 'Colorbox',
-		'css' => [],
-		'js' => [
-			'colorbox/js/jquery.colorbox.js',
-			'colorbox/js/colorbox.mediabox.js',
-		]
-	];
-
-	if (empty($config['colorbox'])) {
-		$config['colorbox'] = [];
-	}
-
-	$config['colorbox'] = array_merge(
-		[
-			'skin' => 'black-striped',
-			'transition' => 'elastic',
-			'speed' => '200',
-			'maxWidth' => '90%',
-			'maxHeight' => '90%',
-			'minWidth' => '400px',
-			'minHeight' => '',
-			'slideshow_speed' => '2500',
-			'opacite' => '0.9',
-		]
-		, $config['colorbox']
-	);
-
-	if (!empty($config['colorbox']['skin'])
-		and $box_skin = $config['colorbox']['skin']) {
-		$config['_libs']['colorbox']['css'][] = ($config['_public'] ? '' : 'prive/') . "colorbox/{$box_skin}/colorbox.css";
-	}
-
-	return $config;
-}
-
 function mediabox_lity_config($config) {
 	$config['_libs']['lity'] = [
 		'nom' => 'Lity',
@@ -157,9 +119,6 @@ function mediabox_config($public = null) {
 		include_spip('inc/filtres_ecrire');
 		$config['splash_url'] = url_absolue(extraire_attribut(lien_article_virtuel($config['splash_url']), 'href'));
 	}
-
-	// declarer colorbox
-	$config = mediabox_colorbox_config($config);
 
 	// declarer lity
 	$config = mediabox_lity_config($config);
