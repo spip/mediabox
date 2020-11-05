@@ -135,6 +135,21 @@
 	.choix-skin label,
 	.choix-skin a,
 	.choix-skin input { display: inline-block !important; width:auto; vertical-align: middle}
+	.choix-skin a {position: relative;border:1px solid #ccc;}
+	.choix-skin a img {display: block;}
+	.choix-skin a[title]::after {
+		content:attr(title);
+		position: absolute;
+		display: block;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(255,255,255, 0.85);
+		padding: 2px 5px;
+		color: #333;
+		font-size: 0.8em;
+		text-align: center;
+	}
 
 /*	.editer_skin .choix input { float: #LANG_LEFT; }
 	.editer_skin .choix label img { float: #LANG_LEFT; border: 1px solid #ddd; }*/
