@@ -58,9 +58,19 @@ function mediabox_lity_config($config) {
 	if (empty($config['lity'])) {
 		$config['lity'] = [];
 	}
-	if (empty($config['lity']['skin'])) {
-		$config['lity']['skin'] = '_simple-dark';
-	}
+
+	$config['lity'] = array_merge(
+		[
+			'skin' => '_simple-dark',
+			'maxWidth' => '90%',
+			'maxHeight' => '90%',
+			'minWidth' => '400px',
+			'minHeight' => '',
+			'slideshow_speed' => '2500',
+			'opacite' => '0.9',
+		]
+		, $config['lity']
+	);
 
 	if (!empty($config['lity']['skin'])
 		and $box_skin = $config['lity']['skin']) {
