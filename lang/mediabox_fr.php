@@ -27,6 +27,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_splash_url' => 'Indiquez l’url du média à afficher automatiquement dans une boîte lors de la première visite sur le site public.',
 	'explication_traiter_toutes_images' => 'Insérer une boîte sur toutes les images ?',
 
+	// I
+	'info_box_lity_nom_skin__simple_dark' => 'Défaut Noire',
+	'info_box_lity_nom_skin__simple_white' => 'Défaut Claire',
+	'info_box_lity_nom_skin_fancybox' => 'Style Fancybox',
+
 	// L
 	'label_active' => 'Activer la Boîte Multimédia dans le site public',
 	'label_apparence' => 'Apparence',

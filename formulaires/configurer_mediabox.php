@@ -11,33 +11,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 include_spip('mediabox_pipelines');
-
-
-function mediabox_presenter_selection_skins($skins, $selected, $name = 'skin') {
-	$out = '';
-	if (!is_array($skins) or !count($skins)) {
-		return $out;
-	}
-
-	foreach ($skins as $k => $skin) {
-		$id = preg_replace(',[^a-z0-9_],i', '_', "${name}_{$k}");
-		$sel = ($selected == "$k" ? " checked='checked'" : '');
-		$balise_img = chercher_filtre('balise_img');
-		$label = isset($skin['img']) ?
-			'<a href="' . $skin['img'] . '" class="mediabox" rel="habillage">' . $balise_img($skin['img'],
-				$skin['nom']) . '</a>'
-			: $skin['nom'];
-
-		$out .= "<div class='choix choix-skin'>";
-		$out .= "<input type='radio' name='$name' id='$id' value='$k'$sel />";
-		$out .= "<label for='$id'>$label</label>";
-		$out .= "</div>\n";
-	}
-
-	$out = "<div class='choix clearfix'>$out</div>";
-
-	return $out;
-}
+include_spip('inc/mediabox');
 
 
 function formulaires_configurer_mediabox_charger_dist() {

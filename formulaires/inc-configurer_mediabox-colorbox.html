@@ -4,7 +4,7 @@
 		#SET{name,colorbox/skin}#SET{obli,''}#SET{defaut,black-striped}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
 		[<div class="editer editer_skin editer_colorbox_skin[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
 			<label><:mediabox:label_skin:></label>
-			(#REM|colorbox_lister_skins|mediabox_presenter_selection_skins{#ENV{colorbox/skin,#GET{defaut}},'colorbox\[skin\]'})
+			(#VAL{colorbox}|mediabox_lister_skins{''}|mediabox_presenter_selection_skins{#ENV{colorbox/skin,#GET{defaut}},'colorbox\[skin\]'})
 		</div>]
 		#SET{name,colorbox/transition}#SET{obli,''}#SET{defaut,elastic}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
 		<div class="editer editer_colorbox_transition[ (#ENV**{erreurs}|table_valeur{transition}|oui)erreur]">
