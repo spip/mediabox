@@ -129,8 +129,8 @@ function mediabox_config($public = null) {
 
 	// charger la config du theme uniquement dans le public
 	// et forcer une config par defaut si rien de selectionne
-	if (!test_espace_prive()) {
-		if (empty($config['box_type'])) {
+	if ($config['_public']) {
+		if (empty($config['box_type']) or empty($config['_libs'][$config['box_type']])) {
 			$config['box_type'] = 'lity';
 			if (empty($config['lity'])) {
 				$config['lity'] = array();
