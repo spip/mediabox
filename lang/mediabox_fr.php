@@ -30,7 +30,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// I
 	'info_box_lity_nom_skin__simple_dark' => 'Défaut Noire',
 	'info_box_lity_nom_skin__simple_white' => 'Défaut Claire',
-	'info_box_lity_nom_skin_fancybox' => 'Style Fancybox',
+	'info_box_lity_nom_skin_fancybox' => 'Façon Fancybox',
+	'info_box_lity_nom_skin_thickbox' => 'Façon Thickbox',
 
 	// L
 	'label_active' => 'Activer la Boîte Multimédia dans le site public',
