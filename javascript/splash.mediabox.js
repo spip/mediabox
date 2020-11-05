@@ -15,7 +15,7 @@ jQuery(function($){
 		$.modalbox(href,$.extend({onShow:set_cookie},options));
 	};
 	// ouvrir la splash page si pas deja vue
-	if (Cookies.get("modalsplash") != box_settings.splash_url) {
-		$.modalboxsplash(box_settings.splash_url);
+	if (Cookies.get("modalsplash") != mediabox_settings.splash_url) {
+		$.modalboxsplash(mediabox_settings.splash_url);
 	}
 });
