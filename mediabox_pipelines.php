@@ -39,7 +39,6 @@ function mediabox_colorbox_config($config) {
 		$config['_libs']['colorbox']['css'][] = ($config['_public'] ? '' : 'prive/') . "colorbox/{$box_skin}/colorbox.css";
 	}
 
-
 	return $config;
 }
 
@@ -58,6 +57,9 @@ function mediabox_lity_config($config) {
 
 	if (empty($config['lity'])) {
 		$config['lity'] = [];
+	}
+	if (empty($config['lity']['skin'])) {
+		$config['lity']['skin'] = '_simple-dark';
 	}
 
 	if (!empty($config['lity']['skin'])
@@ -81,7 +83,7 @@ function mediabox_config($public = null) {
 
 	// conversion a la volee de l'ancienne config toute melangee
 	if (empty($config['box_type']) and empty($config['colorbox']) and !empty($config['transition'])) {
-		$config['box_type'] = 'colorbox';
+		// on convertit l'ancienne config colorbox pour ne pas la perdre
 		$config['colorbox'] = [];
 		foreach (['skin', 'transition', 'speed', 'maxWidth', 'maxHeight', 'minWidth', 'minHeight', 'slideshow_speed', 'opacite'] as $k) {
 			if (!empty($config[$k])) {
@@ -89,6 +91,18 @@ function mediabox_config($public = null) {
 				unset($config[$k]);
 			}
 		}
+
+		// et on passe a lity en heritant des config possibles
+		$config['box_type'] = 'lity';
+		if (empty($config['lity'])) {
+			$config['lity'] = [];
+			foreach (['maxWidth', 'maxHeight', 'minWidth', 'minHeight', 'slideshow_speed', 'opacite'] as $k) {
+				if (!empty($config['colorbox'][$k])) {
+					$config['lity'][$k] = $config['colorbox'][$k];
+				}
+			}
+		}
+
 		ecrire_config('mediabox', $config);
 	}
 
@@ -101,7 +115,7 @@ function mediabox_config($public = null) {
 		'splash_url' => '',
 		'splash_width' => '600px',
 		'splash_height' => '90%',
-		'box_type' => 'colorbox',
+		'box_type' => 'lity',
 	), $config);
 
 	$config['_public'] = (is_null($public) ? !test_espace_prive() : !!$public);
@@ -145,14 +159,23 @@ function mediabox_config($public = null) {
 
 
 	// charger la config du theme uniquement dans le public
-	if (!test_espace_prive()
-		and $box_type = $config['box_type']
-		and !empty($config[$box_type]['skin'])
-		and $box_skin = $config[$box_type]['skin']
-		and include_spip("$box_type/$box_skin/mediabox_config_theme")
-	  and function_exists($f = "mediabox_config_{$box_type}_$box_skin")
-	  and $config_theme = $f($config)) {
-		$config = $config_theme;
+	// et forcer une config par defaut si rien de selectionne
+	if (!test_espace_prive()) {
+		if (empty($config['box_type'])) {
+			$config['box_type'] = 'lity';
+			if (empty($config['lity'])) {
+				$config['lity'] = array();
+			}
+		}
+		$box_type = $config['box_type'];
+
+		if (  !empty($config[$box_type]['skin'])
+			and $box_skin = $config[$box_type]['skin']
+			and include_spip("$box_type/$box_skin/mediabox_config_theme")
+		  and function_exists($f = "mediabox_config_{$box_type}_$box_skin")
+		  and $config_theme = $f($config)) {
+			$config = $config_theme;
+		}
 	}
 
 	return $config;
