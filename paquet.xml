@@ -1,8 +1,8 @@
 <paquet
 	prefix="mediabox"
 	categorie="multimedia"
-	version="1.6.0"
-	etat="stable"
+	version="2.0.0"
+	etat="test"
 	compatibilite="[3.3.0-dev;3.3.*]"
 	logo="prive/themes/spip/images/mediabox-xx.svg"
 	documentation="https://contrib.spip.net/MediaBox"
@@ -11,7 +11,7 @@
 	<nom>MediaBox</nom>
 	<!-- Boîte multimédia -->
 
-	<credit lien="http://colorpowered.com/colorbox/">ColorPowered</credit>
+	<credit lien="https://sorgalla.com/lity/">Lity</credit>
 	<credit lien="http://www.freepik.com/">Icon made by Freepik www.flaticon.com</credit>
 
 	<auteur>Collectif SPIP</auteur>
