@@ -45,6 +45,11 @@
 	color: #888;
 	overflow:hidden;
 }
+.lity-close:hover,
+.lity-close:active,
+.lity-close:focus {
+	color: #666;
+}
 
 /* Group navigation */
 .lity-group-caption {
@@ -85,6 +90,8 @@
 .lity-group-start-stop {
 	order:2;
 	display: block;
+	width: 2rem;
+	text-align: center;
 }
 .lity-group-start-stop button {
 	display: block;
@@ -95,6 +102,22 @@
 	color:inherit;
 }
 .lity-group-start-stop button b {
+	margin: auto;
+}
+
+.lity-group-start-stop .lity-start {
+	font-size: 1px;
+	text-indent: -5px;
+	display: block;
+	border: 0.5rem solid transparent;
+	border-left-color: #888;
+	width: 1rem;
+	height: 1rem;
+}
+.lity-group-start-stop .lity-start:active,
+.lity-group-start-stop .lity-start:hover,
+.lity-group-start-stop .lity-start:focus {
+	border-left-color: #666;
 }
 
 .lity-group-start-stop .lity-stop {
@@ -104,8 +127,19 @@
 	display: none;
 }
 .lity-slideshow .lity-group-start-stop .lity-stop {
-	display: inline-block;
+	display: block;
+	font-size: 1px;
+	text-indent: -5px;
+	width: 0.7rem;
+	height: 0.7rem;
+	background: #888;
 }
+.lity-group-start-stop .lity-stop:active,
+.lity-group-start-stop .lity-stop:hover,
+.lity-group-start-stop .lity-stop:focus {
+	background: #666;
+}
+
 
 /* Next, prev */
 .lity-group-next-prev {
@@ -127,6 +161,11 @@
 }
 .lity-next[disabled], .lity-previous[disabled] {
 	visibility: hidden;
+}
+.lity-next:active, .lity-previous:active,
+.lity-next:hover, .lity-previous:hover,
+.lity-next:focus, .lity-previous:focus {
+	color: #666;
 }
 
 .lity-next b, .lity-previous b {
