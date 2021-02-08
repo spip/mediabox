@@ -4,6 +4,11 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
+/**
+ * Definir la config de la box lity qui est la box par defaut
+ * @param $config
+ * @return mixed
+ */
 function mediabox_lity_config($config) {
 	$config['_libs']['lity'] = [
 		'nom' => 'Lity',
@@ -48,6 +53,11 @@ function mediabox_lity_config($config) {
 	return $config;
 }
 
+/**
+ * Calculer la config mediabox en fonction de l'espace prive/public ou l'on se trouve et de la config definie via le formulaire
+ * @param null|bool $public
+ * @return array
+ */
 function mediabox_config($public = null) {
 	include_spip('inc/filtres');
 	include_spip('inc/config');
@@ -150,6 +160,11 @@ function mediabox_config($public = null) {
 	return $config;
 }
 
+/**
+ * Injecter les CSS + le JS inline (qui doit arriver avant les css pour des raisons de chargement non bloquant)
+ * @param string $flux
+ * @return string
+ */
 function mediabox_insert_head_css($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
@@ -243,6 +258,11 @@ function mediabox_echappe_js_config($config) {
 	return $config;
 }
 
+/**
+ * Injecter les scripts js
+ * @param string $flux
+ * @return string
+ */
 function mediabox_insert_head($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
@@ -267,6 +287,11 @@ function mediabox_insert_head($flux) {
 	return $flux;
 }
 
+/**
+ * Activer le plugin js cookie.js si on a configurer la splasg url
+ * @param $plugins
+ * @return mixed
+ */
 function mediabox_jquery_plugins($plugins) {
 	$config = mediabox_config();
 	if ($config['splash_url']) {
