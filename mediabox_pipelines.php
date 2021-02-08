@@ -182,16 +182,16 @@ function mediabox_insert_head_css($flux) {
 			'tt_img' => ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false'),
 			'sel_g' => $config['selecteur_galerie'],
 			'sel_c' => $config['selecteur_commun'],
-			'str_ssStart' => unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart'))),
-			'str_ssStop' => unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop'))),
-			'str_cur' => unicode2charset(html2unicode(_T('mediabox:boxstr_current', array('current' => '{current}', 'total' => '{total}')))),
-			'str_prev' => unicode2charset(html2unicode(_T('mediabox:boxstr_previous'))),
-			'str_next' => unicode2charset(html2unicode(_T('mediabox:boxstr_next'))),
-			'str_close' => unicode2charset(html2unicode(_T('mediabox:boxstr_close'))),
-			'str_loading' => unicode2charset(html2unicode(_T('mediabox:boxstr_loading'))),
-			'str_petc' => unicode2charset(html2unicode(_T('mediabox:boxstr_press_escape_to_close'))),
-			'str_dialTitDef' => unicode2charset(html2unicode(_T('mediabox:boxstr_dialog_title_default'))),
-			'str_dialTitMed' => unicode2charset(html2unicode(_T('mediabox:boxstr_dialog_title_medias'))),
+			'str_ssStart' => _T('mediabox:boxstr_slideshowStart'),
+			'str_ssStop' => _T('mediabox:boxstr_slideshowStop'),
+			'str_cur' => _T('mediabox:boxstr_current', array('current' => '{current}', 'total' => '{total}')),
+			'str_prev' => _T('mediabox:boxstr_previous'),
+			'str_next' => _T('mediabox:boxstr_next'),
+			'str_close' => _T('mediabox:boxstr_close'),
+			'str_loading' => _T('mediabox:boxstr_loading'),
+			'str_petc' => _T('mediabox:boxstr_press_escape_to_close'),
+			'str_dialTitDef' => _T('mediabox:boxstr_dialog_title_default'),
+			'str_dialTitMed' => _T('mediabox:boxstr_dialog_title_medias'),
 			'splash_url' => $config['splash_url'],
 		];
 		// plus la config specifique de la box selectionnee
@@ -211,11 +211,36 @@ function mediabox_insert_head_css($flux) {
 			}
 		}
 		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
-var mediabox_settings=' . json_encode($js_config) . ';' . "\n";
+var mediabox_settings=' . json_encode(mediabox_echappe_js_config($js_config)) . ';' . "\n";
 		$flux = $configmediabox . '/* ]]> */</script>' . "\n" . $flux;
 	}
 
 	return $flux;
+}
+
+/**
+ * Encoder/echapper les arguments de la config JS injectee dans le html
+ * @param $config
+ * @return array|mixed|string|string[]
+ */
+function mediabox_echappe_js_config($config) {
+	if (is_array($config)) {
+		return array_map('mediabox_echappe_js_config', $config);
+	}
+
+	if (is_string($config)) {
+		if (strpos($config, '&') !== false) {
+			if (!function_exists('html2unicode')) {
+				include_spip('inc/charsets');
+			}
+			$config = unicode2charset(html2unicode($config));
+		}
+		if (strpos($config, '<') !== false) {
+			$config = str_replace('<', '&lt;', $config);
+		}
+	}
+
+	return $config;
 }
 
 function mediabox_insert_head($flux) {
