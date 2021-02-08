@@ -67,23 +67,23 @@ function mediabox_insert_head_css($flux) {
 		 */
 		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
 var box_settings = {tt_img:' . ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false')
-			. ',sel_g:"' . $config['selecteur_galerie']
-			. '",sel_c:"' . $config['selecteur_commun']
-			. '",trans:"' . $config['transition']
-			. '",speed:"' . $config['speed']
-			. '",ssSpeed:"' . $config['slideshow_speed']
-			. '",maxW:"' . $config['maxWidth']
-			. '",maxH:"' . $config['maxHeight']
-			. '",minW:"' . $config['minWidth']
-			. '",minH:"' . $config['minHeight']
-			. '",opa:"' . $config['opacite']
-			. '",str_ssStart:"' . unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart')))
-			. '",str_ssStop:"' . unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop')))
-			. '",str_cur:"' . _T('mediabox:boxstr_current', array('current' => '{current}', 'total' => '{total}'))
-			. '",str_prev:"' . _T('mediabox:boxstr_previous')
-			. '",str_next:"' . _T('mediabox:boxstr_next')
-			. '",str_close:"' . _T('mediabox:boxstr_close')
-			. '",splash_url:"' . $config['splash_url']
+			. ',sel_g:"' . mediabox_quote_js_param($config['selecteur_galerie'])
+			. '",sel_c:"' . mediabox_quote_js_param($config['selecteur_commun'])
+			. '",trans:"' . mediabox_quote_js_param($config['transition'])
+			. '",speed:"' . mediabox_quote_js_param($config['speed'])
+			. '",ssSpeed:"' . mediabox_quote_js_param($config['slideshow_speed'])
+			. '",maxW:"' . mediabox_quote_js_param($config['maxWidth'])
+			. '",maxH:"' . mediabox_quote_js_param($config['maxHeight'])
+			. '",minW:"' . mediabox_quote_js_param($config['minWidth'])
+			. '",minH:"' . mediabox_quote_js_param($config['minHeight'])
+			. '",opa:"' . mediabox_quote_js_param($config['opacite'])
+			. '",str_ssStart:"' . mediabox_quote_js_param(unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStart'))))
+			. '",str_ssStop:"' . mediabox_quote_js_param(unicode2charset(html2unicode(_T('mediabox:boxstr_slideshowStop'))))
+			. '",str_cur:"' . mediabox_quote_js_param(_T('mediabox:boxstr_current', array('current' => '{current}', 'total' => '{total}')))
+			. '",str_prev:"' . mediabox_quote_js_param(_T('mediabox:boxstr_previous'))
+			. '",str_next:"' . mediabox_quote_js_param(_T('mediabox:boxstr_next'))
+			. '",str_close:"' . mediabox_quote_js_param(_T('mediabox:boxstr_close'))
+			. '",splash_url:"' . mediabox_quote_js_param($config['splash_url'])
 			. '"};' . "\n";
 		// Si c'est une image, on la chargera avec une redimentionnement automatique
 		// Sinon, chargement dans une iframe
@@ -91,8 +91,8 @@ var box_settings = {tt_img:' . ($config['traiter_toutes_images'] == 'oui' ? 'tru
 		if (match($extension, 'gif|png|jpg|jpeg')) {
 			$configmediabox .= 'var box_settings_iframe = false;' . "\n";
 		} else {
-			$configmediabox .= 'var box_settings_splash_width = "' . $config['splash_width'] . '";
-var box_settings_splash_height = "' . $config['splash_height'] . '";' . "\n";
+			$configmediabox .= 'var box_settings_splash_width = "' . mediabox_quote_js_param($config['splash_width']) . '";
+var box_settings_splash_height = "' . mediabox_quote_js_param($config['splash_height']) . '";' . "\n";
 			$configmediabox .= 'var box_settings_iframe = true;' . "\n";
 		}
 		$flux = $configmediabox . '/* ]]> */</script>' . "\n" . $flux;
@@ -101,6 +101,9 @@ var box_settings_splash_height = "' . $config['splash_height'] . '";' . "\n";
 	return $flux;
 }
 
+function mediabox_quote_js_param($valeur) {
+	return str_replace(["'", "<"], ["\\'", "&lt;"], $valeur);
+}
 
 function mediabox_timestamp($fichier) {
 	if ($m = filemtime($fichier)) {
