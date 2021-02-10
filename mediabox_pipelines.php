@@ -194,7 +194,7 @@ function mediabox_insert_head_css($flux) {
 		$js_config = [
 			'auto_detect' => true,
 			'ns' => $config['namespace'],
-			'tt_img' => ($config['traiter_toutes_images'] == 'oui' ? 'true' : 'false'),
+			'tt_img' => ($config['traiter_toutes_images'] == 'oui' ? true : false),
 			'sel_g' => $config['selecteur_galerie'],
 			'sel_c' => $config['selecteur_commun'],
 			'str_ssStart' => _T('mediabox:boxstr_slideshowStart'),
