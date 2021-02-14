@@ -13,7 +13,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_reinitialiser' => 'إعادة تأصيل',
 	'boxstr_close' => 'إغلاق',
 	'boxstr_current' => '@current@ / @total@',
+	'boxstr_dialog_title_default' => 'مربع حوار',
+	'boxstr_dialog_title_medias' => 'عرض وسيط',
+	'boxstr_loading' => 'تحميل…',
 	'boxstr_next' => 'التالي',
+	'boxstr_press_escape_to_close' => 'الضغط على مفتاح الخو،ج (esc) للإغلاق',
 	'boxstr_previous' => 'السابق',
 	'boxstr_slideshowStart' => 'عرض متواصل',
 	'boxstr_slideshowStop' => 'إيقاف',
@@ -24,6 +28,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_selecteur_galerie' => 'حدد هدف العناصر المطلوب تجميعها في صالة عرض (عبارة CSS، او مجال jQuery)',
 	'explication_splash_url' => 'أدخل هنا عنوان الوسيط الذي ترغب عرضه آلياً في مربع لدى أول زيارة للموقع العمومي.',
 	'explication_traiter_toutes_images' => 'إدخال صندوق على كل الصور؟',
+
+	// I
+	'info_box_lity_nom_skin__simple_dark' => 'الاسود الافتراضي',
+	'info_box_lity_nom_skin__simple_white' => 'الفاتح الافتراضي',
+	'info_box_lity_nom_skin_fancybox' => 'طريقة Fancybox',
+	'info_box_lity_nom_skin_thickbox' => 'طريقة Thickbox',
 
 	// L
 	'label_active' => 'تفعيل صندوق الفرجة في الموقع العمومي',

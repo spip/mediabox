@@ -5,7 +5,7 @@
 	url="https://trad.spip.net"
 	source="https://git.spip.net/spip/mediabox.git"
 	reference="fr">
-	<langue code="ar" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ar" total="44" traduits="36" relire="0" modifs="0" nouveaux="8" pourcent="81.82">
+	<langue code="ar" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ar" total="44" traduits="44" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 	</langue>
@@ -14,7 +14,8 @@
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 		<traducteur nom="RealET" lien="https://trad.spip.net/auteur/realet" />
 	</langue>
-	<langue code="en" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=en" total="44" traduits="36" relire="0" modifs="0" nouveaux="8" pourcent="81.82">
+	<langue code="en" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=en" total="44" traduits="44" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
 		<traducteur nom="kent1" lien="https://trad.spip.net/auteur/kent1" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 		<traducteur nom="Paolo" lien="https://trad.spip.net/auteur/paolo" />
