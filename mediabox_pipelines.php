@@ -102,7 +102,7 @@ var box_settings_splash_height = "' . mediabox_quote_js_param($config['splash_he
 }
 
 function mediabox_quote_js_param($valeur) {
-	return str_replace(["'", "<"], ["\\'", "&lt;"], $valeur);
+	return str_replace(array("'", "<"), array("\\'", "&lt;"), $valeur);
 }
 
 function mediabox_timestamp($fichier) {
