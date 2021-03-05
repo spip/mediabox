@@ -176,14 +176,20 @@
 		groupElements: function(groupName) {
 			return $('.lity-enabled[data-'+litySpip.nameSpace+'-group'+'='+groupName+']');
 		},
-		eventSet:false,
-		setEvents: function() {
-			if (!litySpip.eventSet) {
-				$(document).on('click', '.lity-enabled', litySpip.onClickOpener);
-				$(document).on('click', '.lity-previous,.lity-next', litySpip.onPrevNext);
-				$(document).on('click', '.lity-start-stop', litySpip.onSlideShowToggle);
-				$(window).on('keyup', litySpip.onKeyUp);
-				litySpip.eventSet = true;
+		eventSet:{},
+		setEvents: function(what) {
+			if (!litySpip.eventSet[what]) {
+				switch (what) {
+					case 'opener':
+						$(document).on('click', '.lity-enabled', litySpip.onClickOpener);
+						break;
+					case 'listener':
+						$(document).on('click', '.lity-previous,.lity-next', litySpip.onPrevNext);
+						$(document).on('click', '.lity-start-stop', litySpip.onSlideShowToggle);
+						$(window).on('keyup', litySpip.onKeyUp);
+						break;
+				}
+				litySpip.eventSet[what] = true;
 			}
 		},
 		onKeyUp: function(event) {
@@ -271,6 +277,7 @@
 			litySpip.lityOpener(target, cfg, opener.get(0));
 		},
 		lityOpener: function(target, cfg, opener) {
+			litySpip.setEvents('listener');
 			if (!litySpip.isTransition) {
 				// routage des callbacks
 				litySpip.callbacks.onOpen.push(cfg.onOpen || false);
@@ -368,7 +375,7 @@ console.log("Call lity "+cfg.handler+' '+target);
 					});
 				}
 
-				litySpip.setEvents();
+				litySpip.setEvents('opener');
 
 				this
 					.data('mediabox-options', cfg)
