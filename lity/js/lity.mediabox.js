@@ -95,7 +95,7 @@
 		ajaxHandler: function (target, instance){
 			var cache = instance.opener().data('lity-ajax-cache') || {};
 			if (cache[target]) {
-				console.log("CACHE for "+target);
+				//console.log("CACHE for "+target);
 				return $('<div class="lity-content-inner"></div>').append(cache[target]);
 			}
 
@@ -147,7 +147,7 @@
 			var img;
 			var cache = opener.data('lity-image-cache') || {};
 			if (cache[target]) {
-				console.log("CACHE for "+target);
+				//console.log("CACHE for "+target);
 				img = cache[target];
 				img = litySpip.imageBuildContent(img, desc, longdesc);
 				return img;
@@ -194,7 +194,7 @@
 		},
 		onKeyUp: function(event) {
 			var c = {37: "previous", 39: "next"}[event.keyCode];
-			console.log(['keyup', event.keyCode, c]);
+			//console.log(['keyup', event.keyCode, c]);
 			if (c) {
 				var current = lity.current();
 				if (current) {
@@ -333,13 +333,13 @@
 				}
 
 				cfg = $.extend({template: litySpip.template(cfg, type, groupName, groupPosition, groupLength)}, cfg);
-console.log("Call lity "+cfg.handler+' '+target);
+				//console.log("Call lity "+cfg.handler+' '+target);
 				lity(target, cfg, opener);
 			}
 
 		},
 		lityPreLoader: function (target, cfg, opener) {
-			console.log("lityPreLoader " + target);
+			//console.log("lityPreLoader " + target);
 			if (cfg.handler && cfg.handlers[cfg.handler]) {
 				if (cfg.handler === 'image' || cfg.handler === 'ajax') {
 					var instance = {
@@ -453,7 +453,7 @@ console.log("Call lity "+cfg.handler+' '+target);
 				jQuery('.lity-close', instance.element()).focus();
 			}
 			if (!litySpip.isTransition){
-				console.log('Lity opened');
+				//console.log('Lity opened');
 				//instance.element.is('.lity-no-transition-on-open').removeClass('lity-no-transition-on-open');
 				// placer le focus sur le bouton close
 				var callback = litySpip.callbacks.onOpen.pop();
@@ -471,7 +471,7 @@ console.log("Call lity "+cfg.handler+' '+target);
 				litySpip.slideshowStart(instance.element());
 			}
 			if (!litySpip.isTransition){
-				console.log('Lity ready');
+				//console.log('Lity ready');
 				var callback = litySpip.callbacks.onShow.pop();
 				if (callback){
 					callback(event, instance);
@@ -496,7 +496,7 @@ console.log("Call lity "+cfg.handler+' '+target);
 		});
 		$(document).on('lity:close', function(event, instance) {
 			if (!litySpip.isTransition){
-				console.log('Lity close');
+				//console.log('Lity close');
 				// depiler si la box a ete fermee avant d'etre ready
 				if (litySpip.callbacks.onShow.length > litySpip.callbacks.onOpen.length) {
 					litySpip.callbacks.onShow.pop();
@@ -509,7 +509,7 @@ console.log("Call lity "+cfg.handler+' '+target);
 		});
 		$(document).on('lity:remove', function(event, instance) {
 			if (!litySpip.isTransition){
-				console.log('Lity remove');
+				//console.log('Lity remove');
 				var focused = litySpip.focusedItem.pop();
 				if (focused){
 					try {
@@ -528,7 +528,7 @@ console.log("Call lity "+cfg.handler+' '+target);
 			}
 		});
 		$(document).on('lity:resize', function(event, instance) {
-			console.log('Lity resize');
+			//console.log('Lity resize');
 			litySpip.adjustHeight(instance);
 		});
 
