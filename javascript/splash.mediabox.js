@@ -1,7 +1,7 @@
 jQuery(function($){
 	// poser le cookie au callback de la box chargee
 	var set_cookie = function() {
-		Cookies.set("modalsplash", mediabox_settings.splash_url, { expires: 7 });
+		Cookies.set("modalsplash", mediabox_settings.splash_url, { expires: mediabox_settings.splash_days || 7 });
 	}
 
 	$.modalboxsplash = function(href, options) {

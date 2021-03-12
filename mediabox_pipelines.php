@@ -224,6 +224,9 @@ function mediabox_insert_head_css($flux) {
 				$js_config['splash_width'] = $config['splash_width'];
 				$js_config['splash_height'] = $config['splash_height'];
 			}
+			if (isset($config['splash_days'])) {
+				$js_config['splash_days'] = $config['splash_days'];
+			}
 		}
 		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
 var mediabox_settings=' . json_encode(mediabox_echappe_js_config($js_config)) . ';' . "\n";
