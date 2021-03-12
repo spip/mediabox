@@ -10,8 +10,9 @@ jQuery(function($){
 				type: 'iframe',
 				width: mediabox_settings.splash_width || '',
 				height: mediabox_settings.splash_height || ''
-			});
+			}, options);
 		}
+		options = $.extend({className: 'splashbox'}, options);
 		$.modalbox(href,$.extend({onShow:set_cookie},options));
 	};
 	// ouvrir la splash page si pas deja vue
