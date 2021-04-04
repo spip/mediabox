@@ -89,7 +89,7 @@ var box_settings = {tt_img:' . ($config['traiter_toutes_images'] == 'oui' ? 'tru
 		// Si c'est une image, on la chargera avec une redimentionnement automatique
 		// Sinon, chargement dans une iframe
 		$extension = pathinfo($config['splash_url'], PATHINFO_EXTENSION);
-		if (match($extension, 'gif|png|jpg|jpeg')) {
+		if (in_array($extension, array('gif', 'png', 'jpg', 'jpeg'))) {
 			$configmediabox .= 'var box_settings_iframe = false;' . "\n";
 		} else {
 			$configmediabox .= 'var box_settings_splash_width = "' . mediabox_quote_js_param($config['splash_width']) . '";
