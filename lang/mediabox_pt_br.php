@@ -13,7 +13,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_reinitialiser' => 'Reiniciar',
 	'boxstr_close' => 'Fechar',
 	'boxstr_current' => '@current@/@total@',
+	'boxstr_dialog_title_default' => 'Caixa de diálogo',
+	'boxstr_dialog_title_medias' => 'Exibição de uma mídia',
+	'boxstr_loading' => 'Carregando...',
 	'boxstr_next' => 'Próxima',
+	'boxstr_press_escape_to_close' => 'Pressione ’Esc’ para fechar',
 	'boxstr_previous' => 'Anterior',
 	'boxstr_slideshowStart' => 'Slideshow',
 	'boxstr_slideshowStop' => 'Parar',
@@ -24,6 +28,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_selecteur_galerie' => 'Indique os elementos-alvo a serem agrupados na galeria. (Expressão CSS ou âmbito jQuery)',
 	'explication_splash_url' => 'Indique o URL do arquivo a ser exibido em um box no primeiro acesso no site público.',
 	'explication_traiter_toutes_images' => 'Inserir um box em todas as imagens?',
+
+	// I
+	'info_box_lity_nom_skin__simple_dark' => 'Modo escuro',
+	'info_box_lity_nom_skin__simple_white' => 'Modo claro',
+	'info_box_lity_nom_skin_fancybox' => 'Tipo Fancybox',
+	'info_box_lity_nom_skin_thickbox' => 'Tipo Thickbox',
 
 	// L
 	'label_active' => 'Ativar o box multimídia no site público',
