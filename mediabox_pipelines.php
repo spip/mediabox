@@ -229,7 +229,7 @@ function mediabox_insert_head_css($flux) {
 			}
 		}
 		$configmediabox = '<script type="text/javascript">/* <![CDATA[ */
-var mediabox_settings=' . json_encode(mediabox_echappe_js_config($js_config)) . ';' . "\n";
+var mediabox_settings=' . json_encode(mediabox_echappe_js_config($js_config), JSON_INVALID_UTF8_IGNORE) . ';' . "\n";
 		$flux = $configmediabox . '/* ]]> */</script>' . "\n" . $flux;
 	}
 
