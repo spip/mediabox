@@ -48,7 +48,7 @@
 		<traducteur nom="phante" lien="https://trad.spip.net/auteur/phante" />
 		<traducteur nom="RealET" lien="https://trad.spip.net/auteur/realet" />
 	</langue>
-	<langue code="ja" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ja" total="44" traduits="36" relire="0" modifs="0" nouveaux="8" pourcent="81.82">
+	<langue code="ja" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ja" total="44" traduits="44" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="origenius" lien="https://trad.spip.net/auteur/origenius" />
 	</langue>
 	<langue code="lb" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=lb" total="44" traduits="36" relire="0" modifs="0" nouveaux="8" pourcent="81.82">

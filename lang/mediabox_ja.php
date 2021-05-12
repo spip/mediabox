@@ -13,7 +13,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_reinitialiser' => 'リセットする',
 	'boxstr_close' => '閉じる',
 	'boxstr_current' => '@current@/@total@',
+	'boxstr_dialog_title_default' => 'ダイアログボックス',
+	'boxstr_dialog_title_medias' => 'メディア表示',
+	'boxstr_loading' => '読み込み中',
 	'boxstr_next' => '次',
+	'boxstr_press_escape_to_close' => '閉じるのに「esc」を押す。',
 	'boxstr_previous' => '前',
 	'boxstr_slideshowStart' => 'スライドショー',
 	'boxstr_slideshowStop' => '停止',
@@ -24,6 +28,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_selecteur_galerie' => 'ギャラリーにグループ化するアイテムのターゲットを指定してください。(CSSの表現または jQueryのスコープ)',
 	'explication_splash_url' => '公開サイトに最初にアクセスした時に、ボックスに自動的に表示されるメディアのURLを指定してください。',
 	'explication_traiter_toutes_images' => 'すべての画像にボックスを挿入しますか？',
+
+	// I
+	'info_box_lity_nom_skin__simple_dark' => 'ダーク（デフォルト）',
+	'info_box_lity_nom_skin__simple_white' => 'ライト（デフォルト）',
+	'info_box_lity_nom_skin_fancybox' => 'Fancybox風',
+	'info_box_lity_nom_skin_thickbox' => 'Thickbox風',
 
 	// L
 	'label_active' => '公開サイトのメディアボックスを有効にする',
