@@ -151,8 +151,8 @@
 	transform: none !important;
 }
 
-.lity-transition-on-open-slide-from-right. .lity-content,
-.lity-transition-on-open-slide-from-left. .lity-content {
+.lity-transition-on-open-slide-from-right .lity-content,
+.lity-transition-on-open-slide-from-left .lity-content {
 	-webkit-transform: scale(1) translateX(0);
 	-ms-transform: scale(1) translateX(0);
 	-o-transform: scale(1) translateX(0);
