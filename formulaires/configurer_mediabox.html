@@ -10,7 +10,7 @@
 			<div class="choix">
 				<input type="checkbox" name="active" class="checkbox" id="active_on" value="oui" [(#ENV{active,oui}|=={oui}|oui) checked="checked"]
 					onclick="jQuery(this).blur();"
-					onchange="var t=jQuery(this).parents('li').eq(0).siblings('.fieldset');if (jQuery(this).prop('checked')) t.show('fast'); else t.hide('fast');"
+					onchange="var t=jQuery(this).parents('.editer').eq(0).siblings('.fieldset');if (jQuery(this).prop('checked')) t.show('fast'); else t.hide('fast');"
 				/>
 				<label for='active_on'><strong><:mediabox:label_active:></strong></label>
 			</div>
