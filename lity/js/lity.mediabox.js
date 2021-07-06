@@ -50,12 +50,14 @@
 			    group_info_text = '',
 			    group_info = '';
 			if (groupName && groupLength) {
-				var newPosition = (groupPosition <= 0 ? groupLength - 1 : groupPosition - 1);
-				button_next_prev += '<button class="lity-previous" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'" aria-label="' + litySpip.strings.previous + '" data-lity-previous'
-					+'><b title="' + litySpip.strings.previous +'">❮</b></button>';
-				newPosition = (groupPosition >= groupLength - 1 ? 0 : groupPosition + 1);
-				button_next_prev += '<button class="lity-next" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'"  aria-label="' + litySpip.strings.next + '" data-lity-next'
-					+'><b title="' + litySpip.strings.next +'">❯</b></button>';
+				if (groupLength > 1) {
+					var newPosition = (groupPosition <= 0 ? groupLength - 1 : groupPosition - 1);
+					button_next_prev += '<button class="lity-previous" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'" aria-label="' + litySpip.strings.previous + '" data-lity-previous'
+						+'><b title="' + litySpip.strings.previous +'">❮</b></button>';
+					newPosition = (groupPosition >= groupLength - 1 ? 0 : groupPosition + 1);
+					button_next_prev += '<button class="lity-next" type="button" data-group-name="'+groupName+'" data-group-position="'+newPosition+'"  aria-label="' + litySpip.strings.next + '" data-lity-next'
+						+'><b title="' + litySpip.strings.next +'">❯</b></button>';
+				}
 				group_info_text = " " + litySpip.strings.current;
 				group_info_text = group_info_text.replace('{current}',(groupPosition+1)+'');
 				group_info_text = group_info_text.replace('{total}',groupLength+'');
@@ -321,15 +323,16 @@
 			}
 			else {
 				// est-ce une galerie ?
+				var groupPosition = 0;
+				var groupLength = 0;
 				if (opener) {
 					var groupName = cfg.rel || (opener ? $(opener).data(litySpip.nameSpace+'-group') : '');
-					var groupPosition = 0;
-					var groupLength = 0;
 					if (groupName) {
 						var elements = litySpip.groupElements(groupName);
 						groupPosition = elements.index($(opener));
 						groupLength = elements.length;
 					}
+					//console.log({type:type, groupName: groupName, groupPosition: groupPosition, groupLength: groupLength});
 				}
 
 				cfg = $.extend({template: litySpip.template(cfg, type, groupName, groupPosition, groupLength)}, cfg);
