@@ -96,9 +96,16 @@
 		},
 		ajaxHandler: function (target, instance){
 			var cache = instance.opener().data('lity-ajax-cache') || {};
+			if ( target.indexOf(' #') > -1 ){
+				var fragment = target.split(' #')[1]
+				target = target.split(' #')[0];
+			}   
+            
 			if (cache[target]) {
+				content = cache[target];
 				//console.log("CACHE for "+target);
-				return $('<div class="lity-content-inner"></div>').append(cache[target]);
+				if ( fragment ) content = $(content).find('#'+fragment);
+				return $('<div class="lity-content-inner"></div>').append(content);
 			}
 
 			var _deferred = $.Deferred;
@@ -106,10 +113,12 @@
 			var failed = function (){
 				deferred.reject($('<span class="error lity-error"></span>').append('Failed loading ajax'));
 			};
+           
 			$.get(target)
 				.done(function (content){
 					cache[target] = content;
 					instance.opener().data('lity-ajax-cache', cache);
+					if ( fragment ) content = $(content).find('#'+fragment);
 					deferred.resolve($('<div class="lity-content-inner"></div>').append(content));
 				})
 				.fail(failed);
