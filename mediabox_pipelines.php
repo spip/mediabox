@@ -35,13 +35,14 @@ function mediabox_lity_config($config) {
 			'minHeight' => '',
 			'slideshow_speed' => '2500',
 			'opacite' => '0.9',
-		]
-		, $config['lity']
+		],
+		$config['lity']
 	);
 
-	if (!empty($config['lity']['skin'])
-		and $box_skin = $config['lity']['skin']) {
-
+	if (
+		!empty($config['lity']['skin'])
+		and $box_skin = $config['lity']['skin']
+	) {
 		if ($box_skin === 'none') {
 			$config['_libs']['lity']['css'] = [];
 		}
@@ -61,7 +62,7 @@ function mediabox_lity_config($config) {
 function mediabox_config($public = null) {
 	include_spip('inc/filtres');
 	include_spip('inc/config');
-	$config = lire_config('mediabox', array());
+	$config = lire_config('mediabox', []);
 
 	// conversion a la volee de l'ancienne config toute melangee
 	if (empty($config['box_type']) and empty($config['colorbox']) and !empty($config['transition'])) {
@@ -88,7 +89,7 @@ function mediabox_config($public = null) {
 		ecrire_config('mediabox', $config);
 	}
 
-	$config = array_merge(array(
+	$config = array_merge([
 		'active' => 'oui',
 		'namespace' => 'box',
 		'traiter_toutes_images' => 'oui',
@@ -98,19 +99,19 @@ function mediabox_config($public = null) {
 		'splash_width' => '600px',
 		'splash_height' => '90%',
 		'box_type' => 'lity',
-	), $config);
+	], $config);
 
 	$config['_public'] = (is_null($public) ? !test_espace_prive() : !!$public);
 	$config['_libs'] = [];
 
 	if ($config['_public'] === false) {
-		$config = array_merge($config, array(
+		$config = array_merge($config, [
 			'active' => 'oui',
 			'selecteur_galerie' => '#portfolios a[type^=\'image/\']',
 			'selecteur_commun' => '.mediabox, .iconifier a[href$=jpg],.iconifier a[href$=png],.iconifier a[href$=gif]',
 			'splash_url' => '',
 			'box_type' => 'lity',
-		));
+		]);
 		$config['lity'] = array_merge(
 			!empty($config['lity']) ?  $config['lity'] : [],
 			[
@@ -143,16 +144,18 @@ function mediabox_config($public = null) {
 		if (empty($config['box_type']) or empty($config['_libs'][$config['box_type']])) {
 			$config['box_type'] = 'lity';
 			if (empty($config['lity'])) {
-				$config['lity'] = array();
+				$config['lity'] = [];
 			}
 		}
 		$box_type = $config['box_type'];
 
-		if (  !empty($config[$box_type]['skin'])
+		if (
+			!empty($config[$box_type]['skin'])
 			and $box_skin = $config[$box_type]['skin']
 			and include_spip("$box_type/$box_skin/mediabox_config_theme")
-		  and function_exists($f = "mediabox_config_{$box_type}_$box_skin")
-		  and $config_theme = $f($config)) {
+			and function_exists($f = "mediabox_config_{$box_type}_$box_skin")
+			and $config_theme = $f($config)
+		) {
 			$config = $config_theme;
 		}
 	}
@@ -168,15 +171,16 @@ function mediabox_config($public = null) {
 function mediabox_insert_head_css($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
-
 		$css_files = [];
 
-		if ($box_type = $config['box_type']
-		  and !empty($config['_libs'][$box_type]['css'])) {
+		if (
+			$box_type = $config['box_type']
+			and !empty($config['_libs'][$box_type]['css'])
+		) {
 			$css_files = array_merge($css_files, $config['_libs'][$box_type]['css']);
 		}
 
-		foreach($css_files as $file) {
+		foreach ($css_files as $file) {
 			if ($f = find_in_path($file)) {
 				if (substr($file, -5) === '.html') {
 					$f = produire_fond_statique(substr($file, 0, -5), $config);
@@ -199,7 +203,7 @@ function mediabox_insert_head_css($flux) {
 			'sel_c' => $config['selecteur_commun'],
 			'str_ssStart' => _T('mediabox:boxstr_slideshowStart'),
 			'str_ssStop' => _T('mediabox:boxstr_slideshowStop'),
-			'str_cur' => _T('mediabox:boxstr_current', array('current' => '{current}', 'total' => '{total}')),
+			'str_cur' => _T('mediabox:boxstr_current', ['current' => '{current}', 'total' => '{total}']),
 			'str_prev' => _T('mediabox:boxstr_previous'),
 			'str_next' => _T('mediabox:boxstr_next'),
 			'str_close' => _T('mediabox:boxstr_close'),
@@ -269,10 +273,11 @@ function mediabox_echappe_js_config($config) {
 function mediabox_insert_head($flux) {
 	$config = mediabox_config();
 	if ($config['active'] == 'oui') {
-
 		$js_files = [];
-		if ($box_type = $config['box_type']
-		and !empty($config['_libs'][$box_type]['js'])) {
+		if (
+			$box_type = $config['box_type']
+			and !empty($config['_libs'][$box_type]['js'])
+		) {
 			$js_files = array_merge($js_files, $config['_libs'][$box_type]['js']);
 		}
 
@@ -282,7 +287,7 @@ function mediabox_insert_head($flux) {
 		}
 		foreach ($js_files as $file) {
 			if ($f = find_in_path($file)) {
-				$flux .= "\n". '<script src="' . timestamp($f) . '" type="text/javascript"></script>';
+				$flux .= "\n" . '<script src="' . timestamp($f) . '" type="text/javascript"></script>';
 			}
 		}
 	}

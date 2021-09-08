@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Plugin xxx
  * (c) 2009 xxx
@@ -47,5 +48,5 @@ function formulaires_configurer_mediabox_traiter_dist() {
 		ecrire_meta('mediabox', serialize($config));
 	}
 
-	return array('message_ok' => _T('config_info_enregistree'), 'editable' => true);
+	return ['message_ok' => _T('config_info_enregistree'), 'editable' => true];
 }
