@@ -12,7 +12,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  * @return array
  */
 function mediabox_lister_skin_files($dir, $fichier_cherche) {
-	$liste_fichiers = array();
+	$liste_fichiers = [];
 	$dir = trim($dir, '/');
 
 	$chemin = creer_chemin();
@@ -46,7 +46,7 @@ function mediabox_lister_skin_files($dir, $fichier_cherche) {
  * @return array[]
  */
 function mediabox_lister_skins($box_name, $sous_repertoire = 'skins') {
-	$skins = array('none' => array('nom' => _T('mediabox:label_aucun_style')));
+	$skins = ['none' => ['nom' => _T('mediabox:label_aucun_style')]];
 
 
 	$dir = $box_name . '/';
@@ -56,15 +56,14 @@ function mediabox_lister_skins($box_name, $sous_repertoire = 'skins') {
 	$liste_fichiers = mediabox_lister_skin_files($dir, $box_name . '.css');
 
 	foreach ($liste_fichiers as $short => $fullpath) {
-
-		$nom = _T($s = 'mediabox:info_box_' . str_replace('-', '_', $box_name . '_nom_skin_' . $short), array(), array('force' => false));
+		$nom = _T($s = 'mediabox:info_box_' . str_replace('-', '_', $box_name . '_nom_skin_' . $short), [], ['force' => false]);
 		if (!$nom) {
 			$nom = $short;
 		}
 
-		$skins[$short] = array(
+		$skins[$short] = [
 			'nom' => $nom
-		);
+		];
 
 		if (file_exists($f = dirname($fullpath) . '/vignette.jpg')) {
 			$skins[$short]['img'] = $f;
@@ -87,7 +86,7 @@ function mediabox_presenter_selection_skins($skins, $selected, $name = 'skin') {
 		return $out;
 	}
 
-	$rel = "habillage_" . substr(md5($name), 0, 4);
+	$rel = 'habillage_' . substr(md5($name), 0, 4);
 
 	foreach ($skins as $k => $skin) {
 		$id = preg_replace(',[^a-z0-9_],i', '_', "${name}_{$k}");
@@ -96,7 +95,7 @@ function mediabox_presenter_selection_skins($skins, $selected, $name = 'skin') {
 		$label = $skin['nom'];
 		if (!empty($skin['img'])) {
 			$label =
-				'<a href="' . $skin['img'] . '" class="mediabox" rel="'.$rel.'" title="'.attribut_html($label).'">'
+				'<a href="' . $skin['img'] . '" class="mediabox" rel="' . $rel . '" title="' . attribut_html($label) . '">'
 				. $balise_img($skin['img'], $label)
 				. '</a>';
 		}
@@ -111,4 +110,3 @@ function mediabox_presenter_selection_skins($skins, $selected, $name = 'skin') {
 
 	return $out;
 }
-
