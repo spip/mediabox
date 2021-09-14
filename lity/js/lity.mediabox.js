@@ -134,16 +134,15 @@
 			var longdesc = '';
 			var opener = instance.opener();
 			if (opener){
-				desc = opener.attr('title') || $('img[alt]', opener).eq(0).attr('alt');
+				desc = opener.attr('title') || $('img[alt]', opener).eq(0).attr('alt') || '';
 				if (opener.attr('aria-describedby')){
 					longdesc = $('#'+opener.attr('aria-describedby')).html();
-					if (by && !desc){
-						desc = by; // hum ? achtung au html
-					}
+					longdesc = longdesc.trim();
 				}
 				if (!desc){
-					desc = desc || instance.opener().attr('aria-label');
+					desc = desc || instance.opener().attr('aria-label') || '';
 				}
+				desc = desc.trim();
 			}
 
 			var img;
