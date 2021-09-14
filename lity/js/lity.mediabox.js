@@ -135,8 +135,9 @@
 			var opener = instance.opener();
 			if (opener){
 				desc = opener.attr('title') || $('img[alt]', opener).eq(0).attr('alt') || '';
-				if (opener.attr('aria-describedby')){
-					longdesc = $('#'+opener.attr('aria-describedby')).html();
+				var by = opener.attr('aria-describedby') || $('img[aria-describedby]', opener).eq(0).attr('aria-describedby') || '';
+				if (by){
+					longdesc = $('#'+by).html();
 					longdesc = longdesc.trim();
 				}
 				if (!desc){
