@@ -163,7 +163,9 @@
 			img
 				.on('load', function (){
 					if (this.naturalWidth===0){
-						return failed();
+						//console.log("image "+target+" naturalWidth=0");
+						// forcons une largeur arbitraire pour rendre l'image visible...
+						img.attr("style", "width:25vw;");
 					}
 					cache[target] = img;
 					opener.data('lity-image-cache', cache);
