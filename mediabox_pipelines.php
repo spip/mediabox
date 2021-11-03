@@ -152,7 +152,7 @@ function mediabox_config($public = null) {
 		if (
 			!empty($config[$box_type]['skin'])
 			and $box_skin = $config[$box_type]['skin']
-			and include_spip("$box_type/$box_skin/mediabox_config_theme")
+			and include_spip("$box_type/skins/$box_skin/mediabox_config_theme")
 			and function_exists($f = "mediabox_config_{$box_type}_$box_skin")
 			and $config_theme = $f($config)
 		) {
