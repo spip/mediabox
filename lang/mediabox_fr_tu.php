@@ -13,7 +13,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_reinitialiser' => 'Réinitialiser',
 	'boxstr_close' => 'Fermer',
 	'boxstr_current' => '@current@/@total@',
+	'boxstr_dialog_title_default' => 'Boite de dialogue',
+	'boxstr_dialog_title_medias' => 'Affichage d’un media',
+	'boxstr_loading' => 'Chargement…',
 	'boxstr_next' => 'Suivant',
+	'boxstr_press_escape_to_close' => 'Taper ’Echap’ pour fermer',
 	'boxstr_previous' => 'Précédent',
 	'boxstr_slideshowStart' => 'Diaporama',
 	'boxstr_slideshowStop' => 'Arrêter',
@@ -24,6 +28,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_selecteur_galerie' => 'Indique la cible des éléments à regrouper en galerie. (Expression CSS ou étendue jQuery)',
 	'explication_splash_url' => 'Indique l’url du média à afficher automatiquement dans une boîte lors de la première visite sur le site public.',
 	'explication_traiter_toutes_images' => 'Insérer une boîte sur toutes les images ?',
+
+	// I
+	'info_box_lity_nom_skin__simple_dark' => 'Défaut Noire',
+	'info_box_lity_nom_skin__simple_white' => 'Défaut Claire',
+	'info_box_lity_nom_skin_fancybox' => 'Façon Fancybox',
+	'info_box_lity_nom_skin_thickbox' => 'Façon Thickbox',
 
 	// L
 	'label_active' => 'Activer la Boîte Multimédia dans le site public',
