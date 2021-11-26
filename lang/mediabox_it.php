@@ -13,7 +13,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_reinitialiser' => 'Reinizializza',
 	'boxstr_close' => 'Chiudi',
 	'boxstr_current' => '@current@/@total@',
+	'boxstr_dialog_title_default' => 'Finestra di dialogo',
+	'boxstr_dialog_title_medias' => 'Visualizzazione di un media',
+	'boxstr_loading' => 'Caricamento in corso…',
 	'boxstr_next' => 'Prossimo',
+	'boxstr_press_escape_to_close' => 'Premere "ESC" per interrompere',
 	'boxstr_previous' => 'Precedente',
 	'boxstr_slideshowStart' => 'Presentazione',
 	'boxstr_slideshowStop' => 'Stop',
@@ -24,6 +28,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_selecteur_galerie' => 'Specificare l’elemento target da da raggruppare insieme nella galleria. (jQuery o CSS expression)',
 	'explication_splash_url' => 'Inserisci l’URL dei media da visualizzare automaticamente in un box alla prima visita del sito pubblico.',
 	'explication_traiter_toutes_images' => 'Inserire un box attorno a tutte le immagini?',
+
+	// I
+	'info_box_lity_nom_skin__simple_dark' => 'Default scuro',
+	'info_box_lity_nom_skin__simple_white' => 'Default chiaro',
+	'info_box_lity_nom_skin_fancybox' => 'Modalità "Fancybox"',
+	'info_box_lity_nom_skin_thickbox' => 'Modalità "Thickbox"',
 
 	// L
 	'label_active' => 'Attivare il mediabox nel sito pubblico',
