@@ -34,6 +34,31 @@
 		$.mediabox(options);
 	};
 
+	$.parseMediaboxOptions = function(nameSpace, opener) {
+		var options = {};
+
+		var data2options = {"type":"type","min-width":"minWidth","min-height":"minHeight","max-width":"maxWidth","max-height":"maxHeight"};
+		var v;
+		for (var o in data2options) {
+			v = ($(opener).data(nameSpace+'-' + o) || '');
+			if (v) {
+				options[data2options[o]] = v;
+			}
+		}
+		v = ($(opener).data(nameSpace+'-' + 'width') || '');
+		if (v) {
+			options["minWidth"] = v;
+			options["maxWidth"] = v;
+		}
+		v = ($(opener).data(nameSpace+'-' + 'height') || '');
+		if (v) {
+			options["minHeight"] = v;
+			options["maxHeight"] = v;
+		}
+
+		return options;
+	}
+
 })(jQuery);
 /*
  *
@@ -166,7 +191,7 @@ var mediaboxInit = function() {
 
 	$('[data-href-popin]', this)
 		.not('.hasbox')
-		.click(function(){if ($.modalbox) $.modalbox($(this).attr('data-href-popin'), {type:$(this).attr('data-' + b.ns + '-type')});return false;})
+		.click(function(){if ($.modalbox) $.modalbox($(this).attr('data-href-popin'), $.parseMediaboxOptions(b.ns, this));return false;})
 		.addClass('hasbox');
 
 };

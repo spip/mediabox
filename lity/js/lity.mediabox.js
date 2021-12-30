@@ -45,6 +45,30 @@
 				className += ' lity-slideshow';
 			}
 
+			var styles = [];
+			var styles_container = '';
+			var styles_content = '';
+			if (cfg.maxWidth) {
+				styles.push("max-width:" + cfg.maxWidth.replace("%","vw"));
+			}
+			if (cfg.maxHeight) {
+				styles.push("max-height:" + cfg.maxHeight.replace("%","vh"));
+			}
+			if (styles.length) {
+				styles_container = ' style="' + styles.join(';') + '"';
+			}
+
+			styles = [];
+			if (cfg.minWidth) {
+				styles.push("min-width:" + cfg.minWidth.replace("%","vw"));
+			}
+			if (cfg.minHeight) {
+				styles.push("min-height:" + cfg.minHeight.replace("%","vh"));
+			}
+			if (styles.length) {
+				styles_content = ' style="' + styles.join(';') + '"';
+			}
+
 			var button_next_prev = '',
 				  button_start_stop = '',
 			    group_info_text = '',
@@ -82,9 +106,9 @@
 				  '<dialog class="box_mediabox box_modalbox lity' + className + '" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
 				+   '<div class="lity-wrap" data-lity-close role="document">'
 				+     '<div class="lity-loader" aria-hidden="true" aria-label="' + litySpip.strings.loading + '"><span class="box-loading"></span></div>'
-				+     '<div class="lity-container">'
+				+     '<div class="lity-container"' + styles_container + '>'
 				+       '<button class="lity-close" type="button" aria-label="' + close_button_aria_label + '" data-lity-close><b data-lity-close title="' + litySpip.strings.close +'">&times;</b></button>'
-				+       '<div class="lity-content"></div>'
+				+       '<div class="lity-content"' + styles_content + '></div>'
 				+       group_info
 				+     '</div>'
 				+   '</div>'
@@ -318,6 +342,10 @@
 			cfg = $.extend({handlers: handlers}, cfg);
 			if (type && ['image', 'inline', 'ajax', 'iframe'].indexOf(type)!== -1){
 				cfg.handler = type;
+			}
+
+			if (opener && typeof($.parseMediaboxOptions) !== "undefined") {
+				cfg = $.extend($.parseMediaboxOptions(litySpip.nameSpace, opener), cfg)
 			}
 
 			if (!!cfg.preloadOnly) {
