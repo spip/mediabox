@@ -131,10 +131,27 @@
 			return '<div class="error lity-error">Failed loading content</div>';
 		},
 		ajaxHandler: function (target, instance){
-			var cache = instance.opener().data('lity-ajax-cache') || {};
-			if (cache[target]) {
+			var cacheStore = (instance.opener().length ? instance.opener() : $(document));
+			var cache = cacheStore.data('lity-ajax-cache') || {};
+			// prise en charge de la syntaxe "url selector" comme jQuery.load()
+			var selector,
+				off = target.indexOf(" ");
+			if (off> -1){
+				selector = target.slice(off);
+				selector = selector.match(/[^\x20\t\r\n\f]+/g) || [];
+				selector = selector.join(" ");
+				target = target.slice(0, off);
+			}
+
+			if (cache[target]){
 				//console.log("CACHE for "+target);
-				return $('<div class="lity-content-inner"></div>').append(cache[target]);
+				var content = cache[target];
+				if (selector){
+					// If a selector was specified, locate the right elements in a dummy div
+					// Exclude scripts to avoid IE 'Permission Denied' errors
+					content = $("<div>").append($.parseHTML(content)).find(selector);
+				}
+				return $('<div class="lity-content-inner"></div>').append(content);
 			}
 
 			var _deferred = $.Deferred;
@@ -145,7 +162,12 @@
 			$.get(target)
 				.done(function (content){
 					cache[target] = content;
-					instance.opener().data('lity-ajax-cache', cache);
+					cacheStore.data('lity-ajax-cache', cache);
+					if (selector){
+						// If a selector was specified, locate the right elements in a dummy div
+						// Exclude scripts to avoid IE 'Permission Denied' errors
+						content = $("<div>").append($.parseHTML(content)).find(selector);
+					}
 					deferred.resolve($('<div class="lity-content-inner"></div>').append(content));
 				})
 				.fail(failed);
