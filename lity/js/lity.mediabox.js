@@ -67,6 +67,12 @@
 			}
 			if (styles.length) {
 				styles_content = ' style="' + styles.join(';') + '"';
+				if (cfg.minWidth && cfg.maxWidth) {
+					className += ' lity-width-set';
+				}
+				if (cfg.minHeight && cfg.maxHeight) {
+					className += ' lity-height-set';
+				}
 			}
 
 			var button_next_prev = '',

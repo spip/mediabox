@@ -74,6 +74,12 @@
 .box_mediabox.lity-iframe .lity-iframe-container iframe {
 	background: #fff;
 }
+.box_mediabox.lity-height-set.lity-iframe .lity-iframe-container {
+	height: 100%;
+	padding: 0;
+	transform: none;
+}
+
 /* antiscroll */
 .lity-active body {
 	height: auto !important;
