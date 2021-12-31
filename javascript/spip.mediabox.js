@@ -56,6 +56,32 @@
 			options["maxHeight"] = v;
 		}
 
+		// si aucun attribut data-box-xx regarder la classe pour compat avec l'ancienne box
+		// boxInline boxIframe boxWidth-xx boxHeight-xx
+		if (!options.length) {
+			var eltclass = $(opener).prop('class');
+			if (eltclass){
+				if (eltclass.indexOf("boxWidth-")!== -1){
+					var w = eltclass.match(/boxWidth-([^\s'">]*)/);
+					w = w[1].replace(/pc/, '%'); // % not allowed in html attribute ; use 100pc instead of 100%
+					options["minWidth"] = w;
+					options["maxWidth"] = w;
+				}
+				if (eltclass.indexOf("boxHeight-")!== -1){
+					var h = eltclass.match(/boxHeight-([^\s'">]*)/);
+					h = h[1].replace(/pc/, '%'); // % not allowed in html attribute ; use 100pc instead of 100%
+					options["minHeight"] = h;
+					options["maxHeight"] = h;
+				}
+				if (eltclass.indexOf("boxIframe")!== -1){
+					options["type"] = 'iframe';
+				}
+				if (eltclass.indexOf("boxInline")!== -1) {
+					options["type"] = 'inline';
+				}
+			}
+		}
+
 		return options;
 	}
 
