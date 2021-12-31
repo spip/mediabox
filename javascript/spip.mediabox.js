@@ -8,6 +8,8 @@
  * minWidth: 		(Number|String:300) The minimum width for the container
  * maxHeight: 		(Number|String:null) The maximum height for the container. If not specified, the window height is used.
  * maxWidth: 		(Number|String:null) The maximum width for the container. If not specified, the window width is used.
+ * height: 		(Number|String:null) fixed height for the container
+ * width: 		(Number|String:null) fixed width for the container
  * autoResize: 		(Boolean:false) Resize container on window resize? Use with caution - this may have undesirable side-effects.
  * onOpen: 		(Function:null) The callback function used in place of SimpleModal's open
  * onShow: 		(Function:null) The callback function used after the modal dialog has opened
@@ -37,23 +39,13 @@
 	$.parseMediaboxOptions = function(nameSpace, opener) {
 		var options = {};
 
-		var data2options = {"type":"type","min-width":"minWidth","min-height":"minHeight","max-width":"maxWidth","max-height":"maxHeight"};
+		var data2options = {"width":"width","height":"height","min-width":"minWidth","min-height":"minHeight","max-width":"maxWidth","max-height":"maxHeight"};
 		var v;
 		for (var o in data2options) {
 			v = ($(opener).data(nameSpace+'-' + o) || '');
 			if (v) {
 				options[data2options[o]] = v;
 			}
-		}
-		v = ($(opener).data(nameSpace+'-' + 'width') || '');
-		if (v) {
-			options["minWidth"] = v;
-			options["maxWidth"] = v;
-		}
-		v = ($(opener).data(nameSpace+'-' + 'height') || '');
-		if (v) {
-			options["minHeight"] = v;
-			options["maxHeight"] = v;
 		}
 
 		// si aucun attribut data-box-xx regarder la classe pour compat avec l'ancienne box
@@ -64,14 +56,12 @@
 				if (eltclass.indexOf("boxWidth-")!== -1){
 					var w = eltclass.match(/boxWidth-([^\s'">]*)/);
 					w = w[1].replace(/pc/, '%'); // % not allowed in html attribute ; use 100pc instead of 100%
-					options["minWidth"] = w;
-					options["maxWidth"] = w;
+					options["width"] = w;
 				}
 				if (eltclass.indexOf("boxHeight-")!== -1){
 					var h = eltclass.match(/boxHeight-([^\s'">]*)/);
 					h = h[1].replace(/pc/, '%'); // % not allowed in html attribute ; use 100pc instead of 100%
-					options["minHeight"] = h;
-					options["maxHeight"] = h;
+					options["height"] = h;
 				}
 				if (eltclass.indexOf("boxIframe")!== -1){
 					options["type"] = 'iframe';
@@ -80,6 +70,12 @@
 					options["type"] = 'inline';
 				}
 			}
+		}
+
+		// en dernier le type, qui est prioritaire ici
+		v = ($(opener).data(nameSpace+'-' + 'type') || '');
+		if (v) {
+			options["type"] = v;
 		}
 
 		return options;

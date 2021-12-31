@@ -54,6 +54,18 @@
 			if (cfg.maxHeight) {
 				styles.push("max-height:" + cfg.maxHeight.replace("%","vh"));
 			}
+			if (cfg.width) {
+				styles.push("width:" + cfg.width.replace("%","vw"));
+				className += ' lity-width-set';
+			}
+			if (cfg.height) {
+				styles.push("height:" + cfg.height.replace("%","vh"));
+				className += ' lity-height-set';
+				// si il y a un min-height il faut l'appliquer sur le container aussi du coup
+				if (cfg.minHeight) {
+					styles.push("min-height:" + cfg.minHeight.replace("%","vh"));
+				}
+			}
 			if (styles.length) {
 				styles_container = ' style="' + styles.join(';') + '"';
 			}
@@ -62,17 +74,11 @@
 			if (cfg.minWidth) {
 				styles.push("min-width:" + cfg.minWidth.replace("%","vw"));
 			}
-			if (cfg.minHeight) {
+			if (cfg.minHeight && !cfg.height) {
 				styles.push("min-height:" + cfg.minHeight.replace("%","vh"));
 			}
 			if (styles.length) {
 				styles_content = ' style="' + styles.join(';') + '"';
-				if (cfg.minWidth && cfg.maxWidth) {
-					className += ' lity-width-set';
-				}
-				if (cfg.minHeight && cfg.maxHeight) {
-					className += ' lity-height-set';
-				}
 			}
 
 			var button_next_prev = '',
