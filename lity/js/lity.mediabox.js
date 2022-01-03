@@ -179,7 +179,7 @@
 			if (desc){
 				var id = 'lity-image-caption-' + Date.now().toString(36) + Math.random().toString(36).substr(2);
 				img.attr('aria-describedby', id);
-				img = $('<figure class="lity-image-figure"></figure>').append(img).append('<figcaption id="'+id+'" class="lity-image-caption">'+desc+'</figcaption>');
+				img = $('<figure class="lity-image-figure"></figure>').append(img).append('<figcaption id="'+id+'" class="lity-image-caption min"><div class="lity-image-caption-text">'+desc+'</div></figcaption>');
 			}
 			else {
 				img = $('<figure class="lity-image-figure"></figure>').append(img);
@@ -249,6 +249,7 @@
 						$(document).on('click', '.lity-previous,.lity-next', litySpip.onPrevNext);
 						$(document).on('click', '.lity-start-stop', litySpip.onSlideShowToggle);
 						$(window).on('keyup', litySpip.onKeyUp);
+						$(document).on('click', '.lity-image-caption', litySpip.onCaptionToggle);
 						break;
 				}
 				litySpip.eventSet[what] = true;
@@ -263,6 +264,10 @@
 					jQuery('.lity-' + c, current.element()).trigger('click');
 				}
 			}
+		},
+		onCaptionToggle: function(event) {
+			var $caption = $(this);
+			$caption.toggleClass('min expanded');
 		},
 		openerFromPrevNext($button) {
 			var groupName = $button.data('group-name');

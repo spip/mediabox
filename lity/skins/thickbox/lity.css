@@ -179,7 +179,14 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 100%;
-	margin-top: 10px;
-	margin-right: 3rem;
+	bottom: 0;
+	margin-bottom: -2rem;
+	padding-right: 3rem;
+	min-height: 1.5rem;
+	height: 1.5rem;
+	overflow: hidden;
+}
+.lity-image-caption.expanded {
+	background: #fff;
+	height: auto;
 }

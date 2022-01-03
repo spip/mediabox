@@ -61,6 +61,25 @@
 	background-color: #fff;
 }
 
+/* Caption Repliable */
+.lity-image-caption.min {
+	cursor: pointer;
+}
+.lity-image-caption.min .lity-image-caption-text {
+	max-height: 4.5rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.lity-image-caption.min .spip_doc_titre,
+.lity-image-caption.min .spip_doc_descriptif,
+.lity-image-caption.min .spip_doc_credits {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
 
 /* Box inline + ajax */
 .box_mediabox.lity-inline .lity-content,
