@@ -125,7 +125,7 @@
 	text-indent: -5px;
 	display: block;
 	margin: 0.1rem auto;
-	margin-left: 0.12rem;
+	margin-left: 0.37rem;
 	border: 0.5rem solid transparent;
 	border-left-color: #fff;
 	width: 1rem;
@@ -150,7 +150,7 @@
 	margin: 0.1rem auto;
 	width: 0.7rem;
 	height: 0.7rem;
-	margin-left: -0.05rem;
+	margin-left: 0.20rem;
 	background: #fff;
 }
 .lity-group-start-stop .lity-stop:active,
