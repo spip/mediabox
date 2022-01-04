@@ -13,6 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_reinitialiser' => 'Reiniciar',
 	'boxstr_close' => 'Fechar',
 	'boxstr_current' => '@current@/@total@',
+	'boxstr_dialog_title_default' => 'Caixa de diálogo', # RELIRE
 	'boxstr_next' => 'Seguinte',
 	'boxstr_previous' => 'Anterior',
 	'boxstr_slideshowStart' => 'Slideshow',
