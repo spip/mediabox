@@ -115,7 +115,7 @@ function mediabox_config($public = null) {
 		$config['lity'] = array_merge(
 			!empty($config['lity']) ?  $config['lity'] : [],
 			[
-				'skin' => 'simple-white',
+				'skin' => 'spip',
 				'maxWidth' => '90%',
 				'maxHeight' => '95%',
 				'minWidth' => '600px',

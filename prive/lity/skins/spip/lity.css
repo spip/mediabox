@@ -1,11 +1,11 @@
 .box_mediabox:before {
-	background: #fff;
+	background: #000;
 	opacity:0.9;
 }
 
 /* focus */
 .box_mediabox button[class*="lity-"]:focus{
-	outline: 2px dotted #333;
+	outline: 2px dotted #ccc;
 }
 
 /* Close button */
@@ -19,7 +19,7 @@
 	height: 2.5rem;
 	line-height: 2.5rem;
 	font-size: 2.5rem;
-	color: #000;
+	color: #fff;
 }
 
 /* Group navigation */
@@ -28,7 +28,7 @@
 	position: absolute;
 	top:-1.5rem;
 	right: 0;
-	color: #000;
+	color: #fff;
 	font-weight: bold;
 }
 .lity-loading .lity-group-caption .lity-group-current {
@@ -39,7 +39,7 @@
 	text-align: center;
 	top:50%;
 	margin-top:-1.5em;
-	color: #000;
+	color: #fff;
 }
 
 /* start stop */
@@ -53,7 +53,7 @@
 	left: 0;
 	width: 100%;
 	text-align: center;
-	color: #000;
+	color: #fff;
 	font-weight: bold;
 }
 .lity-group-start-stop button {
@@ -62,7 +62,7 @@
 	padding: 0;
 	margin: 0;
 	background: none;
-	color:#000;
+	color:#fff;
 }
 .lity-group-start-stop button b {
 	color: transparent;
@@ -70,7 +70,7 @@
 .lity-group-start-stop button b::after {
 	content: attr(title);
 	display: inline-block;
-	color: #000;
+	color: #fff;
 	padding-right: 0.75em;
 }
 
@@ -132,7 +132,7 @@
 	line-height: 3rem;
 	margin-top: -1.5rem;
 	text-shadow: 0 0 10px #000;
-	color: #000;
+	color: #fff;
 	font-style: normal;
 	opacity: 0.5;
 }
