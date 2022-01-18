@@ -34,4 +34,18 @@
 		<label for='lity_opacite'><:mediabox:label_opacite:></label>
 		<input type="text" name="lity[opacite]" class="text" id="lity_opacite" size="10" value="#ENV{#GET{name},#GET{defaut}}" />
 	</div>
+	#SET{name,lity/defaultCaptionState}#SET{obli,''}#SET{defaut,expanded}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	<div class="editer editer_lity_defaultCaptionState[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+		<label><:mediabox:label_defaultcaptionstate:></label>
+		<div class="choix">
+			<span class="choix">
+				<input type="radio" name="lity[defaultCaptionState]" class="radio" id="lity_defaultCaptionState_expanded" value="expanded" [(#ENV{#GET{name},#GET{defaut}}|=={min}|non) checked="checked"] />
+				<label for='lity_defaultCaptionState_expanded'><:mediabox:label_defaultcaptionstate_expanded:></label>
+			</span>
+			<span class="choix">
+				<input type="radio" name="lity[defaultCaptionState]" class="radio" id="lity_defaultCaptionState_min" value="min" [(#ENV{#GET{name},#GET{defaut}}|=={min}|oui) checked="checked"] />
+				<label for='lity_defaultCaptionState_min'><:mediabox:label_defaultcaptionstate_min:></label>
+			</span>
+		</div>
+	</div>
 </div>

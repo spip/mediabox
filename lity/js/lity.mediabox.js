@@ -173,13 +173,14 @@
 				.fail(failed);
 			return deferred.promise();
 		},
-		imageBuildContent: function(img, desc, longdesc) {
+		imageBuildContent: function(img, desc, longdesc, defaultCaptionClass) {
 			img.attr('alt', desc ? desc : '');
 			desc = (longdesc ? longdesc : desc);
 			if (desc){
+				defaultCaptionClass = (defaultCaptionClass ? defaultCaptionClass : 'expanded');
 				var id = 'lity-image-caption-' + Date.now().toString(36) + Math.random().toString(36).substr(2);
 				img.attr('aria-describedby', id);
-				img = $('<figure class="lity-image-figure"></figure>').append(img).append('<figcaption id="'+id+'" class="lity-image-caption min"><div class="lity-image-caption-text">'+desc+'</div></figcaption>');
+				img = $('<figure class="lity-image-figure"></figure>').append(img).append('<figcaption id="'+id+'" class="lity-image-caption '+defaultCaptionClass+'"><div class="lity-image-caption-text">'+desc+'</div></figcaption>');
 			}
 			else {
 				img = $('<figure class="lity-image-figure"></figure>').append(img);
@@ -190,6 +191,7 @@
 			var _deferred = $.Deferred;
 			var desc = '';
 			var longdesc = '';
+			var defaultCaptionClass = (instance.options().defaultCaptionState === 'min' ? 'min' : 'expanded');
 			var opener = instance.opener();
 			if (opener){
 				desc = opener.attr('title') || $('img[alt]', opener).eq(0).attr('alt') || '';
@@ -209,7 +211,7 @@
 			if (cache[target]) {
 				//console.log("CACHE for "+target);
 				img = cache[target];
-				img = litySpip.imageBuildContent(img, desc, longdesc);
+				img = litySpip.imageBuildContent(img, desc, longdesc, defaultCaptionClass);
 				return img;
 			}
 
@@ -228,7 +230,7 @@
 					cache[target] = img;
 					opener.data('lity-image-cache', cache);
 
-					deferred.resolve(litySpip.imageBuildContent(img, desc, longdesc));
+					deferred.resolve(litySpip.imageBuildContent(img, desc, longdesc, defaultCaptionClass));
 				})
 				.on('error', failed)
 			;
@@ -384,7 +386,7 @@
 			}
 
 			if (opener && typeof($.parseMediaboxOptions) !== "undefined") {
-				cfg = $.extend($.parseMediaboxOptions(litySpip.nameSpace, opener), cfg)
+				cfg = $.extend(cfg, $.parseMediaboxOptions(litySpip.nameSpace, opener));
 			}
 
 			if (!!cfg.preloadOnly) {
@@ -415,7 +417,8 @@
 			if (cfg.handler && cfg.handlers[cfg.handler]) {
 				if (cfg.handler === 'image' || cfg.handler === 'ajax') {
 					var instance = {
-						opener: function() { return $(opener);}
+						opener: function() { return $(opener);},
+						options: function() { return cfg}
 					};
 					var content = cfg.handlers[cfg.handler](target, instance);
 				}
@@ -489,6 +492,7 @@
 		litySpip.strings.dialog_title_def = b.str_dialTitDef;
 		litySpip.strings.dialog_title_med = b.str_dialTitMed;
 		litySpip.config.slideshowSpeed = (b.lity.slideshow_speed ? b.lity.slideshow_speed : 5000);
+		litySpip.config.defaultCaptionState = (b.lity.defaultCaptionState ? b.lity.defaultCaptionState : 'expanded');
 
 		var styles = {
 			'container': '',

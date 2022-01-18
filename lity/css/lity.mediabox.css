@@ -62,7 +62,7 @@
 }
 
 /* Caption Repliable */
-.lity-image-caption.min {
+.lity-image-caption.min,.lity-image-caption.expanded {
 	cursor: pointer;
 }
 .lity-image-caption.min .lity-image-caption-text {
@@ -78,7 +78,10 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
+.lity-image-caption.min .spip_doc_descriptif:not(:first-child),
+.lity-image-caption.min .spip_doc_credits:not(:first-child) {
+	display: none;
+}
 
 
 /* Box inline + ajax */

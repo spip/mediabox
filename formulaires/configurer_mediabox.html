@@ -46,7 +46,7 @@
 				<BOUCLE_boxtypes(DATA){source table, #ENV{_libs}}>
 					#SET{name,box_type}#SET{obli,''}#SET{defaut,colorbox}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
 					<div class="editer pleine_largeur editer_box_type editer_box_type_#CLE[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
-						<div class="choix">
+						<div class="choix" style="overflow: hidden">
 							<input type="radio" name="box_type" id="box_type_#CLE" value="#CLE" [(#ENV{#GET{name},#GET{defaut}}|=={#CLE}|oui)checked="checked"]/>
 							<label for="box_type_#CLE">#VALEUR{nom}</label>
 							#SET{fond,formulaires/inc-configurer_mediabox-#CLE}

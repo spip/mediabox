@@ -39,7 +39,7 @@
 	$.parseMediaboxOptions = function(nameSpace, opener) {
 		var options = {};
 
-		var data2options = {"width":"width","height":"height","min-width":"minWidth","min-height":"minHeight","max-width":"maxWidth","max-height":"maxHeight"};
+		var data2options = {"width":"width","height":"height","min-width":"minWidth","min-height":"minHeight","max-width":"maxWidth","max-height":"maxHeight","caption-state":"defaultCaptionState"};
 		var v;
 		for (var o in data2options) {
 			v = ($(opener).data(nameSpace+'-' + o) || '');

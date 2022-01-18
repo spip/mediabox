@@ -35,6 +35,7 @@ function mediabox_lity_config($config) {
 			'minHeight' => '',
 			'slideshow_speed' => '2500',
 			'opacite' => '0.9',
+			'defaultCaptionState' => 'expanded',
 		],
 		$config['lity']
 	);
@@ -121,6 +122,7 @@ function mediabox_config($public = null) {
 				'minWidth' => '600px',
 				'minHeight' => '300px',
 				'opacite' => '0.9',
+				'defaultCaptionState' => 'expanded',
 			]
 		);
 	}
