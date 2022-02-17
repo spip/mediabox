@@ -5,7 +5,7 @@
 	url="https://trad.spip.net"
 	source="https://git.spip.net/spip/mediabox.git"
 	reference="fr">
-	<langue code="ar" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ar" total="47" traduits="44" relire="0" modifs="0" nouveaux="3" pourcent="93.62">
+	<langue code="ar" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=ar" total="47" traduits="47" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 	</langue>
