@@ -9,10 +9,11 @@
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 	</langue>
-	<langue code="de" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=de" total="47" traduits="37" relire="0" modifs="0" nouveaux="10" pourcent="78.72">
+	<langue code="de" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=de" total="47" traduits="47" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="klaus++" lien="https://trad.spip.net/auteur/klaus" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 		<traducteur nom="RealET" lien="https://trad.spip.net/auteur/realet" />
+		<traducteur nom="Torsten Willmann" lien="https://trad.spip.net/auteur/torsten-willmann" />
 	</langue>
 	<langue code="en" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=en" total="47" traduits="47" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
@@ -72,7 +73,7 @@
 		<traducteur nom="Jorge Paulo Malveira Pimentel Dos Santos" lien="https://trad.spip.net/auteur/jorge-paulo-malveira-pimentel-dos-santos" />
 		<traducteur nom="RealET" lien="https://trad.spip.net/auteur/realet" />
 	</langue>
-	<langue code="pt_br" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=pt_br" total="47" traduits="44" relire="0" modifs="0" nouveaux="3" pourcent="93.62">
+	<langue code="pt_br" url="https://trad.spip.net/tradlang_module/mediabox?lang_cible=pt_br" total="47" traduits="47" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="RealET" lien="https://trad.spip.net/auteur/realet" />
 		<traducteur nom="Ricardo Porto" lien="https://trad.spip.net/auteur/ricardo-porto" />
 		<traducteur nom="telopa" lien="https://trad.spip.net/auteur/telopa" />

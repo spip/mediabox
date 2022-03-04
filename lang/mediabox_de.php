@@ -14,7 +14,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'boxstr_close' => 'Schließen',
 	'boxstr_current' => '@current@/@total@',
 	'boxstr_dialog_title_default' => 'Dialogbox',
+	'boxstr_dialog_title_medias' => 'Medienanzeige',
+	'boxstr_loading' => 'Lädt…',
 	'boxstr_next' => 'Weiter',
+	'boxstr_press_escape_to_close' => 'Zum Schließen ’Esc’ drücken',
 	'boxstr_previous' => 'Zurück',
 	'boxstr_slideshowStart' => 'Diaschau',
 	'boxstr_slideshowStop' => 'Stop',
@@ -26,6 +29,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'explication_splash_url' => 'Geben sie den URL des Mediums an, das einem Besucher beim ersten Besuch der Website automatisch in einem Kasten angezeigt werden soll.',
 	'explication_traiter_toutes_images' => 'Alle Bilder in einem Kasten anzeigen?',
 
+	// I
+	'info_box_lity_nom_skin__simple_dark' => 'Standard Schwarz',
+	'info_box_lity_nom_skin__simple_white' => 'Standard Hell',
+	'info_box_lity_nom_skin_fancybox' => 'Stil Fancybox',
+	'info_box_lity_nom_skin_thickbox' => 'Stil Thickbox',
+
 	// L
 	'label_active' => 'Mediabox für den öffentlichen Bereich aktivieren',
 	'label_apparence' => 'Aussehen',
@@ -33,6 +42,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_choix_transition_elastic' => 'Elastisch',
 	'label_choix_transition_fade' => 'Überblendung',
 	'label_choix_transition_none' => 'Kein Übergangseffekt',
+	'label_defaultcaptionstate' => 'Bildlegende',
+	'label_defaultcaptionstate_expanded' => 'Komplett',
+	'label_defaultcaptionstate_min' => 'Kurzfassung',
 	'label_maxheight' => 'Maximalhöhe (% oder px)',
 	'label_maxwidth' => 'Maximalbreite (% oder px)',
 	'label_minheight' => 'Minimalhöhe (% oder px)',
