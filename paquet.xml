@@ -3,7 +3,7 @@
 	categorie="multimedia"
 	version="3.0.2"
 	etat="stable"
-	compatibilite="[4.1.0-alpha;4.1.*]"
+	compatibilite="[4.1.0;4.1.*]"
 	logo="prive/themes/spip/images/mediabox-xx.svg"
 	documentation="https://contrib.spip.net/MediaBox"
 >
