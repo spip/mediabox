@@ -2,7 +2,7 @@
 
 /* Options de l'API Mediabox
  *
- * overlayClose: 	(Boolean:false) Allow click on overlay to close the dialog?
+ * overlayClose: 	(Boolean:true) Allow click on overlay to close the dialog?
  * type: 		(String:undefined) inline/image/html/ajax/iframe/
  * minHeight: 		(Number|String:200) The minimum height for the container
  * minWidth: 		(Number|String:300) The minimum width for the container
@@ -29,12 +29,8 @@
 		$.fn.mediabox(options);
 	};
 
-	$.modalbox = function (href, options) {$.mediabox($.extend({href:href},options));};
+	$.modalboxload = $.modalbox = function (href, options) {$.mediabox($.extend({href:href,overlayClose:true},options));};
 	$.modalboxclose = $.mediaboxClose = $.fn.mediaboxClose;
-	$.modalboxload = function (href, options) {
-		options = $.extend({href:href,overlayClose:true},options);
-		$.mediabox(options);
-	};
 
 	$.parseMediaboxOptions = function(nameSpace, opener) {
 		var options = {};
