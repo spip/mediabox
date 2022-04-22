@@ -116,7 +116,7 @@
 
 			var t =
 				  '<dialog class="box_mediabox box_modalbox lity' + className + '" role="dialog" aria-label="' + dialog_title + '" tabindex="-1">'
-				+   '<div class="lity-wrap" data-lity-close role="document">'
+				+   '<div class="lity-wrap"' + (cfg.overlayClose === false ? '' : ' data-lity-close') + ' role="document">'
 				+     '<div class="lity-loader" aria-hidden="true" aria-label="' + litySpip.strings.loading + '"><span class="box-loading"></span></div>'
 				+     '<div class="lity-container"' + styles_container + '>'
 				+       '<button class="lity-close" type="button" aria-label="' + close_button_aria_label + '" data-lity-close><b data-lity-close title="' + litySpip.strings.close +'">&times;</b></button>'
