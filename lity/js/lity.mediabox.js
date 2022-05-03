@@ -131,8 +131,6 @@
 			return '<div class="error lity-error">Failed loading content</div>';
 		},
 		ajaxHandler: function (target, instance){
-			var cacheStore = (instance.opener().length ? instance.opener() : $(document));
-			var cache = cacheStore.data('lity-ajax-cache') || {};
 			// prise en charge de la syntaxe "url selector" comme jQuery.load()
 			var selector,
 				off = target.indexOf(" ");
@@ -143,9 +141,9 @@
 				target = target.slice(0, off);
 			}
 
-			if (cache[target]){
+			if (jQuery.spip.preloaded_urls[target]){
 				//console.log("CACHE for "+target);
-				var content = cache[target];
+				var content = jQuery.spip.preloaded_urls[target];
 				if (selector){
 					// If a selector was specified, locate the right elements in a dummy div
 					// Exclude scripts to avoid IE 'Permission Denied' errors
@@ -161,8 +159,7 @@
 			};
 			$.get(target)
 				.done(function (content){
-					cache[target] = content;
-					cacheStore.data('lity-ajax-cache', cache);
+					jQuery.spip.preloaded_urls[target] = content;
 					if (selector){
 						// If a selector was specified, locate the right elements in a dummy div
 						// Exclude scripts to avoid IE 'Permission Denied' errors
