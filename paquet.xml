@@ -1,8 +1,8 @@
 <paquet
 	prefix="mediabox"
 	categorie="multimedia"
-	version="2.0.4"
-	etat="test"
+	version="2.0.5"
+	etat="stable"
 	compatibilite="[4.0.0;4.0.*]"
 	logo="prive/themes/spip/images/mediabox-xx.svg"
 	documentation="https://contrib.spip.net/MediaBox"
