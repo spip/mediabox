@@ -89,7 +89,7 @@ function mediabox_presenter_selection_skins($skins, $selected, $name = 'skin') {
 	$rel = 'habillage_' . substr(md5($name), 0, 4);
 
 	foreach ($skins as $k => $skin) {
-		$id = preg_replace(',[^a-z0-9_],i', '_', "${name}_{$k}");
+		$id = preg_replace(',[^a-z0-9_],i', '_', "{$name}_{$k}");
 		$sel = ($selected == "$k" ? " checked='checked'" : '');
 		$balise_img = chercher_filtre('balise_img');
 		$label = $skin['nom'];
